@@ -9,6 +9,15 @@ html, body {
 h1 {
   color: #FAFAC8;
 }
+.angelsroom {
+  padding-top: 65px;
+}
+.token {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 /* rgb(0,120,120) = #007878 */
 /* rgb(200, 91, 0) = #C85B00*/
@@ -27,5 +36,12 @@ h1 {
     border-radius: 10px;
     overflow-y: scroll;
   }
+  .token {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
 
 }
