@@ -1,12 +1,13 @@
-<html>
-  <body>
+<em>
                 ------ Frontend --------
                     "The Angel Room"
                 AngularJs with web3.js GUI
                 _________________________
-   </body>
-</html>
+
+</em
+<hr/>
 WhatsItAbout();// ???? the details of this issue ???
+
   -- NextTokenOffering();// the details of the next offering - so they understand the next possible dividend if enough Angels bring their cups to the next Council
 
   -- ThisTokenOffering();// the terms of this token offering
