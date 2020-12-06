@@ -1,0 +1,54 @@
+// bool isClosed = false; --> closes when all tokens are finally bought
+// bool first_rnd = true;
+// const _estShipping = 0.35;
+// const _beans&Packaging = 0.20;
+// const _roastMeisters_share; 0.225
+// const _angels_share = 0; --> 0.225
+// const reward_per_token = 0.005% --->  equals $2.25 profit share when next $10,000
+
+// if (first_rnd = true)
+    // const _angels_share = 0;
+    // const _roastMeisters_share = 1.00;  --> first round to RoastMeister Wallet - about 0.45 should be profit
+    // first_rnd = false;
+// if (first_rnd = false)
+        // _angels_share = 0.225  --> every round thereafter Angels receive 22.5% of funds raised
+        // _roastMeisters_share = 0.225 --> roastmeister receives 22.5%
+
+
+
+
+        // purchase a token for $10 in Ethereum
+            //have to have a wallet already
+            //have to log onto the angel site and connect with metamask
+            //can view:
+              // amount of tokens owned by your metamask wallet account currently selected
+              // interest to earn on next rnd (0.0005%)
+              // whether or not the interest has been executed by the next rnd
+              // a Cash Out button to exchange the $interest_earned for ether
+
+            // get a 1/2lb per token shipped to your door (continental US) once the round is executed
+              // Comes individually packaged so ....
+              // Enjoy it in your cup as you're ready
+              // OR
+              // Give it away !!
+              // OR
+              // Sell it for whatever price you like!! Seriously!!
+
+            // once the coffee has shipped, sell your token on the open market or keep it to gain interest on the next round!
+
+        // AND have an Investors Token Minted!
+            // Earn Say(0.0005%) interest on your token Next Round.
+            // Tokens aren't executable until next round completes
+            // Once the next round completes, your token will be charged with an amount of ether
+            // when next rnd is complete and token is charged with ether,
+                //you can exchange it at anytime for your share of the profits
+                // Need a Sell button to sell tokens for ether at their inherited value
+                // or ride the Ether wave!  Be Careful!  I'm not your investment advisor, just your coffee roaster!
+
+        // Round executes when all shares are owned
+            // First thing is to pay last rounds angels their %share
+              // if first round, then no past obligations to fill
+              // else
+                //amount of total profit ==> (TotalRaisedFunds - Beans&Packaging - EstShipping)
+                //this is the amount to cut in half.
+                //Half goes to last rounds Angel List , half goes to the RoastMEister
