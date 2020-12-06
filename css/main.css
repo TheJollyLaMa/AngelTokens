@@ -1,0 +1,31 @@
+
+html, body {
+  background-color: #1BB3B6;
+  color: #FAFAC8;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: #FAFAC8;
+}
+
+/* rgb(0,120,120) = #007878 */
+/* rgb(200, 91, 0) = #C85B00*/
+/* rgb(102,213,213) = #66D5D5*/
+@media only screen and (min-width:961px) {
+
+  .mainViewWindow {
+    background-color: #1BB3B6;
+    color: #FAFAC8;
+    width: 70%;
+    height: 750px;
+    float: left;
+    border-width: : 5px;
+    border-style: double;
+    border-color: #FAFAC8;
+    border-radius: 10px;
+    overflow-y: scroll;
+  }
+
+}
