@@ -1,10 +1,10 @@
-<em>
+<h1>
                 ------ Frontend --------
                     "The Angel Room"
                 AngularJs with web3.js GUI
                 _________________________
 
-</em
+</h1>
 <hr/>
 WhatsItAbout();// ???? the details of this issue ???
 
