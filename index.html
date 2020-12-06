@@ -5,32 +5,55 @@
     <meta name="author" content="Justin LaManna">
     <meta name="description" content="Your Online Coffee Roasting Connection">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/main.css" />
-    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
-
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="module" src="node_modules/web3/dist/web3.min.js"></script>
     <title>Caffeine LaManna</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <script type="text/javascript">
 
+       window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+                window.web3 = new Web3(web3.currentProvider);
+            } else {
+                console.log('No Web3 Detected... using HTTP Provider')
+                window.web3 = new Web3(new Web3.providers.HttpProvider("https:localhost:7545"));
+                // window.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/<APIKEY>"));
+
+            }
+      })
+      function getBalance() {
+            var address, wei, balance
+            address = document.getElementById("address").value
+            try {
+                web3.eth.getBalance(address, function (error, wei) {
+                    if (!error) {
+                        var balance = web3.utils.fromWei(wei, 'ether');
+                        document.getElementById("output").innerHTML = balance + " ETH";
+                    }
+                });
+            } catch (err) {
+                document.getElementById("output").innerHTML = err;
+            }
+        }
+
+    </script>
 
   </head>
 
   <body ng-app="webApp" ng-controller="AngelsRoomController" >
-
     <div class="mainViewWindow">
       <ng-view> </ng-view>
     </div>
 
-    <script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" src="./node_modules/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
 
-    <script type="text/javascript" src="./js/webApp.js"></script>
-    <!-- <script type="text/javascript" src="/js/controllers/StoreFrontController.js"></script> -->
-    <!-- <script type="text/javascript" src="/js/controllers/AngelsRoomController.js"></script> -->
-    <!-- <script type="text/javascript" src="controllers/BehindTheCounterController.js"></script> -->
-
+    <script type="text/javascript" src="js/webApp.js"></script>
   </body>
 </html>

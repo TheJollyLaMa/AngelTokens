@@ -1,11 +1,11 @@
 {
   "name": "lite-server_dev",
   "version": "1.0.0",
-  "description": "",
+  "description": "Angular Solidity Block Development",
   "scripts": {
     "dev": "lite-server"
   },
-  "author": "",
+  "author": "The Jolly LaMa",
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.6.1"
