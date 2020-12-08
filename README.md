@@ -1,19 +1,15 @@
-<img align="center"> ![Angel Tokens](./ATLOGO.png?raw=true)</img>
+<p align="center"><img align="center"> ![Angel Tokens](./ATLOGO.png?raw=true)</img></p>
 ---
-<p align="center">
-   Connecting Angels to their respective
-</p>
-<p align="center">
-   Spectacular Entrepreneurial Spirits
-</p>
-<p align="center">
-   since 2020!
-</p>
+<p align="center">Connecting Angels to their respective</p>
+<p align="center">Spectacular Entrepreneurial Spirits</p>
+<p align="center">since 2020!</p>
 ---
-##                ------ Frontend --------
-##                 AngularJs with Web3 GUI
-##                    "The Angel Room"
-##                _________________________
+
+<p align="center">------- Frontend -------</p>
+<p align="center">AngularJs with Web3 GUI</p>
+<p align="center">"The Angel Room"</p>
+<p align="center">_________________________</p>
+
 ---
 
 WhatsItAbout();// ???? the details of this issue ???
