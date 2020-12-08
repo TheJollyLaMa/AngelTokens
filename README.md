@@ -1,10 +1,13 @@
-#                ------ Frontend --------
-#                    "The Angel Room"
-#               AngularJs with web3.js GUI
+# Angel Tokens
+---
+For connecting Angels to their respective Spectacular Entrepreneurial Spirits
+---
+                ------ Frontend --------
+                 AngularJs with Web3 GUI
+                    "The Angel Room"
                 _________________________
+---
 
-</h1>
-<hr/>
 WhatsItAbout();// ???? the details of this issue ???
 
   -- NextTokenOffering();// the details of the next offering - so they understand the next possible dividend if enough Angels bring their cups to the next Council
