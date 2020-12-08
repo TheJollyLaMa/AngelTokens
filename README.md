@@ -1,16 +1,18 @@
-<p align="center"><img align="center"> ![Angel Tokens](./ATLOGO.png?raw=true)</img></p>
----
+<p align="center">
+<img src="./ATLOGO.png">
+</p>
+<hr/>
 <p align="center">Connecting Angels to their respective</p>
 <p align="center">Spectacular Entrepreneurial Spirits</p>
 <p align="center">since 2020!</p>
----
+<hr/>
 
 <p align="center">------- Frontend -------</p>
 <p align="center">AngularJs with Web3 GUI</p>
 <p align="center">"The Angel Room"</p>
 <p align="center">_________________________</p>
 
----
+<hr/>
 
 WhatsItAbout();// ???? the details of this issue ???
 
