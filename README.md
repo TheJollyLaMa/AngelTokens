@@ -1,11 +1,13 @@
 ![Angel Tokens](./ATLOGO.png?raw=true)
 ---
-#Connecting Angels to their respective Spectacular Entrepreneurial Spirits since 2020!
+###   Connecting Angels to their respective
+###     Spectacular Entrepreneurial Spirits
+###              since 2020!
 ---
-                ------ Frontend --------
-                 AngularJs with Web3 GUI
-                    "The Angel Room"
-                _________________________
+##                ------ Frontend --------
+##                 AngularJs with Web3 GUI
+##                    "The Angel Room"
+##                _________________________
 ---
 
 WhatsItAbout();// ???? the details of this issue ???
