@@ -5,6 +5,22 @@
 </div>  
 <hr/>
 <hr/>
+
+<div>
+    <p align="center"><img align="left" height="200px" src="./angular.svg">
+        ------- Frontend -------<img align="right" height="200px" src="./web3.jpg">
+    <p align="center">AngularJs with Web3 GUI</p>
+    <p align="center">"The Angel Room"</p>
+    <p align="center">_________________________</p>
+
+</div>    
+<hr/>
+<hr/>
+<hr/>
+
+
+<!--
+
 <div>
     <p>
       <p align="center">------- Frontend -------</p>
@@ -15,7 +31,7 @@
     </p>
 </div>
 <hr/>
-<hr/>
+<hr/> -->
 <ul>
   <li>Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App
        <ul>
@@ -32,7 +48,7 @@
                   -to heal the Earth nation, duh! #DoItForGreta
                   -links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
         </li>
-        <li>-- WhatsItAbout(); 
+        <li>-- WhatsItAbout();
                 - an explanation of what this angel token is representing
         </li>
         <li>-- NextTokenOffering(); the details of the next offering
@@ -57,9 +73,9 @@
               - It holds tokens you purchase by pressing the "BuyTokens" button
               - Thats right! Every Angel will permanetly manifest in teh Ether and be remembered on the Angel's List!
         </li>  
-        <li>--GetAngelPersonality(); 
+        <li>--GetAngelPersonality();
               - enter your name, address, and contact information ( for regulatory purposes ).
-              - Wallet Warning: Your wallet address is yours and yours only 
+              - Wallet Warning: Your wallet address is yours and yours only
                 -- DONT ASK ME TO "RECOVER" a lost one because I cannot!! It will be lost in the ether FOREVER if you lose it!
                 -- we just use your address to display what tokens are associated with that address and to pay it back a share of the benefits!
         </li>  
@@ -112,7 +128,7 @@
     <p align="center">Solidity Contract on Ethereum</p>
     <p align="center">""The Angel Offering""</p>
     <p align="center">_________________________</p>
-  
+
 </div>    
 <hr/>
 <hr/>
