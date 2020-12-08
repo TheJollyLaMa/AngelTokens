@@ -1,8 +1,6 @@
-
-<h1>
-                ------ Frontend --------
-                    "The Angel Room"
-                AngularJs with web3.js GUI
+#                ------ Frontend --------
+#                    "The Angel Room"
+#               AngularJs with web3.js GUI
                 _________________________
 
 </h1>
