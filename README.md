@@ -4,7 +4,7 @@
 <hr/>
 <p align="center">Connecting Angels to their respective</p>
 <p align="center">Spectacular Entrepreneurial Spirits</p>
-<p align="center">since 2020!</p>
+<p align="center">since <em>2020!</em></p>
 <hr/>
 
 <p align="center">------- Frontend -------</p>
