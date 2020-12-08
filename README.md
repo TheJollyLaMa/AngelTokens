@@ -107,13 +107,14 @@
 <hr/>
 <hr/>
 <div>
-    <p align="center"><img align="left" height="50px" src="./solidity.png">
-        ------- Immutable Backend -------<img align="right" height="50px" src="./ethereum.jpg">
+    <p align="center"><img align="left" height="200px" src="./solidity.png">
+        ------- Immutable Backend -------<img align="right" height="200px" src="./ethereum.jpg">
     <p align="center">Solidity Contract on Ethereum</p>
     <p align="center">""The Angel Offering""</p>
     <p align="center">_________________________</p>
   
 </div>    
+<hr/>
 <hr/>
 <hr/>
 
