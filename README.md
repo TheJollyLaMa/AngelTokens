@@ -8,12 +8,13 @@
 <div>
     <p>
       <p align="center">------- Frontend -------</p>
-      <p align="center"><img align="left" height="100px" src="./angular.svg">
-          AngularJs with Web3 GUI<img align="right" height="100px" src="./web3.jpg">
+      <p align="center"><img align="left" height="150px" src="./angular.svg">
+          AngularJs with Web3 GUI<img align="right" height="150px" src="./web3.jpg">
       <p align="center">"The Angel Room"</p>
       <p align="center">_________________________</p>
     </p>
 </div>
+<hr/>
 <hr/>
 <ul>
   <li>Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App
@@ -105,12 +106,12 @@
 
 <hr/>
 <hr/>
-
-<p align="center">------- Immutable Backend -------</p>
-<p align="center">Solidity Contract on Ethereum</p>
-<p align="center">""The Angel Offering""</p>
-<p align="center">_________________________</p>
-
+<p>
+    <p align="center">------- Immutable Backend -------</p>
+    <p align="center"><img align="left" height="150px" src="./solidity.png">Solidity Contract on Ethereum<img align="right" height="150px" src="./ethereum.jpg">
+    <p align="center">""The Angel Offering""</p>
+    <p align="center">_________________________</p>
+</p>
 <hr/>
 <hr/>
 
