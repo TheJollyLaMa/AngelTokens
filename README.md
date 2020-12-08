@@ -6,14 +6,13 @@
 <hr/>
 <hr/>
 <div>
-  <p align="left"><img height="100px" src="./angular.svg"></p>
     <p>
       <p align="center">------- Frontend -------</p>
-      <p align="center">AngularJs with Web3 GUI</p>
+      <p align="center"><img align="left" height="100px" src="./angular.svg">
+          AngularJs with Web3 GUI<img align="right" height="100px" src="./web3.jpg">
       <p align="center">"The Angel Room"</p>
       <p align="center">_________________________</p>
     </p>
-  <p align="right"><img height="100px" src="./web3.jpg"></p>
 </div>
 <hr/>
 <ul>
