@@ -1,14 +1,20 @@
-<p align="center"><img src="./angelL.png"><img src="./ATLOGO.png"><img src="./angelR.png"></p>
-<p align="center">✨✨✨Connecting Angels to their respective Spectacular Entrepreneurial Spirits✨✨✨</p>
-<p align="center">✨✨✨since <em>2020!</em>✨✨✨</p>
+<div>
+    <p align="center"><img src="./angelL.png"><img src="./ATLOGO.png"><img src="./angelR.png"></p>
+    <p align="center">✨✨✨Connecting Angels to their respective Spectacular Entrepreneurial Spirits✨✨✨</p>
+    <p align="center">✨✨✨since <em>2020!</em>✨✨✨</p>
+</div>  
 <hr/>
 <hr/>
-
-<p align="center">------- Frontend -------</p>
-<p align="center">AngularJs with Web3 GUI</p>
-<p align="center">"The Angel Room"</p>
-<p align="center">_________________________</p>
-
+<div>
+  <p align="left"><img height="100px" src="./angular.svg"></p>
+    <p>
+      <p align="center">------- Frontend -------</p>
+      <p align="center">AngularJs with Web3 GUI</p>
+      <p align="center">"The Angel Room"</p>
+      <p align="center">_________________________</p>
+    </p>
+  <p align="right"><img height="100px" src="./web3.jpg"></p>
+</div>
 <hr/>
 <ul>
   <li>Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App
