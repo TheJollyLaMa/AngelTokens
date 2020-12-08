@@ -1,8 +1,14 @@
-![Angel Tokens](./ATLOGO.png?raw=true)
+<img align="center"> ![Angel Tokens](./ATLOGO.png?raw=true)</img>
 ---
-###   Connecting Angels to their respective
-###     Spectacular Entrepreneurial Spirits
-###              since 2020!
+<p align="center">
+   Connecting Angels to their respective
+</p>
+<p align="center">
+   Spectacular Entrepreneurial Spirits
+</p>
+<p align="center">
+   since 2020!
+</p>
 ---
 ##                ------ Frontend --------
 ##                 AngularJs with Web3 GUI
