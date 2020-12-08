@@ -1,6 +1,6 @@
 <p align="center"><img src="./ATLOGO.png"></p>
-<p align="center">Connecting Angels to their respective Spectacular Entrepreneurial Spirits</p>
-<p align="center">since <em>2020!</em></p>
+<p align="center">✨✨✨Connecting Angels to their respective Spectacular Entrepreneurial Spirits✨✨✨</p>
+<p align="center">✨✨✨since <em>2020!</em>✨✨✨</p>
 <hr/>
 <hr/>
 
@@ -10,15 +10,16 @@
 <p align="center">_________________________</p>
 
 <hr/>
-<ul align="center">
-  <li align="center">Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App</li>
+<ul>
+  <li>Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App
        <ul>
          <li>Connect contract ABI by address via Web3</li>
          <li>fetch necessary contract variables to display tokens</li>
          <li>expose them to a user friendly GUI by wallet</li>
         </ul>
-  <li>Jolly explains it All: Development frontend functionality to explain it all </li>
-        <ul align="center">
+  </li>  
+  <li>Jolly explains it All: Development frontend functionality to explain it all
+        <ul>
           <li>-- WhatsItAbout(); 
                   - an explanation of what this angel token is representing
           </li>
@@ -39,7 +40,8 @@
           </li>
 
         </ul>
-</ui>  
+  </li>
+</ul>  
 
   -- TheGeneralStory(); // general readable terms to just what the heck this is all about and links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
 
