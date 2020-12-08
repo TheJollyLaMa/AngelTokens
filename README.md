@@ -1,10 +1,7 @@
-<p align="center">
-<img src="./ATLOGO.png">
-</p>
-<hr/>
-<p align="center">Connecting Angels to their respective</p>
-<p align="center">Spectacular Entrepreneurial Spirits</p>
+<p align="center"><img src="./ATLOGO.png"></p>
+<p align="center">Connecting Angels to their respective Spectacular Entrepreneurial Spirits</p>
 <p align="center">since <em>2020!</em></p>
+<hr/>
 <hr/>
 
 <p align="center">------- Frontend -------</p>
@@ -51,6 +48,14 @@ CheckBalance(); input "Angel Cup Address" to display the Tokens owned by the Ang
                                // Also the amount needed until the round is "executable"
 
     -- Uses Web3.js to communicate with Solidity Smart-Contract <---- var contract = new web3.eth.Contract(abi,address)
+<hr/>
+<hr/>
+
+<p align="center">------- Immutable Backend -------</p>
+<p align="center">"Solidity Contract"</p>
+<p align="center">""The Angel Offering""</p>
+<p align="center">_________________________</p>
+
 
 /*
         ------ Immutable Backend -------
