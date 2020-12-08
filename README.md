@@ -102,7 +102,7 @@
 <hr/>
 
 <p align="center">------- Immutable Backend -------</p>
-<p align="center">"Solidity Contract"</p>
+<p align="center">Solidity Contract on Ethereum</p>
 <p align="center">""The Angel Offering""</p>
 <p align="center">_________________________</p>
 
