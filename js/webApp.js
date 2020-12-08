@@ -26,54 +26,79 @@ app.config([
 ]);
 app.controller("StoreFrontController", ["$scope", function ($scope, $window) {$scope.test = "testing data binding in the store front";}]);
 app.controller("BehindTheCounterController", ["$scope", function ($scope) {$scope.test = "testing data binding behind the counter";}]);
-app.controller("AngelsRoomController", ["$scope", "$window", "$http", function ($scope, $window, $http) {
-     $scope.newcolor = "";
-     $scope.colors = [];
+app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", function ($scope, $route, $window, $http) {
+     $scope.newtoken = "";
+     $scope.ids = {};
+     $scope.uris = {};
+     $scope.AngelTokens = {};
 
      $scope.loadTheBlock = function () {
-       $http.get('abis/Color.json').then(function(c) {
-            $scope.contract = c.data;
+       $http.get('abis/AngelToken.json').then(function(c) {
+            $scope.AngelToken = c.data;
        });
        const web3 = window.web3;
        web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];});
        web3.eth.net.getId().then(function(net_id){
           $scope.networkId = net_id;
-          $scope.networkData = $scope.contract.networks[$scope.networkId];
+          $scope.networkData = $scope.AngelToken.networks[$scope.networkId];
           if($scope.networkData) {
-            const abi = $scope.contract.abi;
+            const abi = $scope.AngelToken.abi;
             const address = $scope.networkData.address;
-            $scope.ColorsContract = new web3.eth.Contract(abi,address);
-            $scope.ColorsContract.methods
+            $scope.AngelTokenContract = new web3.eth.Contract(abi,address);
+            $scope.AngelTokens = $scope.AngelTokenContract.methods
               .totalSupply().call()
                 .then(function(res){
                   $scope.totalSupply = res;
-                  // load colors/tokens
-                  for (var i = 1; i <= res; i++) {
-                    $scope.ColorsContract.methods
-                      .colors(i - 1).call()
-                        .then(function(color){
-                          $scope.colors.push(color);
+                  console.log(res)
+                  // load token ids
+                  var ids = {};
+                  var uris = {};
+                  var AngelTokens = {};
 
+                  for (var i = 1; i <= res; i++) {
+                    $scope.AngelTokenContract.methods.angel_tokens(i - 1).call()
+                        .then(function(id){
+                          // console.log(id);
+                          ids[i] = id;
+                          return id;})
+                        .then(function(id) {
+                          // console.log(id)
+                          $scope.AngelTokenContract.methods.angel_token_id_to_uri_map(id).call()
+                              .then(function(uri){
+                                // console.log(uri);
+                                uris[i] = uri;
+                                AngelTokens[id] = uri;
+                                console.log(AngelTokens[id]);
+                              })
                         });
                   }
+                  console.log(AngelTokens);
+                  return AngelTokens;
+
             });
+            console.log($scope.AngelTokens);
+
           }else{$window.alert("Smart contract not connected to selected network.")}
         });
       }
+
 // #fcba03   #55326e #32436e #ed8311
-    $scope.mint = function (newcolor) {
+    $scope.mint = function (newtoken) {
         //need an error catch for instance when contract rejects a previously minted ID
         // as in : ID is not Unique!
-        console.log(newcolor);
-        $scope.ColorsContract.methods
-        .mint(newcolor)
+        console.log(newtoken);
+        // newtoken += "AngelToken";
+        $scope.AngelTokenContract.methods
+        .mint(newtoken)
         .send({ from: $scope.account })
         .once('receipt', function(receipt) {
-          $scope.colors.push(newcolor);
-          console.log(newcolor)
+          $scope.angel_tokens.push(newtoken);
+          console.log(newtoken)
           console.log(receipt);
-          console.log($scope.colors);
-        })
+          console.log($scope.angel_tokens);
+        });
+        // $route.reload();
+
       }
 
      $scope.getBalance = function () {

@@ -1,5 +1,5 @@
-const Color = artifacts.require("Color");
+const AngelToken = artifacts.require("AngelToken");
 
 module.exports = function(deployer) {
-  deployer.deploy(Color);
+  deployer.deploy(AngelToken);
 };
