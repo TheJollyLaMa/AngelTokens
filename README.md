@@ -65,28 +65,26 @@
         </li>
         <li>--CheckBalance(); input "Angel Cup Address" (the connected wallet) to display the Tokens owned by the Angel's Cup
                 - angelTokensInCup(address(AngelCup));
-                      - the Angel Cup to display
-                      - enter your address to see tokens (alms) you've minted for certain endeavors
-                      
-                - almsGiven(address(SpriteCup);
-                      - represents tokens "owned" for the staunch capitalist
-                      - but angels and sprites refer to them as "alms" and they represent a "Blessing", or an act of giving toward an Endeavor
-                      
-                - productValue();
-                  - The value of your alms in some unit product (shipping included continental US)
-                
-                - divCoefficient();
-                  - The share an alm receives in return if the Next round executes successfuly
-
-                - DividendCashOut();
-                  - Withdraw Dividend after the next round has been executed for discounted Fresh Beans to you door!
-
-                - DisplayTokensRemaining();
-                  - the needed until the round is "executable" for a specific endeavor
-                  
-                - AngelTokenSupply
-                  - The amount of tokens left from the Initial 8 trillion Supply
-                  
+                   - the Angel Cup to display
+                   - enter your address to see tokens (alms) you've minted for certain endeavors
+        <li>-- almsGiven(address(SpriteCup);
+               - represents tokens "owned" for the staunch capitalist
+               - but angels and sprites refer to them as "alms" and they represent a "Blessing", or an act of giving toward an Endeavor
+        </li>                      
+        <li>-- productValue();
+               - The value of your alms in some unit product (shipping included continental US)
+        </li>
+        <li>--divCoefficient();
+               - The share an alm receives in return if the Next round executes successfuly
+        </li>
+        <li>-- DividendCashOut();
+               - Withdraw Dividend after the next round has been executed for discounted Fresh Beans to you door!
+        </li>
+        <li>-- DisplayTokensRemaining();
+               - the needed until the round is "executable" for a specific endeavor
+        </li>
+        <li>-- AngelTokenSupply
+               - The amount of tokens left from the Initial 8 trillion Supply         
         </li>
       </ul>  
   </li>        
