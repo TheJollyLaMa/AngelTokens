@@ -19,58 +19,85 @@
         </ul>
   </li>  
   <li>Jolly explains it All: Development frontend functionality to explain it all
-        <ul>
-          <li>-- WhatsItAbout(); 
-                  - an explanation of what this angel token is representing
-          </li>
-          <li>-- NextTokenOffering(); the details of the next offering
-                 - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
-          </li>
-          <li>-- ThisTokenOffering(); the terms of this token offering
-                 - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
-          </li>
-          <li>-- LastTokenOffering();
-                 - terms of last offer to compare past executions to present offerings
-          </li>
-          <li>-- TheGeneralStory();
-                - The Why:
-                    -general readable terms to just what the heck this is all about
-                    -to heal the Earth nation, duh! #DoItForGreta
-                    -links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
-          </li>
+      <ul>
+        <li>-- TheGeneralStory();
+              - The Why:
+                  -general readable terms to just what the heck this is all about
+                  -to heal the Earth nation, duh! #DoItForGreta
+                  -links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
+        </li>
+        <li>-- WhatsItAbout(); 
+                - an explanation of what this angel token is representing
+        </li>
+        <li>-- NextTokenOffering(); the details of the next offering
+               - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
+        </li>
+        <li>-- ThisTokenOffering(); the terms of this token offering
+               - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
+        </li>
+        <li>-- LastTokenOffering();
+               - terms of last offer to compare past executions to present offerings
+        </li>
+      </ul>
+  </li>
+  <li>Frontend executive functionality:
+      <ul>
+        <li>--BuyToken();
+              - button for sprites to give alms and receive tokens
+        </li>  
+        <li>--CreateAngelCup();
+              - if no account, create a Caffeine LaManna Angel Cup to hold tokens for the Angel when they buy them (Angels don't have pockets)
+              - Unique Token Cup address is your "Wallet"
+              - It holds tokens you purchase by pressing the "BuyTokens" button
+              - Thats right! Every Angel will permanetly manifest in teh Ether and be remembered on the Angel's List!
+        </li>  
+        <li>--GetAngelPersonality(); 
+              - enter your name, address, and contact information ( for regulatory purposes ).
+              - Wallet Warning: Your wallet address is yours and yours only 
+                -- DONT ASK ME TO "RECOVER" a lost one because I cannot!! It will be lost in the ether FOREVER if you lose it!
+                -- we just use your address to display what tokens are associated with that address and to pay it back a share of the benefits!
+        </li>  
+        <li>--XChange();
+              - exchange Dollars for ether and the ether for Token
+        </li>
+        <li>--TransferTokensToAngelCup();
+              - Transfer Tokens to Angel Cup and out of Initial Supply
+        </li>
+        <li>--CheckBalance(); input "Angel Cup Address" (the connected wallet) to display the Tokens owned by the Angel's Cup
+                - angelTokensInCup(address(AngelCup));
+                      - the Angel Cup to display
+                      - enter your address to see tokens (alms) you've minted for certain endeavors
+                      
+                - almsGiven(address(SpriteCup);
+                      - represents tokens "owned" for the staunch capitalist
+                      - but angels and sprites refer to them as "alms" and they represent a "Blessing", or an act of giving toward an Endeavor
+                      
+                - productValue();
+                  - The value of your alms in some unit product (shipping included continental US)
+                
+                - divCoefficient();
+                  - The share an alm receives in return if the Next round executes successfuly
 
-        </ul>
+                - DividendCashOut();
+                  - Withdraw Dividend after the next round has been executed for discounted Fresh Beans to you door!
+
+                - DisplayTokensRemaining();
+                  - the needed until the round is "executable" for a specific endeavor
+                  
+                - AngelTokenSupply
+                  - The amount of tokens left from the Initial 8 trillion Supply
+                  
+        </li>
+      </ul>  
+  </li>        
+
   </li>
 </ul>  
+ do it all again for each endeavor
+    - every startup endeavor has its Angels and its Sprites
+    - An Angel Cup shows the Angel Tokens an Angel has minted when searchign for sprites to fuel an endeaver
+    - A Sprite wallet shows the alms (units of different Angel Tokens) being fueled by a Sprite (t
 
-  -- TheGeneralStory(); // general readable terms to just what the heck this is all about and links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
-
-BuyToken(); // button for Angels to buy tokens
-  -- CreateAngelCup(); // if no account, create a Caffeine LaManna Angel Cup to hold tokens for the Angel when they buy them (Angels don't have pockets)
-                      //Unique Token Cup address is your "Wallet"
-                      //It holds tokens you purchase by pressing the "BuyTokens" button
-        -- GetAngelPersonality(); //enter your name, address, and contact information ( for regulatory purposes ).
-
-        //Your wallet address is yours and yours only -- DONT ASK ME TO "RECOVER" a lost one because I cannot!! It will be lost in the ether FOREVER if you lose it!
-
-  -- XChange(); // exchange Dollars for ether and the ether for Token
-
-  -- TransferTokensToAngelCup(); // Transfer Tokens to Angel Cup and out of Initial Supply
-
-
-CheckBalance(); input "Angel Cup Address" to display the Tokens owned by the Angel's Cup
-    -- AmountTokensInCup(address(AngelCup)); // the address of the Angel Cup to display - enter your address to see your tokens
-
-    -- BeanValue(); // The value of your tokens in whole roasted coffee bean (shipping included continental US)
-
-    -- DividendValue(); // The dividend value in Dollars attached to the Angel Cup
-
-    -- DividendCashOut(); // Withdraw Coffee Dividend after the next round has been executed for discounted Fresh Beans to you door!
-
-    --DisplayTokensRemaining();// The amount of tokens left from the Initial Supply
-                               // Also the amount needed until the round is "executable"
-
-    -- Uses Web3.js to communicate with Solidity Smart-Contract <---- var contract = new web3.eth.Contract(abi,address)
 <hr/>
 <hr/>
 
