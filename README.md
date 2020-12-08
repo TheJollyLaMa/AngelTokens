@@ -10,15 +10,36 @@
 <p align="center">_________________________</p>
 
 <hr/>
+<ul align="center">
+  <li align="center">Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App</li>
+       <ul>
+         <li>Connect contract ABI by address via Web3</li>
+         <li>fetch necessary contract variables to display tokens</li>
+         <li>expose them to a user friendly GUI by wallet</li>
+        </ul>
+  <li>Jolly explains it All: Development frontend functionality to explain it all </li>
+        <ul align="center">
+          <li>-- WhatsItAbout(); 
+                  - an explanation of what this angel token is representing
+          </li>
+          <li>-- NextTokenOffering(); the details of the next offering
+                 - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
+          </li>
+          <li>-- ThisTokenOffering(); the terms of this token offering
+                 - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
+          </li>
+          <li>-- LastTokenOffering();
+                 - terms of last offer to compare past executions to present offerings
+          </li>
+          <li>-- TheGeneralStory();
+                - The Why:
+                    -general readable terms to just what the heck this is all about
+                    -to heal the Earth nation, duh! #DoItForGreta
+                    -links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
+          </li>
 
-WhatsItAbout();// ???? the details of this issue ???
-
-  -- NextTokenOffering();// the details of the next offering - so they understand the next possible dividend if enough Angels bring their cups to the next Council
-
-  -- ThisTokenOffering();// the terms of this token offering
-                          // - the cost - the coffee weight shipped - and the dividend (percent profit share on next round)
-
-  -- LastTokenOffering(); // terms of last offer to compare past executions to present offerings
+        </ul>
+</ui>  
 
   -- TheGeneralStory(); // general readable terms to just what the heck this is all about and links to facilitate understanding of cryptoToken, smart contracts, CrowdFunding, micro lending, and Angel Investing
 
@@ -56,14 +77,8 @@ CheckBalance(); input "Angel Cup Address" to display the Tokens owned by the Ang
 <p align="center">""The Angel Offering""</p>
 <p align="center">_________________________</p>
 
-
-/*
-        ------ Immutable Backend -------
-              "The Angel Offering"
-               Solidity Contract
-           _________________________
-*/
--- Access a deployed Solidity Smart-Contract from a frontend website with the contract ABI and the contract address obtained once deployed
+<hr/>
+<hr/>
 
 -- Stakes(); // describes profit break down and fund allocations for initialization of new round
               // Gives a name to the Current Round of Issuance, ie, "2020 Micro Mint" or "2020 Seed Round"
