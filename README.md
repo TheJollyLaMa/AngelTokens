@@ -1,5 +1,5 @@
 <div>
-    <p align="center"><img src="./angelL.png"><img src="./ATLOGO.png"><img src="./angelR.png"></p>
+    <p align="center"><img src="./angelL.png"><img src="./ATEth_LOGO.png"><img src="./angelR.png"></p>
     <p align="center">✨✨✨Connecting Angels to their respective Spectacular Entrepreneurial Spirits✨✨✨</p>
     <p align="center">✨✨✨since <em>2020!</em>✨✨✨</p>
 </div>  
