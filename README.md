@@ -8,18 +8,20 @@
 <div>
     <p>
     <h1>Mission:</h1>
-            The Earthlings are in need of assistance.  They all have riches they sit on, but due to the Curse of Babel,
+        The Earthlings are in need of assistance.  They all have riches they sit on, but due to the Curse of Babel,
         they have lost the way of comfort and harmony.  They are naturally connected, but have forgetten their connection.
         Communication has become noisy and incoherent. Trust is at an all time low.  They have forgotten how to enjoy even
-        the simplest things.  Like clean water and fresh air.  Gravity, and Fire. They have forgetten the ways to enjoy them.
-        And worse still, they have forgetten why they should even endeavor at all. 
+        the simplest things.  Like clean water and fresh air, the matter of Gravity, and Fire. They have forgetten the ways
+        to enjoy them. They have forgotten their infinite dynamic nature! And worse still, they have forgetten why they
+        should even endeavor at all. 
     </p>    
     <p>
-        We believe, with your help, <em>Angels</em>, that we can make the world a better place.  We know that you remember how
-        to use the Ether!  We also know that you are sitting on a pile of riches! Yes, You! We all do something.  And we're all
-        doing it with someone and for someone.  But because of the Curse of Babel, no one can read the road signs so no one knows
-        where to go or how to get there.  They all just spend their days griping and crumbling about at each other incoherently.
-        Listen to me....  It's even starting to overcome The Jolly LaMa! We better hurry!
+        We believe, with your help, <em>Angels</em>, and the help of <img height="30px" src="./ATLOGO.png"> that we can make the world a better place.  We know that you remember how
+        to use the Ether <img height="20px" src="./ethereum.jpg">!  We also know that you are sitting on a pile of riches! Yes,
+        You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no 
+        one can read the road signs so no one knows where to go or how to get there.  They all just spend their days griping
+        and crumbling about at each other incoherently. Listen to me....  It's even starting to overcome The Jolly LaMa! We
+        better hurry!
     <p/>
     <p>
         Let's get connected!  Use your knowledge of Ethereum to Manifest Angel Tokens and fund an entrepreneurial endeavor today! 
@@ -36,18 +38,20 @@
         product cant get past the Filters caused by the Curse of Babel, IT's NOT YOUR FAULT ANGEL!.  It's just part of the business 
         of manifestation in troubling times!
     </p>
-    <p> Now, Let's recap:
+    <p> Recap:
             Your Mission, should you choose to accept, is to mint Angel tokens that will better the lives of your neighbors!  Whatever
             it is you know how to create or produce - or if you want to help a neighbor create and produce, Better Yet!  Sometimes,
             it's best just to help a neighbor collect and count their alms! They'll have to help you define an endeavor, of course.
             better get to it!
-        
+    </p>
+    <p>
         Now, Go Be an Angel!
         The Jolly LaMa
     </p>
     <p>
-    P.S. - Shameless plug: head on over to https://www.caffeinelamanna.com/#!/AngelsRoom to give alms to my Angel Token - The first one Ever to be
-    manifested on Earth! It wasn't easy - but once you get the right mix and the right Sprites around, it's easy to make a bunch.
+    P.S. - Shameless plug: If fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
+    Caffeine LaManna</a> to give alms to <img src="./tokenfront.png"> Caffeine LaManna's Angel Token <img src="./tokenfront.png"> - The 
+    first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally!
     <p>
 </div>
 <div>
