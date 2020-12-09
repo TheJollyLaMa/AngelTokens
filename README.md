@@ -16,8 +16,9 @@
         should even endeavor at all. 
     </p>    
     <p>
-        We believe, with your help, <em>Angels</em>, and the help of <img height="30px" src="./ATLOGO.png"> that we can make the world a better place.  We know that you remember how
-        to use the Ether <img height="20px" src="./ethereum.jpg">!  We also know that you are sitting on a pile of riches! Yes,
+        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./ATLOGO.png">
+        that we can make the world a better place.  We know that you remember how
+        to use the Ether <img height="35px" src="./ethereum.jpg">!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no 
         one can read the road signs so no one knows where to go or how to get there.  They all just spend their days griping
         and crumbling about at each other incoherently. Listen to me....  It's even starting to overcome The Jolly LaMa! We
@@ -50,10 +51,13 @@
     </p>
     <p>
     P.S. - Shameless plug: If fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
-    Caffeine LaManna</a> to give alms to <img src="./tokenfront.png"> Caffeine LaManna's Angel Token <img src="./tokenfront.png"> - The 
+    Caffeine LaManna</a> to give alms to <img height="55px" src="./css/tokenfront.png"> Caffeine LaManna's Angel Token
+    <img height="55px" src="./css/tokenfront.png"> - The 
     first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally!
     <p>
 </div>
+<br/>
+<br/>
 <div>
     <p align="center"><img align="left" height="200px" src="./angular.svg">
         ------- Frontend -------<img align="right" height="200px" src="./web3.jpg">
@@ -65,21 +69,6 @@
 <hr/>
 <hr/>
 <hr/>
-
-
-<!--
-
-<div>
-    <p>
-      <p align="center">------- Frontend -------</p>
-      <p align="center"><img align="left" height="150px" src="./angular.svg">
-          AngularJs with Web3 GUI<img align="right" height="150px" src="./web3.jpg">
-      <p align="center">"The Angel Room"</p>
-      <p align="center">_________________________</p>
-    </p>
-</div>
-<hr/>
-<hr/> -->
 <ul>
   <li>Manifestation: Access the backend Angel Token Solidity Smart-Contract from the Angel Room frontend in Angularjs App
        <ul>
