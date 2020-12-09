@@ -5,7 +5,29 @@
 </div>  
 <hr/>
 <hr/>
-
+<div>
+    <p>
+        Mission: the Earthlings are in need of assistance.  They all have riches they sit on, but due to the Curse of Babel,
+        they have lost their way.  They are naturally connected, but have forgetten their connection.  Communication has become
+        noisy and incoherent. Trust is at an all time low.  They have forgotten how to enjoy even the simplest things.  Like
+        clean water and fresh air.  Gravity, and Fire. They have forgetten the ways to enjoy them.  And worse still, they have
+        forgetten why to even endeavor at all. 
+    </p>    
+    <p>
+        We believe, with your help, <em>Angels</em>, that we can make the world a better place.  We know that you remember how
+        to use the Ether!  We also know that you are sitting on a pile of riches! Yes, You! We all do something.  And we're all
+        doing it with someone and for someone.  But because of the Curse of Babel, no one can read the road signs so no one knows
+        where to go or how to get there.  They just spend their days criping and crumbling about at each other incoherently. Listen
+        to me!  It's even starting to overcome The Jolly LaMa! We better hurry!
+    <p/>
+    <p>
+        Let's get connected!  Use your knowledge of Ethereum to Manifest Angel Tokens and fund an entrepreneurial endeavor today! 
+        Here's a huge bag of Angel Tokens.  They each come minted with certain information like:  a unit product, a cost, a return
+        dividend, a status of execution, a mint date, an issue number - so they are all trackable - listen you don't want just
+        anybody getting these things!  They are powerful! - Right you already know.  I knew you were perfect for the job.  You're 
+        just such an Angel!   
+    </p>     
+</div>
 <div>
     <p align="center"><img align="left" height="200px" src="./angular.svg">
         ------- Frontend -------<img align="right" height="200px" src="./web3.jpg">
