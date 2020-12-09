@@ -4,44 +4,65 @@ html, body {
   color: #FAFAC8;
   width: 100%;
   text-align: center;
+  padding-top: 25px;
+
 }
 
 h1 {
   color: #FAFAC8;
 }
+.mainViewWindow {
+  background-color: #1BB3B6;
+  color: #FAFAC8;
+  width: 90%;
+  height: 750px;
+  position: relative;
+  margin: auto;
+  border-width: : 5px;
+  border-style: double;
+  border-color: #FAFAC8;
+  border-radius: 10px;
+  overflow-y: scroll;
+  padding: 10px 10px 10px 10px;
+}
 .angelsroom {
   padding-top: 65px;
 }
-.token {
-  height: 150px;
-  width: 150px;
+.token-back {
+  height: 200px;
+  width: 200px;
+  margin: 0px;
+  padding: 0px;
   border-radius: 50%;
   display: inline-block;
+  background-color: #c4bf84;
+  background-position: center;
+}
+.tokebreak {
+  width: 60%;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.tokenhead {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.token-front {
+  height: 200px;
+  width: 200px;
+  margin: 0px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-block;
+  background-size: 348px;
+  background-image: url("tokenfront.png");
+  background-position: center;
+}
+.token-text {
+  font-size: 10px;
+  align: center;
 }
 
 /* rgb(0,120,120) = #007878 */
 /* rgb(200, 91, 0) = #C85B00*/
 /* rgb(102,213,213) = #66D5D5*/
-@media only screen and (min-width:961px) {
-
-  .mainViewWindow {
-    background-color: #1BB3B6;
-    color: #FAFAC8;
-    width: 70%;
-    height: 750px;
-    float: left;
-    border-width: : 5px;
-    border-style: double;
-    border-color: #FAFAC8;
-    border-radius: 10px;
-    overflow-y: scroll;
-  }
-  .token {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-
-}

@@ -31,23 +31,21 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
      $scope.ids = {};
      $scope.uris = {};
      $scope.AngelTokens = {};
-
-     $scope.loadTheBlock = function () {
-       $http.get('abis/AngelToken.json').then(function(c) {
-            $scope.AngelToken = c.data;
-       });
+     $scope.newtoken = "";
+     $scope.loadTheBlock = async function () {
+       await $http.get('abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
        const web3 = window.web3;
-       web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];});
-       web3.eth.net.getId().then(function(net_id){
+       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];});
+       await web3.eth.net.getId().then(async function(net_id){
           $scope.networkId = net_id;
-          $scope.networkData = $scope.AngelToken.networks[$scope.networkId];
+          $scope.networkData = await $scope.AngelTokenjson.networks[$scope.networkId];
           if($scope.networkData) {
-            const abi = $scope.AngelToken.abi;
+            const abi = $scope.AngelTokenjson.abi;
             const address = $scope.networkData.address;
             $scope.AngelTokenContract = new web3.eth.Contract(abi,address);
-            $scope.AngelTokens = $scope.AngelTokenContract.methods
+            $scope.AngelTokens = await $scope.AngelTokenContract.methods
               .totalSupply().call()
-                .then(function(res){
+                .then( async function(res){
                   $scope.totalSupply = res;
                   console.log(res)
                   // load token ids
@@ -56,23 +54,23 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
                   var AngelTokens = {};
 
                   for (var i = 1; i <= res; i++) {
-                    $scope.AngelTokenContract.methods.angel_tokens(i - 1).call()
+                    await $scope.AngelTokenContract.methods.angel_tokens(i - 1).call()
                         .then(function(id){
                           // console.log(id);
                           ids[i] = id;
                           return id;})
-                        .then(function(id) {
+                        .then(async function(id) {
                           // console.log(id)
-                          $scope.AngelTokenContract.methods.angel_token_id_to_uri_map(id).call()
+                          await $scope.AngelTokenContract.methods.angel_token_id_to_uri_map(id).call()
                               .then(function(uri){
                                 // console.log(uri);
                                 uris[i] = uri;
                                 AngelTokens[id] = uri;
-                                console.log(AngelTokens[id]);
+                                // console.log(AngelTokens[id]);
                               })
                         });
                   }
-                  console.log(AngelTokens);
+                  // console.log(AngelTokens);
                   return AngelTokens;
 
             });

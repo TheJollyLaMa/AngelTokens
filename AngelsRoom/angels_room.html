@@ -12,38 +12,54 @@
 
   <div class="container-fluid mt-5">
     <div class="row">
-      <main role="main" class="col-lg-12 d-flex text-center">
+      <div class="col-lg-12 d-flex text-center">
         <div class="content mr-auto ml-auto">
-          <h1>Issue Token</h1>
+          <h1>Issue Angel Token</h1>
           <form ng-submit="mint(newtoken)">
             <input type='text' class='form-control mb-1' placeholder='e.g. #FFFFFF' ng-model="newtoken"/>
             <input type='submit' class='btn btn-block btn-primary' value='Mint' />
           </form>
         </div>
-      </main>
-    </div>
-    <hr/>
-
-    <div class="row text-center">
-      <div class="col-md-3 mb-3" ng-repeat="(id, uri) in AngelTokens">
-        <h1>{{id}} : {{uri}}</h1>
-        <!-- <div class="token" style='background-color: {{id}}'></div> -->
-        <!-- <div><h1>{{uri}}</h1></div> -->
-        <!-- <div ng-repeat="uri in uris">{{uri}}</div> -->
       </div>
     </div>
-    <!-- <tr ng-repeat="token in AngelTokens">
-    <td> {{ token }}</td>
-    <td> {{ token.uri }}</td>
-    </tr> -->
   </div>
-  <hr/>
-  <h1>ETH Balance Fetcher</h1>
-  <p>Enter your Ethereum Address:</p>
-  <input type="text" size="50" id="address" />
-  <button type="button" ng-click="getBalance()">Get Balance</button>
-  <br />
-  <br />
-  <div id="output"></div>
+<hr/>
+  <div>
+      <div class="row text-center">
+        <div class="col-md-3 mb-3" ng-repeat="(id, uri) in AngelTokens">
+            <hr/>
+            <div class="token-front"></div>
+            <div class="token-back token">
+              <table>
+                  <br/>
+                  <thead class="tokenhead">waiting...<hr class="tokebreak"/></thead>
+                  <tbody>
+                      <h1 class="token-text">      id: {{id}}</h1>
+                      <h1 class="token-text">     uri: {{uri}}</h1>
+                      <h1 class="token-text"> product: </h1>
+                      <h1 class="token-text">    cost: </h1>
+                      <h1 class="token-text">dividend: </h1>
+                      <h1 class="token-text">mintDate: </h1>
+                  </tbody>
+                  <tfoot></tfoot>
+               </table>
+            </div>
+            <hr/>
+        </div>
+      </div>
+  </div>
 
+  <hr/>
+
+  <div>
+      <br />
+      <br />
+      <h1>ETH Balance Fetcher</h1>
+      <p>Enter your Ethereum Address:</p>
+      <input type="text" size="50" id="address" />
+      <button type="button" ng-click="getBalance()">Get Balance</button>
+      <br />
+      <br />
+      <div id="output"></div>
+  </div>
 </div>
