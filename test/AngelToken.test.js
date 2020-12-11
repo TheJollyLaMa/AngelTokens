@@ -8,14 +8,17 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
     const _endeavor_name = 'Caffeine LaManna';
     const _endeavor_symbol = 'CafLaM';
     const _id = 123456789;
-    const _alm = [_endeavor_name, _endeavor_symbol, _id];
-    // const _id = 108;
-    // const _issue_num = 000001;
-    // const _mint_date = 12102020;
-    // this.token = await AngelToken.new(_name);
+    const _issue_num = 1234;
+    const _mint_date = 12102020;
+    const _cost = 10;
+    const _angel_coefficient = 0005;
+    const _product = "1/2lb whole bean roasted coffee";
+    const _status = "waiting";
+
+    const _alm = [_endeavor_name, _endeavor_symbol, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _product, _status];
 
     before(async () => {
-      this.token = await AngelToken.new(_endeavor_name, _endeavor_symbol, _id);
+      this.token = await AngelToken.new(_endeavor_name, _endeavor_symbol, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _product, _status);
       this.alm = await this.token.alms(0);
     })
     /* check for proper deployment of contract */
@@ -36,7 +39,7 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
             assert.equal(symbol, 'ANGEL');
         });
         //
-        describe('describes an Angel Endeavor', async () => {
+        describe('An Angel Endeavor', async () => {
             it("should have an endeavor name", async () => {
                 const endeavor_name = await this.token.ename();
                 assert.equal(endeavor_name, 'Caffeine LaManna');
@@ -46,7 +49,7 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
                 assert.equal(endeavor_symbol, 'CafLaM');
             });
         });
-        describe('structurs an Alm for an Angel Endeavor', async () => {
+        describe('An Alm for an Angel Endeavor', async () => {
             it("should have a name", async () => {
                 const name = this.alm.name;
                 assert.equal(name, _alm[0]);
@@ -59,26 +62,30 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
                 const id = this.alm.id;
                 assert.equal(id, _alm[2]);
             });
-        //     it("should have an issue number", async () => {
-        //         const issue_num = await contract.alm.issue_num();
-        //         assert.equal(issue_num, 'AngelToken');
-        //     });
-        //     it("should have a mint date", async () => {
-        //         const mint_date = await alm.mint_date();
-        //         assert.equal(mint_date, 'AngelToken');
-        //     });
-        //     it.skip("should have a status", () => {
-        //
-        //     });
-        //     it.skip("should have a product", () => {
-        //
-        //     });
-        //     it.skip("should have a cost", () => {
-        //
-        //     });
-        //     it.skip("should have an angel coefficient", () => {
-        //
-        //     });
+            it("should have an issue number", async () => {
+                const issue_num = this.alm.issue_num;
+                assert.equal(issue_num, _alm[3]);
+            });
+            it("should have a mint date", async () => {
+                const mint_date = this.alm.mint_date;
+                assert.equal(mint_date, _alm[4]);
+            });
+            it("should have a cost", () => {
+                const cost = this.alm.cost;
+                assert.equal(cost, _alm[5]);
+            });
+            it("should have an angel coefficient", () => {
+                const angel_coefficient = this.alm.angel_coefficient;
+                assert.equal(angel_coefficient, _alm[6]);
+            });
+            it("should have a status", () => {
+                const status = this.alm.status;
+                assert.equal(status, _alm[7]);
+            });
+            it("should have a product", () => {
+                const product = this.alm.product;
+                assert.equal(product, _alm[8]);
+            });
         });
     });
     /* check minting functionality */
