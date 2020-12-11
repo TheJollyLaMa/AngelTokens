@@ -38,56 +38,46 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
             const symbol = await this.token.symbol();
             assert.equal(symbol, 'ANGEL');
         });
-        //
-        describe('An Angel Endeavor', async () => {
-            it("should have an endeavor name", async () => {
-                const endeavor_name = await this.token.ename();
-                assert.equal(endeavor_name, 'Caffeine LaManna');
-            });
-            it("should have an endeavor symbol", async () => {
-                const endeavor_symbol = await this.token.esym();
-                assert.equal(endeavor_symbol, 'CafLaM');
-            });
+    });
+    describe('An Alm for an Angel Endeavor', async () => {
+        it("should have a name", async () => {
+            const name = this.alm.name;
+            assert.equal(name, _alm[0]);
         });
-        describe('An Alm for an Angel Endeavor', async () => {
-            it("should have a name", async () => {
-                const name = this.alm.name;
-                assert.equal(name, _alm[0]);
-            });
-            it("should have a symbol", async () => {
-                const sym = this.alm.sym;
-                assert.equal(sym, _alm[1]);
-            });
-            it("should have an id", async () => {
-                const id = this.alm.id;
-                assert.equal(id, _alm[2]);
-            });
-            it("should have an issue number", async () => {
-                const issue_num = this.alm.issue_num;
-                assert.equal(issue_num, _alm[3]);
-            });
-            it("should have a mint date", async () => {
-                const mint_date = this.alm.mint_date;
-                assert.equal(mint_date, _alm[4]);
-            });
-            it("should have a cost", () => {
-                const cost = this.alm.cost;
-                assert.equal(cost, _alm[5]);
-            });
-            it("should have an angel coefficient", () => {
-                const angel_coefficient = this.alm.angel_coefficient;
-                assert.equal(angel_coefficient, _alm[6]);
-            });
-            it("should have a status", () => {
-                const status = this.alm.status;
-                assert.equal(status, _alm[7]);
-            });
-            it("should have a product", () => {
-                const product = this.alm.product;
-                assert.equal(product, _alm[8]);
-            });
+        it("should have a symbol", async () => {
+            const sym = this.alm.sym;
+            assert.equal(sym, _alm[1]);
+        });
+        it("should have an id", async () => {
+            const id = this.alm.id;
+            assert.equal(id, _alm[2]);
+        });
+        it("should have a product", () => {
+            const product = this.alm.product;
+            assert.equal(product, _alm[8]);
+        });
+        it("should have a cost", () => {
+            const cost = this.alm.cost;
+            assert.equal(cost, _alm[5]);
+        });
+        it("should have an angel coefficient", () => {
+            const angel_coefficient = this.alm.angel_coefficient;
+            assert.equal(angel_coefficient, _alm[6]);
+        });
+        it("should have a status", () => {
+            const status = this.alm.status;
+            assert.equal(status, _alm[7]);
+        });
+        it("should have an issue number", async () => {
+            const issue_num = this.alm.issue_num;
+            assert.equal(issue_num, _alm[3]);
+        });
+        it("should have a mint date", async () => {
+            const mint_date = this.alm.mint_date;
+            assert.equal(mint_date, _alm[4]);
         });
     });
+
     /* check minting functionality */
     // describe('minting', async () => {
     //   it('creates a new token', async () => {

@@ -4,8 +4,6 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 //mad props to the crypto zombies tutorial!  Thanks!
 contract AngelToken is ERC721{
   /* State variables are stored in the blockchain */
-  string public ename;
-  string public esym;
 
   struct Alm {
     string name;
@@ -20,9 +18,20 @@ contract AngelToken is ERC721{
              }
 
   Alm[] public alms;
+  event ManifestedAngelToken(
+    string _ename, // endeavor name
+     string _esym,  // endeavor symbol
+      uint256 _id,
+       uint256 _issue_num,
+        uint256 _mint_date,
+         uint256 _cost,
+          uint256 _angel_coefficient,
+           string _status,
+            string _product
+         );
   constructor(
-    string memory _e_name, // endeavor name
-     string memory _e_sym,  // endeavor symbol
+    string memory _ename, // endeavor name
+     string memory _esym,  // endeavor symbol
       uint256 _id,
        uint256 _issue_num,
         uint256 _mint_date,
@@ -34,9 +43,8 @@ contract AngelToken is ERC721{
 
     ERC721("AngelToken", "ANGEL")
       public {  //setup <-- run once like an init <-- pass in name and symbol as per ERC721 Standard
-        ename = _e_name;
-        esym = _e_sym;
-        _tokenGenesis(ename, esym, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _status, _product);
+
+        _tokenGenesis(_ename, _esym, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _status, _product);
   }
 
   function _tokenGenesis (
@@ -54,6 +62,16 @@ contract AngelToken is ERC721{
       public {
 
         alms.push(Alm(_e_name, _e_sym, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _status, _product));
-
+        emit ManifestedAngelToken(
+               _e_name,
+                _e_sym,
+                 _id,
+                  _issue_num,
+                   _mint_date,
+                    _cost,
+                     _angel_coefficient,
+                      _status,
+                       _product
+                       );
   }
 }
