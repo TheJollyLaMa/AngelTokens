@@ -44,36 +44,38 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
             const address = $scope.networkData.address;
             $scope.AngelTokenContract = new web3.eth.Contract(abi,address);
             $scope.AngelTokens = await $scope.AngelTokenContract.methods
-              .totalSupply().call()
-                .then( async function(res){
-                  $scope.totalSupply = res;
-                  console.log(res)
-                  // load token ids
-                  var ids = {};
-                  var uris = {};
-                  var AngelTokens = {};
+                                    .totalSupply().call()
+                                      .then( async function(res){
+                                        $scope.totalSupply = res;
+                                        console.log(res)
 
-                  for (var i = 1; i <= res; i++) {
-                    await $scope.AngelTokenContract.methods.angel_tokens(i - 1).call()
-                        .then(function(id){
-                          // console.log(id);
-                          ids[i] = id;
-                          return id;})
-                        .then(async function(id) {
-                          // console.log(id)
-                          await $scope.AngelTokenContract.methods.angel_token_id_to_uri_map(id).call()
-                              .then(function(uri){
-                                // console.log(uri);
-                                uris[i] = uri;
-                                AngelTokens[id] = uri;
-                                // console.log(AngelTokens[id]);
-                              })
-                        });
-                  }
-                  // console.log(AngelTokens);
-                  return AngelTokens;
+                                        var ids = {};
+                                        var uris = {};
+                                        var AngelTokens = {};
 
-            });
+                                        for (var i = 1; i <= res; i++) {
+                                          // load token ids and uris
+                                          await $scope.AngelTokenContract.methods.angel_tokens(i - 1).call()
+                                              .then(function(id){
+                                                // console.log(id);
+                                                ids[i] = id;
+                                                return id;})
+                                              .then(async function(id) {
+                                                // console.log(id)
+                                                await $scope.AngelTokenContract.methods.angel_token_id_to_uri_map(id).call()
+                                                    .then(function(uri){
+                                                      // console.log(uri);
+                                                      uris[i] = uri;
+                                                      AngelTokens[id] = uri;
+                                                      // console.log(AngelTokens[id]);
+                                                    })
+                                              });
+                                        }
+                                        // console.log(AngelTokens);
+                                        return AngelTokens;});
+            // catch event from solidity contract
+            // $scope.AngelTokenManifested = await $scope.AngelTokenContract.methods.ManifestedAngelTokens().call()
+
             console.log($scope.AngelTokens);
 
           }else{$window.alert("Smart contract not connected to selected network.")}
