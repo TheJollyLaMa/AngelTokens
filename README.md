@@ -16,7 +16,7 @@
         should even endeavor at all. 
     </p>    
     <p>
-        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./ATLOGO.png">
+        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./ATEth_Logo.png">
         that we can make the world a better place.  We know that you remember how
         to use the Ether <img height="35px" src="./ethereum.jpg">!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no 
