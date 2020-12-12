@@ -21,7 +21,7 @@
         to use the Ether <img height="35px" src="./ethereum.jpg">!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no 
         one can read the road signs so no one knows where to go or how to get there.  They all just spend their days griping
-        and crumbling about at each other incoherently. Listen to me....  It's even starting to overcome The Jolly LaMa! We
+        and crumbling about at each other incoherently in general dis-ease. Listen to me....  It's even starting to overcome The Jolly LaMa! We
         better hurry!
     <p/>
     <p>
@@ -32,18 +32,20 @@
         just such an Angel!   
     </p>     
     <p>
-        Now when ever you want to mint tokens for an endeavor, just push your Angel Token Specifications into your Visual Portal 
-        with those sausages at the end of your wobbly appendages and make sure you have a plan on how to make them worht some.  
+        Now, whenever you want to mint tokens for an endeavor, just push your Angel Token Specifications into your Visual Portal 
+        with those sausages at the end of your wobbly appendages and make sure you have a plan on how to make them worth something!  
         Your an Angel, for Christ's sake.  Now start acting like one!  Make sure you can teleport the product to the Sprite's 
         destination, and make sure the Sprite giving alms understands that's ALL THIS IS!  Dont let them get confused.  If the 
         product cant get past the Filters caused by the Curse of Babel, IT's NOT YOUR FAULT ANGEL!.  It's just part of the business 
-        of manifestation in troubling times!
+        of manifesting in troubling times!
     </p>
     <p> Recap:
             Your Mission, should you choose to accept, is to mint Angel tokens that will better the lives of your neighbors!  Whatever
             it is you know how to create or produce - or if you want to help a neighbor create and produce, Better Yet!  Sometimes,
             it's best just to help a neighbor collect and count their alms! They'll have to help you define an endeavor, of course.
-            better get to it!
+            better get to it! Remember - be friendly and sustainable.  No sense in manifesting anything that would kill the planet 
+            you've gotten it from ;)
+  
     </p>
     <p>
         Now, Go Be an Angel!
@@ -51,7 +53,7 @@
     </p>
     <p>
     P.S. - Shameless plug: If fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
-    Caffeine LaManna</a> to give alms to <img height="55px" src="./css/tokenfront.png"> Caffeine LaManna's Angel Token
+    Caffeine LaManna</a> to give be a Sprite and give alms to <img height="55px" src="./css/tokenfront.png"> Caffeine LaManna's Angel Token
     <img height="55px" src="./css/tokenfront.png"> - The 
     first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally!
     <p>
