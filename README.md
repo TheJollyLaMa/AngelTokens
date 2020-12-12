@@ -36,7 +36,7 @@
         with those sausages at the end of your wobbly appendages and make sure you have a plan on how to make them worth something!  
         Your an Angel, for Christ's sake.  Now start acting like one!  Make sure you can teleport the product to the Sprite's 
         destination, and make sure the Sprite giving alms understands that's ALL THIS IS!  Dont let them get confused.  If the 
-        product cant get past the Filters caused by the Curse of Babel, IT's NOT YOUR FAULT ANGEL!.  It's just part of the business 
+        product cant get past the Filters caused by the Curse of Babel, IT's NOT YOUR FAULT ANGEL! It's just part of the business 
         of manifesting in troubling times!
     </p>
     <p> Recap:
@@ -44,19 +44,16 @@
             it is you know how to create or produce - or if you want to help a neighbor create and produce, Better Yet!  Sometimes,
             it's best just to help a neighbor collect and count their alms! They'll have to help you define an endeavor, of course.
             better get to it! Remember - be friendly and sustainable.  No sense in manifesting anything that would kill the planet 
-            you've gotten it from ;)
-  
+            you've gotten it from!
     </p>
-    <p>
-        Now, Go Be an Angel!
-        The Jolly LaMa
-    </p>
+    <p>Now, Go Be an Angel!</p>
+    <p>The Jolly LaMa</p>
     <p>
     P.S. - Shameless plug: If fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
     Caffeine LaManna</a> to give be a Sprite and give alms to <img height="55px" src="./css/tokenfront.png"> Caffeine LaManna's Angel Token
     <img height="55px" src="./css/tokenfront.png"> - The 
     first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally!
-    <p>
+    </p>
 </div>
 <br/>
 <br/>
