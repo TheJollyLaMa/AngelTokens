@@ -7,7 +7,7 @@ module.exports = function(deployer) {
   const mint_date = 12102020;
   const cost = 10;
   const angel_coefficient = 0005;
-  const status = "waiting";
+  const status = 1;
   const product = "1/2lb whole bean roasted coffee";
 
   deployer.deploy(

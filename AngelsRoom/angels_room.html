@@ -15,9 +15,16 @@
       <div class="col-lg-12 d-flex text-center">
         <div class="content mr-auto ml-auto">
           <h1>Issue Angel Token</h1>
-          <form ng-submit="mint(newtoken)">
-            <input type='text' class='form-control mb-1' placeholder='e.g. #FFFFFF' ng-model="newtoken"/>
-            <input type='submit' class='btn btn-block btn-primary' value='Mint' />
+          <form ng-submit="manifest_angel_token(new_alm)">
+            <input type='text' class='form-control mb-1' placeholder='foo endeavor' ng-model="new_alm.ename"/>
+            <input type='text' class='form-control mb-1' placeholder='FEND' ng-model="new_alm.esym"/>
+            <input type='text' class='form-control mb-1' placeholder='1000' ng-model="new_alm.issue_num"/>
+            <input type='text' class='form-control mb-1' placeholder='12/12/2020' ng-model="new_alm.mint_date"/>
+            <input type='text' class='form-control mb-1' placeholder='10' ng-model="new_alm.cost"/>
+            <input type='text' class='form-control mb-1' placeholder='0005' ng-model="new_alm.angel_coefficient"/>
+            <input type='text' class='form-control mb-1' placeholder='1' ng-model="new_alm.status"/>
+            <input type='text' class='form-control mb-1' placeholder='1/2 lb of bull shit' ng-model="new_alm.product"/>
+            <input type='submit' class='btn btn-block btn-primary' value='Manifest Tokens' />
           </form>
         </div>
       </div>
@@ -26,20 +33,22 @@
 <hr/>
   <div>
       <div class="row text-center">
-        <div class="col-md-3 mb-3" ng-repeat="(id, uri) in AngelTokens">
+        <div class="col-md-3 mb-3" ng-repeat="alm in AngelTokens">
             <hr/>
             <div class="token-front"></div>
             <div class="token-back token">
               <table>
                   <br/>
-                  <thead class="tokenhead">waiting...<hr class="tokebreak"/></thead>
+                  <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
                   <tbody>
-                      <h1 class="token-text">      id: {{id}}</h1>
-                      <h1 class="token-text">     uri: {{uri}}</h1>
-                      <h1 class="token-text"> product: </h1>
-                      <h1 class="token-text">    cost: </h1>
-                      <h1 class="token-text">dividend: </h1>
-                      <h1 class="token-text">mintDate: </h1>
+                      <h1 class="token-text">{{alm.id}}</h1>
+                      <h1 class="token-text">{{alm.uri}}</h1>
+                      <h1 class="token-text">{{alm.product}}</h1>
+                      <h1 class="token-text">{{alm.cost}}</h1>
+                      <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
+                      <h1 class="token-text">{{alm.mint_date}}</h1>
+                      <h1 class="token-text">{{alm.issue_num}}/{{totalSupply}}</h1>
+
                   </tbody>
                   <tfoot></tfoot>
                </table>

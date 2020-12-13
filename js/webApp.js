@@ -30,8 +30,8 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
      $scope.newtoken = "";
      $scope.ids = {};
      $scope.uris = {};
-     $scope.AngelTokens = {};
-     $scope.newtoken = "";
+     $scope.AngelTokens = [];
+     $scope.new_alm = {};
      $scope.loadTheBlock = async function () {
        await $http.get('abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
        const web3 = window.web3;
@@ -47,58 +47,34 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
                                     .totalSupply().call()
                                       .then( async function(res){
                                         $scope.totalSupply = res;
-                                        console.log(res)
-
-                                        var ids = {};
-                                        var uris = {};
+                                        console.log(res);
+                                        var alm = {};
                                         var AngelTokens = {};
-
                                         for (var i = 1; i <= res; i++) {
-                                          // load token ids and uris
-                                          await $scope.AngelTokenContract.methods.angel_tokens(i - 1).call()
-                                              .then(function(id){
-                                                // console.log(id);
-                                                ids[i] = id;
-                                                return id;})
-                                              .then(async function(id) {
-                                                // console.log(id)
-                                                await $scope.AngelTokenContract.methods.angel_token_id_to_uri_map(id).call()
-                                                    .then(function(uri){
-                                                      // console.log(uri);
-                                                      uris[i] = uri;
-                                                      AngelTokens[id] = uri;
-                                                      // console.log(AngelTokens[id]);
-                                                    })
-                                              });
+                                          // load alms
+                                          alm = await $scope.AngelTokenContract.methods.alms(i - 1).call();
+                                          // console.log(alm);
+                                          AngelTokens[i] = alm;
                                         }
-                                        // console.log(AngelTokens);
                                         return AngelTokens;});
             // catch event from solidity contract
-            // $scope.AngelTokenManifested = await $scope.AngelTokenContract.methods.ManifestedAngelTokens().call()
-
-            console.log($scope.AngelTokens);
-
           }else{$window.alert("Smart contract not connected to selected network.")}
         });
       }
-
+ // $scope.AngelTokensManifested = await $scope.AngelTokenContract.methods.ManifestedAngelTokens().call()
 // #fcba03   #55326e #32436e #ed8311
-    $scope.mint = function (newtoken) {
+    $scope.manifest_angel_token = function (new_alm) {
         //need an error catch for instance when contract rejects a previously minted ID
         // as in : ID is not Unique!
-        console.log(newtoken);
-        // newtoken += "AngelToken";
+        console.log(new_alm.ename);
+        console.log($scope.account);
         $scope.AngelTokenContract.methods
-        .mint(newtoken)
+        .manifestAngelToken(new_alm.ename, new_alm.esym, new_alm.issue_num, new_alm.mint_date, new_alm.cost, new_alm.angel_coefficient, new_alm.status, new_alm.product)
         .send({ from: $scope.account })
         .once('receipt', function(receipt) {
-          $scope.angel_tokens.push(newtoken);
-          console.log(newtoken)
-          console.log(receipt);
-          console.log($scope.angel_tokens);
+          $scope.angel_tokens.push(new_alm);
+          $route.reload();
         });
-        // $route.reload();
-
       }
 
      $scope.getBalance = function () {

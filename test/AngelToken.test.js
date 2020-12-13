@@ -15,12 +15,12 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
     const _cost = 10;
     const _angel_coefficient = 0005;
     const _product = "1/2lb whole bean roasted coffee";
-    const _status = "waiting";
+    const _status = 1;
 
-    const _alm = [_uri, _endeavor_name, _endeavor_symbol, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _product, _status];
+    const _alm = [_uri, _endeavor_name, _endeavor_symbol, _id, _issue_num, _mint_date, _cost, _angel_coefficient, _status, _product];
 
     beforeEach(async () => {
-      this.token = await AngelToken.new(_endeavor_name, _endeavor_symbol, _issue_num, _mint_date, _cost, _angel_coefficient, _product, _status);
+      this.token = await AngelToken.new(_endeavor_name, _endeavor_symbol, _issue_num, _mint_date, _cost, _angel_coefficient, _status, _product);
       this.alm = await this.token.alms(0);
     })
     /* check for proper deployment of contract */
@@ -44,10 +44,11 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
       });
       /* check for Alm structure */
       describe('must structure an Alm which ...', async () => {
-          it.skip("should have a uri", async () => {
-              var uri = new BigNumber(this.alm.uri);
-              var id = new BigNumber(this.alm.id);
-              assert.equal(uri, id);
+          it("should have a uri", async () => {
+              var uri = this.alm.uri,
+                   id = new BigNumber(this.alm.id),
+                  sym = this.alm.sym; // console.log(uri);console.log("***^^^the above should be the same as the below vvv***");console.log(sym + id);
+              assert.equal(uri, sym + id.toNumber());
           });
           it("should have a name", async () => {
               const name = this.alm.name;
@@ -57,13 +58,11 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
               const sym = this.alm.sym;
               assert.equal(sym, _alm[2]);
           });
-          it("should have an id", async () => {
-              var iddig = await this.token.iddig();
-              iddig = iddig.toNumber();
+          it("should have an id of proper length", async () => {
               var id = new BigNumber(this.alm.id);
               id = id.toNumber();
               var idl = id.toString().length;
-              assert.equal(idl, iddig);
+              assert.equal(idl, 16);
           });
           it("should have an issue number", () => {
               const issue_num = this.alm.issue_num;
@@ -101,8 +100,17 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
           it('should be uniquely identifiable', async () => {
             await this.token.manifestAngelToken(_endeavor_name, _endeavor_symbol, _issue_num, _mint_date, _cost, _angel_coefficient, _product, _status).should.be.rejected; // cannot mint the same AngelToken twice
           });
-          it.skip('should mint ERC721 tokens alongside Angel Tokens', async () => {
+          describe('must mint ERC721 tokens alongside Angel Tokens which', async () => {
+            it('should have mintData that is packaged in bytes for _safeMint()', async () => {
+              const mintData = await this.token.mintData();
+              console.log(mintData);
+
+            })
+
             // which has a total supply function, as well as others to check
+
+
+
           });
       });
     });
