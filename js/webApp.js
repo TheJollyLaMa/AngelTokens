@@ -35,7 +35,7 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
      $scope.loadTheBlock = async function () {
        await $http.get('abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
        const web3 = window.web3;
-       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];});
+       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[3];});
        await web3.eth.net.getId().then(async function(net_id){
           $scope.networkId = net_id;
           $scope.networkData = await $scope.AngelTokenjson.networks[$scope.networkId];
