@@ -25,32 +25,32 @@ h1 {
   overflow-y: scroll;
   padding: 10;
 }
-.token_pouch, .eth_bal {
-  margin: 50px;
-  padding: 50px;
+.token_pouch {
+  margin: 20px;
+  padding: 20px;
 }
-
+.eth_bal {
+  margin: 100px;
+  padding: 100px;
+}
 .angelsroom {
   padding-top: 65px;
 }
-
 #headerlogo {
   width: 100%;
   margin: 2px;
   padding: 50px;
   background-color: white;
   border-radius: 10px;
-
 }
 .form_table {
   margin: 5px;
   padding: 5px;
-
 }
-#newtokesdiv {
+#newtokesbtndiv {
   margin: 10px;
 }
-#newtokes {
+#newtokesbutton {
   height: 150px;
   width: 300px;
   margin: 0px;
@@ -62,7 +62,6 @@ h1 {
   background-repeat: no-repeat;
   color: #1BB3B6;
   cursor: pointer;
-
 }
 /* rgb(0,120,120) = #007878 */
 /* rgb(200, 91, 0) = #C85B00*/

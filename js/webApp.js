@@ -35,7 +35,7 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
      $scope.loadTheBlock = async function () {
        await $http.get('abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
        const web3 = window.web3;
-       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[3];});
+       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];console.log($scope.account);});
        await web3.eth.net.getId().then(async function(net_id){
           $scope.networkId = net_id;
           $scope.networkData = await $scope.AngelTokenjson.networks[$scope.networkId];
@@ -54,6 +54,15 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
                                           // load alms
                                           alm = await $scope.AngelTokenContract.methods.alms(i - 1).call();
                                           // console.log(alm);
+                                          if(alm.status == 1) {
+                                            alm.status = "waiting...";
+                                          }else if(alm.status == 2) {
+                                            alm.status = "executed...";
+                                          }else if(alm.status == 3) {
+                                            alm.status = "shipped...";
+                                          }else if(alm.status == 4) {
+                                            alm.status = "fulfilled...";
+                                          }
                                           AngelTokens[i] = alm;
                                         }
                                         return AngelTokens;});
