@@ -1,4 +1,3 @@
-"use strict";
 var app = angular.module("webApp", ["ngRoute"]);
 app.config([
   "$routeProvider",
@@ -12,6 +11,22 @@ app.config([
     .when("/AngelsRoom", {
       controller: "AngelsRoomController",
       templateUrl: "AngelsRoom/angels_room.html"
+    })
+    .when("/AngelsRoom/whats_it_about", {
+      controller: "AngelsRoomController",
+      templateUrl: "AngelsRoom/whats_it_all.html"
+    })
+    .when("/AngelsRoom/last_round", {
+      controller: "AngelsRoomController",
+      templateUrl: "AngelsRoom/last_round.html"
+    })
+    .when("/AngelsRoom/next_round", {
+      controller: "AngelsRoomController",
+      templateUrl: "AngelsRoom/next_round.html"
+    })
+    .when("/treasure_chest", {
+      controller: "AngelsRoomController",
+      templateUrl: "treasure_chest/token_manifest.html"
     })
     .when("/BehindTheCounter", {
        controller: "BehindTheCounterController",
@@ -33,9 +48,9 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
      $scope.AngelTokens = [];
      $scope.new_alm = {};
      $scope.loadTheBlock = async function () {
-       await $http.get('abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
+       await $http.get('../abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
        const web3 = window.web3;
-       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];console.log($scope.account);});
+       await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];$scope.display_account=accounts[0].toString().substring(0,4) + "   ....   " + accounts[0].toString().substring(accounts[0].toString().length - 4);});
        await web3.eth.net.getId().then(async function(net_id){
           $scope.networkId = net_id;
           $scope.networkData = await $scope.AngelTokenjson.networks[$scope.networkId];
@@ -43,35 +58,33 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
             const abi = $scope.AngelTokenjson.abi;
             const address = $scope.networkData.address;
             $scope.AngelTokenContract = new web3.eth.Contract(abi,address);
-            $scope.AngelTokens = await $scope.AngelTokenContract.methods
-                                    .totalSupply().call()
-                                      .then( async function(res){
-                                        $scope.totalSupply = res;
-                                        console.log(res);
-                                        var alm = {};
-                                        var AngelTokens = {};
-                                        for (var i = 1; i <= res; i++) {
-                                          // load alms
-                                          alm = await $scope.AngelTokenContract.methods.alms(i - 1).call();
-                                          // console.log(alm);
-                                          if(alm.status == 1) {
-                                            alm.status = "waiting...";
-                                          }else if(alm.status == 2) {
-                                            alm.status = "executed...";
-                                          }else if(alm.status == 3) {
-                                            alm.status = "shipped...";
-                                          }else if(alm.status == 4) {
-                                            alm.status = "fulfilled...";
-                                          }
-                                          AngelTokens[i] = alm;
-                                        }
-                                        return AngelTokens;});
+            $scope.totalSupply = await $scope.AngelTokenContract.methods.totalSupply().call();
+            $scope.fetchAlms().then(function(alms) {$scope.AngelTokens=alms;});
+            mintBytes = await $scope.AngelTokenContract.methods.mintData().call();
+            $scope.mintData = await web3.eth.abi.decodeParameters(['string','string','string','string'],mintBytes);
             // catch event from solidity contract
           }else{$window.alert("Smart contract not connected to selected network.")}
         });
       }
- // $scope.AngelTokensManifested = await $scope.AngelTokenContract.methods.ManifestedAngelTokens().call()
-// #fcba03   #55326e #32436e #ed8311
+
+      $scope.fetchAlms = async function () {
+        var alm = {};
+        var AngelTokens = [];
+        console.log($scope.totalSupply);
+        for (var i = 1; i <= $scope.totalSupply; i++) {
+            // load alms
+            alm = await $scope.AngelTokenContract.methods.alms(i - 1).call();
+            if(alm.status == 1) {alm.status = "waiting...";
+            }else if(alm.status == 2) {alm.status = "executed...";
+            }else if(alm.status == 3) {alm.status = "shipped...";
+            }else if(alm.status == 4) {alm.status = "fulfilled...";
+            }else{alm.status = "no status";}
+            alm.url = await $scope.AngelTokenContract.methods.tokenURI(alm.id).call();// to check setTokenURI in contract
+            AngelTokens[i-1] = alm;
+        };
+        return AngelTokens;
+      }
+    // $scope.AngelTokensManifested = async function () {$scope.token = await $scope.AngelTokenContract.methods.ManifestedAngelTokens().call();console.log($scope.token);};
     $scope.manifest_angel_token = function (new_alm) {
         //need an error catch for instance when contract rejects a previously minted ID
         // as in : ID is not Unique!
@@ -80,9 +93,17 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
         $scope.AngelTokenContract.methods
         .manifestAngelToken(new_alm.ename, new_alm.esym, new_alm.issue_num, new_alm.mint_date, new_alm.cost, new_alm.angel_coefficient, new_alm.status, new_alm.product)
         .send({ from: $scope.account })
-        .once('receipt', function(receipt) {
-          $scope.angel_tokens.push(new_alm);
-          $route.reload();
+        .once('receipt', async function(receipt) {
+          var ManifestEvent = receipt.events.ManifestedAngelToken.returnValues;
+          var post_uri = 'http://localhost:3000/token_manifest_event/';
+          var MintDataEvent = receipt.events.MintDataEvent.returnValues;
+          var lastmintData = MintDataEvent[0];
+          console.log(post_uri);
+          $scope.new_token_uri = ManifestEvent[0]; 
+          console.log(new_token_uri);
+          $scope.lastmintData = await web3.eth.abi.decodeParameters(['string','string','string','string'],lastmintData);
+          console.log(lastmintData);
+          // $http.post(uri, ManifestEvent[0]);
         });
       }
 

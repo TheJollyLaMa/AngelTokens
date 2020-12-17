@@ -100,12 +100,18 @@ contract('AngelToken', (accounts) => {   /* ganache accounts for now */
           it('should be uniquely identifiable', async () => {
             await this.token.manifestAngelToken(_endeavor_name, _endeavor_symbol, _issue_num, _mint_date, _cost, _angel_coefficient, _product, _status).should.be.rejected; // cannot mint the same AngelToken twice
           });
-          describe('must mint ERC721 tokens alongside Angel Tokens which', async () => {
-            it('should have mintData that is packaged in bytes for _safeMint()', async () => {
+          describe('must mint ERC721 tokens layered under Angel Tokens which', async () => {
+            it('should have mintData that was packaged in bytes for _safeMint()', async () => {
               const mintData = await this.token.mintData();
               console.log(mintData);
+            });
+            describe('has all the basic functionality of ERC721', async () => {
+                //ownerOf shows the owner of an ANGEL token
+                //balanceOf shows how many angel tokens an address owns
+                //
+                //_tokenURI is where all the magic happens
+            });
 
-            })
 
             // which has a total supply function, as well as others to check
 

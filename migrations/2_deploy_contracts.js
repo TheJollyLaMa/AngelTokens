@@ -1,24 +1,28 @@
 const AngelToken = artifacts.require("AngelToken");
 
 module.exports = function(deployer) {
-  const endeavor_name = "Caffeine LaManna";
-  const endeavor_symbol = "CafLaM";
-  const issue_num = 1234;
-  const mint_date = 12102020;
-  const cost = 10;
-  const angel_coefficient = 0005;
-  const status = 1;
-  const product = "1/2lb whole bean roasted coffee";
+  const original_alm = {
+    endeavor_name: "Caffeine LaManna",
+    endeavor_symbol : "CafLaM",
+    issue_num : 1234,
+    mint_date : 12102020,
+    cost : 10,
+    angel_coefficient : 0005,
+    status : 1,
+    product : "1/2lb whole bean roasted coffee"
+  }
+  try{
+    deployer.deploy(
+      AngelToken,
+       original_alm.endeavor_name,
+        original_alm.endeavor_symbol,
+         original_alm.issue_num,
+          original_alm.mint_date,
+            original_alm.cost,
+             original_alm.angel_coefficient,
+              original_alm.status,
+               original_alm.product
+             )
+  }catch(err){console.log(err);}
 
-  deployer.deploy(
-    AngelToken,
-     endeavor_name,
-      endeavor_symbol,
-        issue_num,
-         mint_date,
-          cost,
-           angel_coefficient,
-            status,
-             product
-              );
 };
