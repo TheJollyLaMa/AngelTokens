@@ -1,10 +1,10 @@
 <div class="angelsroom" ng-controller="AngelsRoomController" ng-init="loadTheBlock()">
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://localhost:3000/public/#!/AngelsRoom" target="_blank" rel="noopener noreferrer">
+    <a class="navbar-brand px-3" href="http://localhost:3000/public/#!/AngelsRoom" target="_blank" rel="noopener noreferrer">
       Angel Tokens</a>
-    <a class="last_rnd" href="/public/#!/AngelsRoom/last_rnd" style="text-decoration:none;"><h1><</h1></a>
-    <a class="whats_it" href="/public/#!/AngelsRoom/whats_it_about" style="text-decoration:none;"><h1>?</h1></a>
-    <a class="next_rnd" href="/public/#!/AngelsRoom/next_round" style="text-decoration:none;"><h1>></h1></a>
+      <a class="last_rnd" href="/public/#!/AngelsRoom/last_rnd" style="text-decoration:none;"><h1><</h1></a>
+      <a class="whats_it" align="center" href="/public/#!/AngelsRoom/whats_it_about" style="text-decoration:none;"><h1>?</h1></a>
+      <a class="next_rnd" href="/public/#!/AngelsRoom/next_round" style="text-decoration:none;"><h1>></h1></a>
     <ul class="navbar-nav px-3">
        <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
          <small class="text-white"><span id="account">{{display_account}}</span></small>
@@ -14,7 +14,7 @@
   <div class="content mr-auto ml-auto">
     <div id="headerlogo" align="center"><img src="./angelL.png"><img src="./ATEth_Logo.png"><img src="./angelR.png"></div>
     <br>
-    totes_tokes: {{totalSupply}}
+    totes_tokes: {{totalAlms}}
     <hr/>
     <h1>Manifest Angel Tokens</h1>
     <form align="center" ng-submit="manifest_angel_token(new_alm)">
@@ -38,26 +38,26 @@
           <div id="newtokesbtndiv" align="center" ><input id="newtokesbutton" type='submit' class='btn btn-block btn-primary' value='Manifest' /></div>
     </form>
   </div>
-  {{mintBytes}}
-  {{mintData}}
-  {{lastmintData}}
-
+  {{lastMintData | bytetobase}}
   <div class="scroller">
   <div class="flip-container" ng-repeat="alm in AngelTokens">
     <div class="flipper">
       <div class="token_front"></div>
       <div class="token_back">
           <table>
-              <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
+              <thead class="tokenhead">{{alm.owner}}<hr class="tokebreak"/></thead>
               <tbody>
                   <h1 class="token-text">{{alm.id}}</h1>
-                  <a href="{{alm.url}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{alm.uri}}</h1></a>
-                  <h1 class="token-text">{{alm.product}}</h1>
+                  <a href="{{alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{alm.uri}}</h1></a>
+                  <h1>{{alm.name}} </h1>
+                  <h1>{{alm.sym}} </h1>
+                  <!-- <h1>{{alm.owner}} </h1> -->
+                  <!-- <h1 class="token-text">{{alm.product}}</h1>
                   <h1 class="token-text">{{alm.cost}}</h1>
                   <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
-                  <h1 class="token-text">{{alm.mint_date}}</h1>
+                  <h1 class="token-text">{{alm.mint_date}}</h1> -->
               </tbody>
-              <tfoot><h1 class="token-text">{{alm.issue_num}}/{{totalSupply}}</h1></tfoot>
+              <!-- <tfoot><h1 class="token-text">{{alm.issue_num}}/{{totalSupply}}</h1></tfoot> -->
            </table>
         </div>
       </div>

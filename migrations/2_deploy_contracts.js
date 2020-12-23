@@ -4,9 +4,9 @@ module.exports = function(deployer) {
   const original_alm = {
     endeavor_name: "Caffeine LaManna",
     endeavor_symbol : "CafLaM",
-    issue_num : 1234,
+    issue_num : 3,
     mint_date : 12102020,
-    cost : 10,
+    cost : 1000,
     angel_coefficient : 0005,
     status : 1,
     product : "1/2lb whole bean roasted coffee"
