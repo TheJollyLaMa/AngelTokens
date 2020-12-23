@@ -1,0 +1,8 @@
+{
+  "spec_dir": "jasmine_tests",
+  "spec_files": [
+    "*.test.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
+}

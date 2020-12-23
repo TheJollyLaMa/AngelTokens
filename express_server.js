@@ -8,7 +8,7 @@ app.use('/public', express.static('public'));
 
 app.use('/abis/AngelToken.json', express.static('abis/AngelToken.json'));
 app.use('/public/index.html', express.static('public/index.html'));
-
+app.use('/public/StoreFront/store_front.html', express.static('public/StoreFront/store_front.html'));
 router.all('/', function (req, res, next) {
   var file = 'public/index.html';
   res.sendFile(file, '/#!/', function (err) {

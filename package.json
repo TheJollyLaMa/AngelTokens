@@ -8,6 +8,9 @@
   "author": "The Jolly LaMa",
   "license": "ISC",
   "devDependencies": {
+    "angular-mocks": "^1.8.2",
+    "jasmine-core": "^3.6.0",
+    "karma-jasmine": "^4.0.1",
     "lite-server": "^2.6.1"
   },
   "dependencies": {

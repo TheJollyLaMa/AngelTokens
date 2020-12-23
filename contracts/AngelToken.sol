@@ -27,7 +27,7 @@ contract AngelToken is ERC1155{
           /* uint256 cost; // the Unit Retail Cost of your product in wei */
            /* uint256 angel_coefficient; // coefficient of next round's profits */
             /* uint256 status;  // the status of the contract */
-             /* string product; // the unit product being produced in the endeavor - a lb of coffee, a chocalate bar, a bar of soap, a board, solar panel, or your grandmas comfy undies */ */
+             /* string product; // the unit product being produced in the endeavor - a lb of coffee, a chocalate bar, a bar of soap, a board, solar panel, or your grandmas comfy undies */
              }
   Alm[] public alms;
   event MintDataEvent(bytes mintData);
