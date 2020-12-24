@@ -1,4 +1,4 @@
-app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", function ($scope, $route, $window, $http) {
+app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", "BlockFactory", function ($scope, $route, $window, $http, BlockFactory) {
     $scope.test = "testing data binding in the angel's room";
      $scope.newtoken = "";
      $scope.ids = {};
@@ -8,7 +8,7 @@ app.controller("AngelsRoomController", ["$scope", "$route", "$window", "$http", 
      $scope.mintDataArray = [];
      $scope.new_alm = {};
      $scope.loadTheBlock = async function () {
-       await $http.get('../abis/AngelToken.json').then(function(c) {$scope.AngelTokenjson = c.data;});
+       $scope.AngelTokenjson = await BlockFactory.FetchTokenJSON();
        const web3 = window.web3;
        await web3.eth.getAccounts().then(function(accounts){$scope.account = accounts[0];$scope.display_account=accounts[0].toString().substring(0,4) + "   ....   " + accounts[0].toString().substring(accounts[0].toString().length - 4);});
        await web3.eth.net.getId().then(async function(net_id){
