@@ -7,6 +7,6 @@ app.factory('BlockFactory', ["$http", function ($http) {
                       .then(function(atjson) {
                         return atjson.data;
                       });
-
       }
+
 }]);

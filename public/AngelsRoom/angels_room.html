@@ -12,7 +12,8 @@
     </ul>
   </nav>
   <div class="content mr-auto ml-auto">
-    <div id="headerlogo" align="center"><img src="./angelL.png"><img src="./ATEth_Logo.png"><img src="./angelR.png"></div>
+    <div id="headerlogo" class="wrapper" align="center"><img class="animate" src="./angelL.png"><img src="./ATEth_Logo.png"><img src="./angelR.png"></div>
+    latest block: {{blockNum}}
     <br>
     totes_tokes: {{totalAlms}}
     <hr/>
@@ -25,13 +26,10 @@
           </tr>
           <tr class="form_table">
             <td class="form_table">issue_num: {{new_alm.issue_num}}<input type='number' class='form-control mb-1' placeholder='1000' ng-model="new_alm.issue_num"/></td>
-            <td class="form_table">mint_date: {{new_alm.mint_date}}<input type='number' class='form-control mb-1' placeholder='01082021' ng-model="new_alm.mint_date"/></td>
-          <tr class="form_table">
-            <td class="form_table">cost: {{new_alm.cost}}<input type='number' class='form-control mb-1' placeholder='10' ng-model="new_alm.cost"/></td>
             <td class="form_table">angel_coefficient: {{new_alm.angel_coefficient}}<input type='number' class='form-control mb-1' placeholder='0005' ng-model="new_alm.angel_coefficient"/></td>
           </tr>
           <tr class="form_table">
-            <td class="form_table">status: {{new_alm.status}}<input type='number' class='form-control mb-1' placeholder='1' ng-model="new_alm.status"/></td>
+            <td class="form_table">cost: {{new_alm.cost}}<input type='number' class='form-control mb-1' placeholder='10' ng-model="new_alm.cost"/></td>
             <td class="form_table">product: {{new_alm.product}}<input type='text' class='form-control mb-1' placeholder='1/2 lb fresh shit of bull' ng-model="new_alm.product"/></td>
           </tr>
         </table>
@@ -45,19 +43,17 @@
       <div class="token_front"></div>
       <div class="token_back">
           <table>
-              <thead class="tokenhead">{{alm.owner}}<hr class="tokebreak"/></thead>
+              <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
               <tbody>
-                  <h1 class="token-text">{{alm.id}}</h1>
+                  <h1 class="token-text">{{alm.name}}</h1>
                   <a href="{{alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{alm.uri}}</h1></a>
-                  <h1>{{alm.name}} </h1>
-                  <h1>{{alm.sym}} </h1>
-                  <!-- <h1>{{alm.owner}} </h1> -->
-                  <!-- <h1 class="token-text">{{alm.product}}</h1>
+                  <h1 class="token-text">{{alm.id}} </h1>
+                  <h1 class="token-text">{{alm.product}}</h1>
                   <h1 class="token-text">{{alm.cost}}</h1>
                   <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
-                  <h1 class="token-text">{{alm.mint_date}}</h1> -->
+                  <h1 class="token-text">{{alm.mint_date}}</h1>
               </tbody>
-              <!-- <tfoot><h1 class="token-text">{{alm.issue_num}}/{{totalSupply}}</h1></tfoot> -->
+              <tfoot><h1 class="token-text">{{alm.bal}}/{{alm.num_issued}}</h1></tfoot>
            </table>
         </div>
       </div>

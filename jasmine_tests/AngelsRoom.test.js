@@ -8,12 +8,10 @@ describe('AngelsRoomController', function() {
   beforeEach(inject(function(_$controller_, _$rootScope_){
       $controller = _$controller_;
       $rootScope = _$rootScope_;
-
-      // spyOn(BlockFactory, 'all').and.callFake(function() {
-      //   return testjson;
-      // });
-
   }));
+  // spyOn(BlockFactory, 'all').and.callFake(function() {
+  //   return testjson;
+  // });
 
   describe('"Load The Block"', function() {
 
@@ -33,6 +31,7 @@ describe('AngelsRoomController', function() {
     it('fetches the token contract json from backend for use in the frontend', function() {
       var $scope = $rootScope.$new();
       var controller = $controller('AngelsRoomController', {$scope: $scope});
+      // $scope.AngelTokenjson = MockBlockFactory.FetchTokenJSON();
       console.log($scope.AngelTokenjson);
       var tokenJson = {
         "contractName": "AngelToken",
