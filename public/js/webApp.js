@@ -5,8 +5,8 @@ app.config([
     $routeProvider
 
     .when("/", {
-      controller: "AngelsRoomController",
-      templateUrl: "AngelsRoom/angels_room.html"
+      controller: "StoreFrontController",
+      templateUrl: "StoreFront/Store_Front.html"
     })
     .when("/AngelsRoom", {
       controller: "AngelsRoomController",
@@ -34,7 +34,19 @@ app.config([
     })
     .when("/StoreFront", {
       controller: "StoreFrontController",
-      templateUrl: "StoreFront/store_front.html"
+      templateUrl: "StoreFront/Store_Front.html"
+    })
+    .when("/Store_Front/OrderBeans", {
+      controller: "StoreFrontController",
+      templateUrl: "Store_Front/OrderBeans.html"
+    })
+    .when("/Store_Front/Subscription", {
+      controller: "StoreFrontController",
+      templateUrl: "Store_Front/Subscription.html"
+    })
+    .when("/Store_Front/Discount", {
+      controller: "StoreFrontController",
+      templateUrl: "Store_Front/Discount.html"
     })
     .otherwise({redirectTo: "/"})
   }
@@ -48,5 +60,12 @@ app.filter('bytetobase', function () {
             binary += String.fromCharCode(bytes[i]);
         }
         return window.btoa(binary);};});
-
-        // gitMyPort, gitMyCoin, Social Index, FollowMe, Rugby, Meek Inheritance, FiWithMe, Fi2Gether ... oo I like that last one.  Fi2Gether tired of fi ing alone? git Fi2Gether today!!! works on so many levels.  see that "ether" in there?
+app.directive("shoppingcart",function(){
+  return{
+    data:{stock:"=",action:"&"},
+    controller:"StoreFrontController",
+    replace:!0,
+    restrict:"E",
+    templateUrl:"Store_Front/ShoppingCart.html"
+  }
+});

@@ -1,0 +1,30 @@
+<style>
+  .roast_type{
+    color: rgb(27, 179, 182);
+  }
+</style>
+<div ng-controller="StoreFrontController" ng-init="showGreenInventory() ">
+    <h1>Fresh Beans by the Pound!</h1>
+    <p><h4 class="roast_type">Roast Type:<h4></p>
+    <select ng-init="description = last_roast_type" name="roast_type" type="text" class="roast_type dropdown-toggle centered" ng-options="type for type in roast_type_cats" ng-model="description" ng-required></select>
+    <p></p>
+    <div class="scroller">
+        <div class="sales_category_buttons btn btn-default" ng-repeat="item in green_inventory" ng-if="item.weight > 0" ng-click="add_reservation_to_cart(item.sku, item.origin, item.roast_type = description, item.price_per_lb, 1)">
+
+            <p class='origin'><h4 ng-model="item.origin">{{item.origin}}</h4></p>
+            <p><img class="country_shape" ng-src="/img/country_shape/{{item.origin}}.png"></p>
+            <p><h4 ng-model="item.weight">Inventory: {{item.weight}} lbs.</h4></p>
+            <p><h4> {{item.price_per_lb | currency}}/lb </h4></p>
+
+            <input type="hidden" name"sku" ng-model="item.sku">
+            <input type="hidden" name="origin" ng-model="item.origin">
+            <input type="hidden" name="roast_type" ng-model="item.description">
+            <input type="hidden" name="price" ng-model="item.price_per_lb">
+
+      </div>
+    </div>
+    <div>
+      <p><a href="#!/Store_Front"><div class="back_button btn btn-default">Back to the Store Front</div></a></p>
+    </div>
+</div>
+<shoppingcart></shoppingcart>

@@ -38,14 +38,18 @@ h1 {
   overflow-y: scroll;
   padding: 10px;
 }
-.the_story {
-  background-color: #FAFAC8;
-  color: #1BB3B6;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
+.scroller{
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  width: calc(#{$finalHeight} + #{$scrollBarHeight});
+  max-height: $finalWidth;
+  margin: 5px;
+  padding-top: $scrollBarHeight;
 }
-.scroller {
+/* .scroller {
   height: 400px;
   margin:10px;
   padding:5px;
@@ -57,7 +61,7 @@ h1 {
   justify-content: space-between;
   /* white-space: nowrap; */
   /* overflow-y: hidden; */
-  overflow-x: scroll;
+  /* overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   position: relative;
   width: calc(#{$finalHeight} + #{$scrollBarHeight});
@@ -73,65 +77,41 @@ h1 {
     transform: rotate(90deg);
     transform-origin: right top;
   }
+} */
+.scroller a {
+  height: 10%;
+  display: inline-block;
+  color: #FAFAC8;
+  text-align: center;
+}
+.sales_category_buttons {
+  white-space: normal;
+  height: 200px;
+  width: 25%;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 50%;
+  text-decoration: none;
+  display: inline-block;
+  color: #FAFAC8;
+  position: relative;
+  border: 5px;
+  border-radius: 10px;
+  border-color: #FAFAC8;
+  border-style: double;
+  margin: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform-origin: right top;
+
+  padding: $finalHeight 0 0 0;
+   & > div {
+     width: $finalHeight;
+     height: $finalHeight;
+     margin: 0px 0;
+
 }
 
-.token_pouch {
-  margin: 20px;
-  padding: 20px;
-}
-.eth_bal {
-  margin: 100px;
-  padding: 100px;
-}
-.angelsroom {
-  /* padding-top: 65px; */
-}
-.next_rnd {
-  width: 20%;
-  margin-right: 40%: ;
-  text-align: center;
-}
-.last_rnd {
-  width: 20%;
-  margin-left: 20%: ;
-  text-align: center;
-}
-.whats_it {
-  width: 20%;
-  margin: auto;
-  text-align: center;
-}
-.navacc {
-  margin-right: 20px;
-  margin-left: 20px;
-}
-#headerlogo {
-  width: 100%;
-  margin: 2px;
-  padding: 50px;
-  background-color: white;
-  border-radius: 10px;
-}
-.form_table {
-  margin: 5px;
-  padding: 5px;
-}
-#newtokesbtndiv {
-  margin: 10px;
-}
-#newtokesbutton {
-  height: 150px;
-  width: 300px;
-  margin: 0px;
-  padding: 0;
-  background: url("../ATEth_Logo.png");
-  background-position: center;
-  background-size: 75% 130px;
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  color: #1BB3B6;
-  cursor: pointer;
-}
 /* rgb(0,120,120) = #007878 */
 /* rgb(200, 91, 0) = #C85B00*/
 /* rgb(102,213,213) = #66D5D5*/

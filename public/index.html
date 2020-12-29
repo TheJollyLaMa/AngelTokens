@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/angels.css" />
     <link rel="stylesheet" href="css/coin_animation.css" />
     <link rel="stylesheet" href="css/shine.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="module" src="js/web3.min.js"></script>
     <title>Caffeine LaManna</title>
 
@@ -31,20 +33,24 @@
 
   </head>
 
-  <body ng-app="webApp" ng-controller="AngelsRoomController" >
-    <a href="https://www.caffeinelamanna.com"></a>
+  <body ng-app="webApp" ng-controller="StoreFrontController">
     <div class="mainViewWindow">
+      
       <ng-view> </ng-view>
+      <a href="https://www.caffeinelamanna.com">caffeinelamanna.com</a>
     </div>
     harekrsna
-    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
     <script type="text/javascript" src="js/webApp.js"></script>
+    <script type="text/javascript" src="js/shoppingCart.js"></script>
     <script type="text/javascript" src="js/controllers/StoreFrontController.js"></script>
     <script type="text/javascript" src="js/controllers/AngelsRoomController.js"></script>
     <script type="text/javascript" src="js/controllers/BehindTheCounterController.js"></script>
     <script type="text/javascript" src="js/services/BlockFactory.js"></script>
+    <script type="text/javascript" src="js/services/InventoryFactory.js"></script>
+    <script type="text/javascript" src="js/services/PromoCodeFactory.js"></script>
+    <script type="text/javascript" src="js/services/ShoppingCartFactory.js"></script>
 
 
   </body>

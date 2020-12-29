@@ -1,0 +1,65 @@
+.the_story {
+  background-color: #FAFAC8;
+  color: #1BB3B6;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.token_pouch {
+  margin: 20px;
+  padding: 20px;
+}
+.eth_bal {
+  margin: 100px;
+  padding: 100px;
+}
+.angelsroom {
+  /* padding-top: 65px; */
+}
+.next_rnd {
+  width: 20%;
+  margin-right: 40%: ;
+  text-align: center;
+}
+.last_rnd {
+  width: 20%;
+  margin-left: 20%: ;
+  text-align: center;
+}
+.whats_it {
+  width: 20%;
+  margin: auto;
+  text-align: center;
+}
+.navacc {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+#headerlogo {
+  width: 100%;
+  margin: 2px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+}
+.form_table {
+  margin: 5px;
+  padding: 5px;
+}
+#newtokesbtndiv {
+  margin: 10px;
+}
+#newtokesbutton {
+  height: 150px;
+  width: 300px;
+  margin: 0px;
+  padding: 0;
+  background: url("../ATEth_Logo.png");
+  background-position: center;
+  background-size: 75% 130px;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  color: #1BB3B6;
+  cursor: pointer;
+}

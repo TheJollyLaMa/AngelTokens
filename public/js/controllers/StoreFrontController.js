@@ -1,5 +1,206 @@
-app.controller("StoreFrontController", ["$scope", function ($scope, $window) {
+"use strict";
+app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routeParams", "InventoryFactory", "ShoppingCartFactory", "PromoCodeFactory", function($scope, $route, $filter, $routeParams, InventoryFactory, ShoppingCartFactory, PromoCodeFactory) {
+    $scope.title = 'Order Fresh Beans to your Door!';
+    $scope.sales_category = [
+                             {name: "OrderBeans", text: "Roast Me Some New Beans ", icon: "glyphicon glyphicon-list-alt"},
+                             /*{name: "Sampler", text: "A pot per day for the workweek", icon: "glyphicon glyphicon-tag"},*/
+                             {name: "Subscription", text: "Automatic Frequent and Fresh!", icon: "glyphicon glyphicon-list-alt"},
+                             /*{name: "Merchandise", text: "Merchandise", icon: "glyphicon glyphicon-tag"},*/
+                             /*{name: "Regular", text: "This Week's Unreserved Roasts", icon: "glyphicon glyphicon-tint"},*/
+                             {name: "Discount", text: "Last Week's Leftover Beans", icon: "glyphicon glyphicon-tag"}];
 
-  $scope.test = "testing data binding in the store front";
+    $scope.special_cats = [{name: "Sampler", text: "A pot per day for the workweek", icon: "glyphicon glyphicon-tag"},
+                           {name: "Subscription", text: "Automatic Frequent and Fresh!", icon: "glyphicon glyphicon-list-alt"}
+                         ];
+    $scope.roast_type_cats = ['1st crack (light)', '2nd crack (medium)', 'Dark (Dark)'];
+    $scope.Samplers = [{sku: "S0001", name: "Sampler", msg: "A variety Pack - an economical pot a day for the workweek. Variety of roast types, Variety of origins.", price: 10.10 }];
+    $scope.subscription_inventory = [{sku: "SUB001", duration: "weekly", name: "Weekly Subscription", msg: "Fresh roasted by the pound to perfection and delivered weekly!" },
+                                     {sku: "SUB002", duration: "monthly", name: "Monthly Subscription", msg: "Fresh roasted by the pound to perfection and delivered monthly!" }]
+    $scope.cart = ShoppingCartFactory.cart;
+    $scope.cart_length = $scope.cart.items.length;
+    $scope.last_cart_item = ShoppingCartFactory.cart.items[$scope.cart_length-1];
+    if ($scope.cart_length > 0){$scope.last_roast_type = $scope.last_cart_item.description;}else{$scope.last_roast_type = '1st crack (light)';}
+    $scope.quantity = 0;$scope.promo_code = "";$scope.promo_code_list = [];$scope.promo_code_data = {};$scope.promo_discount_rate = 0;
+    $scope.Total = ShoppingCartFactory.cart.getTotalPrice();
+    $scope.running_promo = 0;
+    $scope.runPromotional = function(running_promo) {return PromoCodeFactory.runPromotional(running_promo).then(function(data){var promotional_uses = data.uses,limit = data.limit;$scope.promos_left = limit - promotional_uses;});};
+    $scope.showPromoCodes = function(promo_code) {return PromoCodeFactory.showPromoCodes(promo_code).then(function(data){var data = data;console.log(data);return data;});};
 
+    $scope.checkout = function () {
+          $scope.promo_code = prompt("Do you have a promo code?", "#PROMOCODE");
+          if($scope.promo_code != null){
+              $scope.showPromoCodes($scope.promo_code)
+                    .then(function(data){
+                            var promo_discount_amount = data;
+                            //console.log(promo_discount_amount);
+                            //console.log($scope.promo_code);
+                            //console.log($scope.running_promo);
+                            //if discount amount is 0 and promocode is not default
+                            if (promo_discount_amount == 0 && $scope.promo_code != "#PROMOCODE"){
+                                //check if promocode is the running promotion
+                                if($scope.promo_code == $scope.running_promo){
+                                  //console.log(promo_discount_amount);
+                                  //console.log($scope.promo_code);
+                                  //console.log($scope.running_promo);
+                                  alert('Cool Beans! If you hurry and finish checkout, you get a free grinder with your order! Do us a favor and tell EVERYBODY! #BEANSTOTHEFACE');
+                                }else{
+                                  alert('Err1: Keep your eyes out for #PROMOCODES and be sure to enter them correctly! (All Caps starting with a #)');
+                                }
+
+                            }else {
+                              //if discount amount is 0
+                              if (promo_discount_amount == 0){
+                                alert('Err2: Keep your eyes out for #PROMOCODES and be sure to enter them correctly! (All Caps starting with a #)');
+                              //finally, if discount, affirmative alert and throw to checkout
+                              }else{
+                              alert('Sweet! You get a discount of $' + Number(promo_discount_amount).toFixed(2) + '!');
+                              }
+                            }
+                            $scope.shoppingCartTasks($scope.promo_code, promo_discount_amount);
+                    });
+          }
+
+    };
+    $scope.shoppingCartTasks = function(promo_code, promo_discount_amount){
+      console.log(promo_code);
+      console.log(promo_discount_amount);
+      ShoppingCartFactory.cart.addCheckoutParameters('PayPal', 'J@CaffeineLamanna.com', {return: 'https://www.caffeinelamanna.com/#!/Store_Front/checkout_complete',cancel_return: 'https://www.caffeinelamanna.com/#!/Store_Front/cancel_checkout',discount_amount_cart: promo_discount_amount,custom: promo_code});  // 'jrlamanna-facilitator@gmail.com'  for sandbox
+      ShoppingCartFactory.cart.checkout();
+      $scope.clear_cart();
+    };
+
+   $scope.showGreenInventory = function() {
+     InventoryFactory.showGreenInventory()
+     .then(function(data){
+         $scope.green_inventory = data;
+         for (var i=0; i< $scope.green_inventory.length; i++) {
+             var inventory_item = $scope.green_inventory[i];
+             var sku = inventory_item.sku;
+             inventory_item.weight -= Math.floor(inventory_item.weight * 0.2);
+             for (var j=0; j< $scope.cart.items.length; j++){
+                 var cart_item = $scope.cart.items[j].sku;
+                 if(cart_item == sku){                    // if cart_item sku
+                   // deduct shopping cart quantity from inventory weight
+                   $scope.green_inventory[i].weight -= $scope.cart.items[j].quantity;}}}});};
+
+    $scope.showPackagedInventory = function() {
+      InventoryFactory.showPackagedInventory()
+      .then(function(data){
+         $scope.packaged_inventory = data;
+         for (var i=0; i< $scope.packaged_inventory.length; i++) {
+             var inventory_item = $scope.packaged_inventory[i].sku;
+             for (var j=0; j< $scope.cart.items.length; j++){
+                 var cart_item = $scope.cart.items[j].sku;
+                 if(cart_item == inventory_item){                    // if cart_item sku
+                   // deduct shopping cart quantity from inventory weight
+                   $scope.packaged_inventory[i].weight -= $scope.cart.items[j].quantity;}}}});};
+
+    $scope.showDiscountedInventory = function() {
+      InventoryFactory.showDiscountedInventory()
+      .then(function(data){
+         $scope.discounted_inventory = data;
+         for (var i=0; i< $scope.discounted_inventory.length; i++) {
+             var inventory_item = $scope.discounted_inventory[i].sku;
+             $scope.discounted_inventory[i].price_per_lb -= $scope.discounted_inventory[i].price_per_lb*0.10;
+             for (var j=0; j< $scope.cart.items.length; j++){
+                 var cart_item = $scope.cart.items[j].sku;
+                 if(cart_item == inventory_item){
+                     $scope.discounted_inventory[i].weight -= $scope.cart.items[j].quantity;}}}});};
+
+    $scope.showMerchandiseInventory = function() {
+       InventoryFactory.showMerchandiseInventory()
+       .then(function(data){
+         $scope.merchandise_inventory = data;
+         for (var i=0; i< $scope.merchandise_inventory.length; i++) {
+             var inventory_item = $scope.merchandise_inventory[i].sku;
+             for (var j=0; j< $scope.cart.items.length; j++){
+                 var cart_item = $scope.cart.items[j].sku;
+                 if(cart_item == inventory_item){                    // if cart_item sku
+                   // deduct shopping cart quantity from inventory weight
+                   $scope.merchandise_inventory[i].quantity -= $scope.cart.items[j].quantity;}}}});};
+
+    $scope.add_workweek_sampler_to_cart = function (sku, name, roast_type, price, quantity) {
+      $scope.cart.addItem(sku, name, roast_type, price, quantity);
+      $scope.Total += price;
+      $route.reload();
+    };
+    $scope.add_discounted_purchase_to_cart = function (sku, name, roast_type, price, quantity) {
+        var stock_weight = $filter('filter')($scope.discounted_inventory, {'sku': sku})[0].weight;
+        if (stock_weight - quantity >= 0) {
+            $scope.cart.addItem(sku, name, roast_type, price, quantity);
+            $scope.Total += price;
+            for (var i = 0; i < $scope.discounted_inventory.length; i++) {
+                var item = $scope.discounted_inventory[i];
+
+                if (item.sku == sku) {
+                    item.weight -= quantity;
+                }
+            }
+            $route.reload();
+        }else {alert("That's more than we have, high roller! Try back next week ...");}};
+
+    $scope.add_regular_purchase_to_cart = function (sku, name, roast_type, price, quantity) {
+        var stock_weight = $filter('filter')($scope.packaged_inventory, {'sku': sku, 'roast_type': roast_type})[0].weight;
+
+        if (stock_weight - quantity >= 0) {
+            $scope.cart.addItem(sku, name, roast_type, price, quantity);
+            $scope.Total += price;
+            for (var i = 0; i < $scope.packaged_inventory.length; i++) {
+                var item = $scope.packaged_inventory[i];
+
+                if (item.sku == sku) {
+                    item.weight -= quantity;
+                }
+            }
+            $route.reload();
+          }else {alert("That's more than we have, high roller! Try back next week ...");}};
+
+    $scope.add_merchandise_purchase_to_cart = function (sku, name, description, price, quantity) {
+        var stock_weight = $filter('filter')($scope.merchandise_inventory, {'sku': sku, 'description': description})[0].quantity;
+
+        if (stock_weight - quantity >= 0) {
+            $scope.cart.addItem(sku, name, description, price, quantity);
+            $scope.Total += price;
+            for (var i = 0; i < $scope.merchandise_inventory.length; i++) {
+                var item = $scope.merchandise_inventory[i];
+
+                if (item.sku == sku) {
+                    item.quantity -= quantity;
+                }
+            }
+            $route.reload();
+          }else {alert("That's more than we have, high roller! Try back next week ...");}};
+
+    $scope.add_reservation_to_cart = function (sku, name, description, price, quantity) {
+      var stock_weight = $filter('filter')($scope.green_inventory, {'sku': sku})[0].weight;
+
+          if (!($scope.roast_type_cats.includes(description))){
+              description = "1st crack (light)";
+          }
+
+
+      if (stock_weight - quantity >= 0) {
+            $scope.cart.addItem(sku, name, description, price, quantity);
+            $scope.Total += price;
+            for (var i = 0; i < $scope.green_inventory.length; i++) {
+                var item = $scope.green_inventory[i];
+
+                if (item.sku == sku) {
+                    item.weight -= quantity;
+                }
+            }
+            $route.reload();
+            $scope.last_roast_type = description;
+      }else {alert("That's more than we have, high roller! Try back next week ...");}};
+
+    $scope.clear_cart = function () {
+      $scope.cart.clearItems();
+      $scope.Total = ShoppingCartFactory.cart.getTotalPrice();
+      $route.reload();
+    };
+    $scope.remove_from_cart = function (sku, description) {
+      $scope.cart.remove_item(sku, description);
+      $scope.Total = ShoppingCartFactory.cart.getTotalPrice();
+      $route.reload();
+    };
 }]);
