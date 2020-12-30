@@ -1,3 +1,20 @@
 <div ng-controller="BehindTheCounterController">
-{{test}}
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand px-3" href="http://localhost:3000/public/#!/StoreFront" target="_blank" rel="noopener noreferrer">
+      Store Front</a>
+      <!-- <a class="last_rnd" href="/public/#!/AngelsRoom/last_rnd" style="text-decoration:none;"><h1><</h1></a> -->
+      <a class="whats_it" align="center" href="/public/#!/BehindTheCounter/whats_it_about" style="text-decoration:none;"><h1>?</h1></a>
+      <!-- <a class="next_rnd" href="/public/#!/AngelsRoom/next_round" style="text-decoration:none;"><h1>></h1></a> -->
+    <ul class="navbar-nav px-3">
+       <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+         <small class="text-white"><span id="account">{{display_account}}</span></small>
+       </li>
+    </ul>
+  </nav>
+    <div><p></p></div>
+    <div><p>Hi <strong>{{username}}</strong>! You are <strong>{{title}}</strong>! <a href="#!/Behind_The_Counter/RoastList" class="backend_category_buttons btn btn-default"><strong>Lets Get Roasted!</strong></a></p></div>
+    <div class="scroller"><h1><a class="backend_category_buttons btn btn-default" ng-repeat = "category in backend_category" href="#!/Behind_The_Counter/{{category.name}}"><strong>{{category.name}}</strong></a></h1></div>
+    <div class="scroller"><h1><a class="backend_category_buttons btn btn-default" ng-repeat = "link in useful_links" href="{{link.url}}" target="_blank"><strong>{{link.name}}</strong></a></h1></div>
+    <div class="scroller"><h1><a class="backend_category_buttons btn btn-default" ng-repeat = "link in dev_links" href="{{link.url}}" target="_blank"><strong>{{link.name}}</strong></a></h1></div>
+    <div><p><button class="backend_category_buttons btn btn-default"><a href='#!/Logout'><strong>Logout</strong></a></button></p></div>
 </div>

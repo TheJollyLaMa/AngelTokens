@@ -1,0 +1,63 @@
+<script>gtag('config', 'UA-159252939-1', {'page_title' : 'Purchase_Orders','page_path': '/#!/Behind_The_Counter/Purchase_Orders.html'});</script>
+<style>
+  tbody {
+    background-color: white;
+    border-style: double;
+    border-color: rgb(27, 179, 182);
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  th {
+    background-color: white;
+    border-style: double;
+    border-color: rgb(27, 179, 182);
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  td {
+      background-color: white;
+      border-style: double;
+      border-color: rgb(27, 179, 182);
+      padding: 5px 10px;
+      text-align: center;
+  }
+</style>
+<div ng-controller='BehindTheCounterController' ng-init="showPurchaseOrders()">
+  <div>
+    <a href=#!/Behind_The_Counter>
+      <div class="back_button btn btn-default">Back to Dashboard</div>
+    </a>
+  </div>
+  <p></p>
+  <div>
+    <table>
+      <thead><tr><th>Cart</th><th>Buyer</th><th>Total</th><th>Timestamp</th><th>Payer Email</th><th>ID</th><th>Payment Status</th></tr></thead>
+      <tbody>
+        <tr ng-repeat="order in purchase_orders | orderBy: '-timestamp'">
+          <td>{{order.promo_code}}
+              <table>
+              <thead><tr><th><h5>Sku</h5></th><th><h5>Origin</h5></th><th><h4>Roast Type</h4></th><th><h4>Quantity</h4></th></tr></thead>
+              <tbody>
+                <tr ng-repeat="item in order.cart">
+                  <td>{{item.sku}}</td>
+                  <td>{{item.origin}}</td>
+                  <td>{{item.roast_type}}</td>
+                  <td>{{item.quantity | number:0}}</td>
+                </tr>
+              </tbody>
+              </table>
+          </td>
+          <td>{{order.buyer}}</td>
+          <td>{{order.total}}</td>
+          <td>{{order.timestamp}}</td>
+          <td>{{order.email}}</td>
+          <td>{{order.id}}</td>
+          <td>{{order.payment_status}}</td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+</div>

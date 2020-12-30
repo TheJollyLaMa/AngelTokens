@@ -1,5 +1,5 @@
 "use strict";
-app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routeParams", "InventoryFactory", "ShoppingCartFactory", "PromoCodeFactory", function($scope, $route, $filter, $routeParams, InventoryFactory, ShoppingCartFactory, PromoCodeFactory) {
+app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routeParams", "InventoryFactory", "ShoppingCartFactory", "PromoCodeFactory", "BlockFactory", function($scope, $route, $filter, $routeParams, InventoryFactory, ShoppingCartFactory, PromoCodeFactory, BlockFactory) {
     $scope.title = 'Order Fresh Beans to your Door!';
     $scope.sales_category = [
                              {name: "OrderBeans", text: "Roast Me Some New Beans ", icon: "glyphicon glyphicon-list-alt"},
@@ -16,6 +16,67 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
     $scope.Samplers = [{sku: "S0001", name: "Sampler", msg: "A variety Pack - an economical pot a day for the workweek. Variety of roast types, Variety of origins.", price: 10.10 }];
     $scope.subscription_inventory = [{sku: "SUB001", duration: "weekly", name: "Weekly Subscription", msg: "Fresh roasted by the pound to perfection and delivered weekly!" },
                                      {sku: "SUB002", duration: "monthly", name: "Monthly Subscription", msg: "Fresh roasted by the pound to perfection and delivered monthly!" }]
+    $scope.cur_alm = {};
+    $scope.loadTheBlock = async function () {
+       const web3 = window.web3;
+       $scope.AngelTokenjson = await BlockFactory.FetchTokenJSON();
+       $scope.account = await web3.eth.getAccounts().then(function(accounts){return accounts[0];});
+       $scope.display_account = $scope.account.toString().substring(0,4) + "   ....   " + $scope.account.toString().substring($scope.account.toString().length - 4);
+       $scope.AngelTokenContract = await web3.eth.net.getId().then(function(net_id){
+          if($scope.AngelTokenjson.networks[net_id]) {
+            var c = new web3.eth.Contract($scope.AngelTokenjson.abi,$scope.AngelTokenjson.networks[net_id].address);
+           return c;
+         }else{return $window.alert("Smart contract not connected to selected network.")}
+        });
+       $scope.blockNum = await web3.eth.getBlockNumber();
+       $scope.totalAlms = await $scope.AngelTokenContract.methods.getAlmsLength().call().then((len) => {return len;});
+       $scope.AngelTokens = await $scope.fetchAlms();
+       $scope.progress = 48;
+       $scope.tokens_sold = 487;
+       document.getElementById("progress").style.width = $scope.progress + '%';
+       document.getElementById("progress").innerHTML = $scope.tokens_sold + ' tokens sold';
+
+       $scope.$digest();
+    }
+    $scope.fetchAlms = async function () {
+        var alm = {};
+        var AngelTokens = [];
+        $scope.cur_alm.mint_date = 0;
+        for (var i = 1; i <= $scope.totalAlms; i++) {
+          // load alms
+          await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
+            var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'uint256', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
+            var mint_date = new Date(mint_str[1].substring(2,4) + '/' + mint_str[1].substring(0,2) + '/' + mint_str[1].substring(4,8));
+            console.log(mint_date);
+            if(mint_date > $scope.cur_alm.mint_date ){
+              $scope.cur_alm = alm;
+              console.log($scope.cur_alm);
+              $scope.cur_alm.img = "./css/tokenfront.png";
+              console.log($scope.cur_alm.img);
+            }
+
+            if($scope.account == alm.owner){
+              var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
+              alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
+              alm.num_issued = mint_str[0];
+              alm.cost = mint_str[2];
+              alm.angel_coefficient = mint_str[3];
+              alm.status = mint_str[4];
+              alm.product = mint_str[5];
+              alm.bal = await $scope.AngelTokenContract.methods.balanceOf($scope.account,alm.id).call()
+              if(alm.status == 1) {alm.status = "waiting...";
+              }else if(alm.status == 2) {alm.status = "executed...";
+              }else if(alm.status == 3) {alm.status = "shipped...";
+              }else if(alm.status == 4) {alm.status = "fulfilled...";
+              }else{alm.status = "no status";}
+              AngelTokens[i-1] = alm;
+            }else{
+              // Chest Empty - no tokens owned
+            }
+          });
+        };
+        return AngelTokens;
+      }
     $scope.cart = ShoppingCartFactory.cart;
     $scope.cart_length = $scope.cart.items.length;
     $scope.last_cart_item = ShoppingCartFactory.cart.items[$scope.cart_length-1];

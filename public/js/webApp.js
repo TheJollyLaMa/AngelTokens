@@ -8,6 +8,10 @@ app.config([
       controller: "StoreFrontController",
       templateUrl: "StoreFront/Store_Front.html"
     })
+    .when("/BehindTheCounter/Manifest_Tokens", {
+      controller: "BehindTheCounterController",
+      templateUrl: "BehindTheCounter/manifest_tokens.html"
+    })
     .when("/AngelsRoom", {
       controller: "AngelsRoomController",
       templateUrl: "AngelsRoom/angels_room.html"
@@ -35,6 +39,10 @@ app.config([
     .when("/StoreFront", {
       controller: "StoreFrontController",
       templateUrl: "StoreFront/Store_Front.html"
+    })
+    .when("/StoreFront/about_store_front", {
+      controller: "StoreFrontController",
+      templateUrl: "StoreFront/about_store_front.html"
     })
     .when("/Store_Front/OrderBeans", {
       controller: "StoreFrontController",
@@ -68,4 +76,14 @@ app.directive("shoppingcart",function(){
     restrict:"E",
     templateUrl:"Store_Front/ShoppingCart.html"
   }
+app.directive('progress', function(){
+    return function(scope, element, attrs){
+        attrs.$observe('backImg', function(value) {
+            console.log(value);
+            element.css({
+                'width': $scope.progress
+            });
+        });
+    };
+});
 });

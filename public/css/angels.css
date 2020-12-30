@@ -1,3 +1,13 @@
+input {
+  text-align: center;
+}
+.progress-wrapper {
+  align: center;
+  display: inline-block;
+  width: 70%;
+
+}
+
 .the_story {
   background-color: #FAFAC8;
   color: #1BB3B6;
@@ -7,8 +17,8 @@
 }
 
 .token_pouch {
-  margin: 20px;
-  padding: 20px;
+  margin: 2px;
+  padding: 2px;
 }
 .eth_bal {
   margin: 100px;
