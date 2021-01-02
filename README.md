@@ -159,10 +159,10 @@
 <hr/>
 <hr/>
 <div>
-    <p align="center"><img align="center" height="200px" src="./public/ipfs.png"></p>
+    <p align="center"><img align="center" height="200px" src="./public/IPFS_Logo.png"></p>
     <p align="center"><img align="left" height="200px" src="./public/solidity.png">
         ------- Immutable Backend -------<img align="right" height="200px" src="./public/ethereum.jpg">
-    <p align="center">Solidity Contract on Ethereum</p>
+    <p align="center">Solidity Contract on Ethereum w/ IPFS</p>
     <p align="center">""The Angel Offering""</p>
     <p align="center">_________________________</p>
 
