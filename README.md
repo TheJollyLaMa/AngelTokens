@@ -159,6 +159,7 @@
 <hr/>
 <hr/>
 <div>
+    <p align="center"><img align="center" height="200px" src="./public/ipfs.png"></p>
     <p align="center"><img align="left" height="200px" src="./public/solidity.png">
         ------- Immutable Backend -------<img align="right" height="200px" src="./public/ethereum.jpg">
     <p align="center">Solidity Contract on Ethereum</p>
