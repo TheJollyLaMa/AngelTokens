@@ -49,8 +49,8 @@
     <p>Now, Go Be an Angel!</p>
     <p>The Jolly LaMa</p>
     <p>
-    P.S. - Shameless plug: If fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
-    Caffeine LaManna</a> to give be a Sprite and give alms to <img height="55px" src="./public/css/tokenfront.png"> Caffeine LaManna's Angel Token
+    P.S. - Shameless plug: If your in the U.S. and fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
+    Caffeine LaManna</a> to be a Sweet Sprite and check out <img height="55px" src="./public/css/tokenfront.png"> Caffeine LaManna's Angel Token
     <img height="55px" src="./public/css/tokenfront.png"> - The 
     first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally!
     </p>
