@@ -1,5 +1,5 @@
 <div>
-    <p align="center"><img src="./angelL.png"><img src="./ATEth_Logo.png"><img src="./angelR.png"></p>
+    <p align="center"><img src="./public/angelL.png"><img src="./public/ATEth_Logo.png"><img src="./public/angelR.png"></p>
     <p align="center">✨✨✨Connecting Angels to their respective Spectacular Entrepreneurial Spirits✨✨✨</p>
     <p align="center">✨✨✨since <em>2020!</em>✨✨✨</p>
 </div>  
@@ -50,16 +50,16 @@
     <p>The Jolly LaMa</p>
     <p>
     P.S. - Shameless plug: If fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
-    Caffeine LaManna</a> to give be a Sprite and give alms to <img height="55px" src="./css/tokenfront.png"> Caffeine LaManna's Angel Token
-    <img height="55px" src="./css/tokenfront.png"> - The 
+    Caffeine LaManna</a> to give be a Sprite and give alms to <img height="55px" src="./public/css/tokenfront.png"> Caffeine LaManna's Angel Token
+    <img height="55px" src="./public/css/tokenfront.png"> - The 
     first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally!
     </p>
 </div>
 <br/>
 <br/>
 <div>
-    <p align="center"><img align="left" height="200px" src="./angular.svg">
-        ------- Frontend -------<img align="right" height="200px" src="./web3.jpg">
+    <p align="center"><img align="left" height="200px" src="./public/angular.svg">
+        ------- Frontend -------<img align="right" height="200px" src="./public/web3.jpg">
     <p align="center">AngularJs with Web3 GUI</p>
     <p align="center">"The Angel Room"</p>
     <p align="center">_________________________</p>
@@ -159,8 +159,8 @@
 <hr/>
 <hr/>
 <div>
-    <p align="center"><img align="left" height="200px" src="./solidity.png">
-        ------- Immutable Backend -------<img align="right" height="200px" src="./ethereum.jpg">
+    <p align="center"><img align="left" height="200px" src="./public/solidity.png">
+        ------- Immutable Backend -------<img align="right" height="200px" src="./public/ethereum.jpg">
     <p align="center">Solidity Contract on Ethereum</p>
     <p align="center">""The Angel Offering""</p>
     <p align="center">_________________________</p>
