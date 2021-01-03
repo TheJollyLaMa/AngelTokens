@@ -57,9 +57,7 @@
     <p>Shameful P.P.S - There isnt actually an Angel Token yet though it's very close to Earth. Therefore there isnt actually a Caffeine LaManna Token yet.  Jolly made a project too big for his bhuddi and he's looking for a few spiritually capable beings to help it develop into a healthy friend to all!  Can any of you angels out there help make the dream a reality? We could change the coffee buttons to fund any endeavor you'd like.  (Be Kind! Think Twice! And do it for Greta!) 
 If you need any help setting up the development environment, just create an issue and/or email me j@caffeinelamanna.com - I guess we'll need a set of instructions to better facilitate collaboration. Also, if anybody reading this doesn't EVER put on the coder's hat, but you have a great idea of how to assist or how the project could assist you, I'd also like to hear that. I imgaine we'll need a good lawyer eventually ;) Somebody is not going to like this, I just don't know who yet ... 
 </p>
-    <p>
-        
-    </p>
+
 </div>
 <br/>
 <br/>
