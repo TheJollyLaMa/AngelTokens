@@ -8,33 +8,38 @@ app.config([
       controller: "StoreFrontController",
       templateUrl: "StoreFront/Store_Front.html"
     })
+    /* resolve to BehindTheCounter only if Wallet Account ($scope.account) belongs to Website Owner or other Authorized Personal*/
     .when("/BehindTheCounter/Manifest_Tokens", {
       controller: "BehindTheCounterController",
       templateUrl: "BehindTheCounter/manifest_tokens.html"
+    })
+    .when("/BehindTheCounter/whats_it_about", {
+      controller: "BehindTheCounterController",
+      templateUrl: "BehindTheCounter/whats_it_about.html"
+    })
+    .when("/BehindTheCounter", {
+       controller: "BehindTheCounterController",
+       templateUrl: "BehindTheCounter/behind_the_counter.html"
     })
     .when("/AngelsRoom", {
       controller: "AngelsRoomController",
       templateUrl: "AngelsRoom/angels_room.html"
     })
-    .when("/AngelsRoom/whats_it_about", {
-      controller: "AngelsRoomController",
-      templateUrl: "AngelsRoom/whats_it_all.html"
-    })
     .when("/AngelsRoom/last_round", {
-      controller: "AngelsRoomController",
+      controller: "StoreFrontController",
       templateUrl: "AngelsRoom/last_round.html"
     })
+    .when("/AngelsRoom/this_round", {
+      controller: "StoreFrontController",
+      templateUrl: "AngelsRoom/this_round.html"
+    })
     .when("/AngelsRoom/next_round", {
-      controller: "AngelsRoomController",
+      controller: "StoreFrontController",
       templateUrl: "AngelsRoom/next_round.html"
     })
     .when("/treasure_chest", {
       controller: "AngelsRoomController",
       templateUrl: "treasure_chest/token_manifest.html"
-    })
-    .when("/BehindTheCounter", {
-       controller: "BehindTheCounterController",
-       templateUrl: "BehindTheCounter/behind_the_counter.html"
     })
     .when("/StoreFront", {
       controller: "StoreFrontController",
@@ -75,15 +80,4 @@ app.directive("shoppingcart",function(){
     replace:!0,
     restrict:"E",
     templateUrl:"Store_Front/ShoppingCart.html"
-  }
-app.directive('progress', function(){
-    return function(scope, element, attrs){
-        attrs.$observe('backImg', function(value) {
-            console.log(value);
-            element.css({
-                'width': $scope.progress
-            });
-        });
-    };
-});
-});
+  };});

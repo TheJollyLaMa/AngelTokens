@@ -1,9 +1,9 @@
 <div class="angelsroom" ng-controller="StoreFrontController" ng-init="loadTheBlock()">
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand px-3" href="http://localhost:3000/public/#!/StoreFront" target="_blank" rel="noopener noreferrer">
+    <a class="navbar-brand px-3" href="/public/#!/StoreFront" target="_blank" rel="noopener noreferrer">
       Store Front</a>
-      <a class="last_rnd" href="/public/#!/AngelsRoom/last_rnd" style="text-decoration:none;"><h1><</h1></a>
-      <a class="whats_it" align="center" href="/public/#!/AngelsRoom/whats_it_about" style="text-decoration:none;"><h1>?</h1></a>
+      <a class="last_rnd" href="/public/#!/AngelsRoom/last_round" style="text-decoration:none;"><h1><</h1></a>
+      <a class="whats_it" align="center" href="/public/#!/AngelsRoom/this_round" style="text-decoration:none;"><h1>?</h1></a>
       <a class="next_rnd" href="/public/#!/AngelsRoom/next_round" style="text-decoration:none;"><h1>></h1></a>
     <ul class="navbar-nav px-3">
        <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
@@ -47,9 +47,12 @@
     </div>
   </div>
   <br/>
-  <div id="newtokesbtndiv" align="center">
-    <input id="newtokesbutton" type='submit' class='btn btn-block btn-primary' value='Buy' />
-  </div>
+  <form ng-submit="buy_alms(amt_to_buy)">
+    <input type='number' class="buy_counter form_table" placeholder="0" ng-model="amt_to_buy"/>
+    <div id="newtokesbtndiv" align="center" class="form_table">
+      <input id="newtokesbutton" type='submit' class='btn btn-block btn-primary' value='Buy'/>
+    </div>
+  </form>
   <br/>
   <hr/>
   <div>
@@ -77,6 +80,7 @@
         </div>
       </div>
   </div></div>
+  <hr/>
   <div class="eth_bal">
     <div class="container-fluid mt-5">
       <div><a href="https://www.google.com/search?q=eth+to+dollars&rlz=1C5CHFA_enUS926US926&oq=eth+to+dollars&aqs=chrome..69i57j0i22i30l4.3528j1j7&sourceid=chrome&ie=UTF-8" target="_blank">Google Eth To Dollar Converter</a></div>

@@ -41,7 +41,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
            alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
            console.log(alm.uri);
            // console.log(alm.mint_data);
-           var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'uint256', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
+           var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
            console.log(mint_str);
            alm.num_issued = mint_str[0];
            alm.mint_date = mint_str[1];
@@ -78,8 +78,8 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
        // $scope.lastmintData = await web3.eth.abi.decodeParameters('string',MintDataEvent[0]);
        // console.log($scope.lastmintData);
        // $http.post(uri, ManifestEvent[0]);
+       $scope.$digest();
      });
-     $scope.$digest();
    }
 
   $scope.getBalance = function () {
@@ -259,3 +259,11 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
         return '';
   }
 }]);
+app.directive("followme",function(){
+  return{
+    data:{stock:"=",action:"&"},
+    controller:"BehindTheCounterController",
+    replace:!0,
+    restrict:"E",
+    templateUrl:"BehindTheCounter/followme.html"
+  };});

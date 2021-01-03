@@ -10,7 +10,9 @@ app.use('/abis/AngelToken.json', express.static('abis/AngelToken.json'));
 app.use('/public/index.html', express.static('public/index.html'));
 app.use('/public/StoreFront/store_front.html', express.static('public/StoreFront/store_front.html'));
 app.use('/public/StoreFront/ShoppingCart.html', express.static('public/StoreFront/ShoppingCart.html'));
-app.use('/public/AngelsRoom/angels_room.html', express.static('public/StoreFront/angels_room.html'));
+app.use('/public/AngelsRoom/angels_room.html', express.static('public/AngelsRoom/angels_room.html'));
+app.use('/public/AngelsRoom/this_round.html.html', express.static('public/AngelsRoom/this_round.html'));
+app.use('/public/BehindTheCounter/whats_it_about.html', express.static('public/BehindTheCounter/whats_it_about.html'));
 
 router.all('/', function (req, res, next) {
   var file = 'public/index.html';

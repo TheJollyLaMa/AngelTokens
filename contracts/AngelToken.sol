@@ -35,7 +35,7 @@ contract AngelToken is ERC1155{
     string memory _ename, // endeavor name
      string memory _esym,  // endeavor symbol
       uint256 _num_to_issue,
-       uint256 _mint_date,
+       string memory _mint_date,
         uint256 _cost,
          uint256 _angel_coefficient,
            string memory _product
@@ -49,7 +49,7 @@ contract AngelToken is ERC1155{
       string memory _ename,
        string memory _esym,
         uint256 _num_to_issue,
-         uint256 _mint_date,
+         string memory _mint_date,
           uint256 _cost,
            uint256 _angel_coefficient,
             string memory _product
@@ -81,6 +81,11 @@ contract AngelToken is ERC1155{
                     new_alm.mint_data
                      );
 
+  }
+  function buyAlms(address _owner, uint256 _id, uint256 _amount, bytes memory _data) public {
+      require(msg.sender != _owner);
+      /* setApprovalForAll(msg.sender, true); */
+      safeTransferFrom(_owner, msg.sender, _id, _amount, _data);
   }
   function getAlmsLength() public view returns(uint256){
     return alms.length;

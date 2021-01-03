@@ -7,7 +7,15 @@ input {
   width: 70%;
 
 }
-
+.buy_counter {
+  background-color: #1BB3B6;
+  color: #FAFAC8;
+  width: 10%;
+  border: none;
+}
+.buy_counter::placeholder {
+  color: #FAFAC8;
+}
 .the_story {
   background-color: #FAFAC8;
   color: #1BB3B6;
@@ -23,6 +31,24 @@ input {
 .eth_bal {
   margin: 100px;
   padding: 100px;
+}
+.foxie {
+  height: 35px;
+  width: 35px;
+  background-image: url('../Foxie.png');
+  background-color: transparent;
+  background-position: center;
+  background-size: 35px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.foxie_mov {
+  background: #202123;
+  text-align: center;
+  color: white;
+  font-family: roboto;
+  height:140px;
+  overflow: visible;
 }
 .angelsroom {
   /* padding-top: 65px; */
@@ -72,4 +98,7 @@ input {
   background-repeat: no-repeat;
   color: #1BB3B6;
   cursor: pointer;
+}
+.img_spacer {
+  margin: 10px;
 }
