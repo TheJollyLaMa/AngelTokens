@@ -1,11 +1,16 @@
 const AngelToken = artifacts.require("AngelToken");
 
 module.exports = function(deployer) {
+  var date = new Date("01/01/2021").toLocaleDateString('en-US', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
   const original_alm = {
     endeavor_name: "Caffeine LaManna Seed",
     endeavor_symbol : "CafLaM",
     issue_num : 1000,
-    mint_date : new Date("01/01/2021"),
+    mint_date : date,
     cost : 10,
     angel_coefficient : 0005,
     product : "1/2lb whole bean roasted coffee"

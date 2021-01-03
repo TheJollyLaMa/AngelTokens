@@ -39,22 +39,35 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
     $scope.fetchAlms = async function () {
         var alm = {};
         var AngelTokens = [];
-        $scope.cur_alm.mint_date = new Date("01/01/2000");
+        $scope.cur_alm.mint_date = new Date("01/01/2000").toLocaleDateString('en-US', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+        });
         for (var i = 1; i <= $scope.totalAlms; i++) {
           // load alms
           await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
             var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
-            var mint_date = new Date(mint_str[1].substring(2,4) + '/' + mint_str[1].substring(0,2) + '/' + mint_str[1].substring(4,8));
-            console.log(mint_str);
-            if(mint_date > $scope.cur_alm.mint_date){
+            var mint_date = new Date(mint_str[1].substring(0,10)).toLocaleDateString('en-US', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            });// + '/' + mint_str[1].substring(0,2) + '/' + mint_str[1].substring(4,8));
+            console.log(mint_date);
+
+            if(mint_date >= $scope.cur_alm.mint_date){
               $scope.cur_alm = alm;
               $scope.cur_alm.img = "./css/tokenfront.png";
+              var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
+              alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
               $scope.cur_alm.num_issued = mint_str[0];
-              $scope.cur_alm.mint_date = mint_date;
               $scope.cur_alm.mint_data = alm.mint_data;
+              $scope.cur_alm.cost = mint_str[2];
+              $scope.cur_alm.angel_coefficient = mint_str[3];
+              $scope.cur_alm.status = mint_str[4];
+              $scope.cur_alm.product = mint_str[5];
               $scope.cur_alm.Angels_Balance = await $scope.AngelTokenContract.methods.balanceOf($scope.cur_alm.owner, $scope.cur_alm.id).call();
               $scope.cur_alm.tokens_sold = $scope.cur_alm.num_issued - $scope.cur_alm.Angels_Balance;
-              console.log($scope.cur_alm.tokens_sold);
               $scope.cur_alm.progress = $scope.cur_alm.tokens_sold/$scope.cur_alm.num_issued * 100 ;
             }else{$scope.cur_alm = alm;$scope.cur_alm.img = "./css/tokenfront.png";}
 
@@ -73,10 +86,13 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
               }else if(alm.status == 3) {alm.status = "shipped...";
               }else if(alm.status == 4) {alm.status = "fulfilled...";
               }else{alm.status = "no status";}
+              console.log(mint_str);
               AngelTokens[i-1] = alm;
+
             }else{
               // Chest Empty - no tokens owned
             }
+
           });
         };
         return AngelTokens;
