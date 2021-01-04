@@ -31,9 +31,11 @@ all transactions will go to the public ledger, viewable on etherscan by anyone w
 if you keep your venture small, efficient, and close to home, you'll have better luck and we'll all be better off.
 if you make some tokens and clone the site, let me know!  I want to see what everybody is creating with the Angels in their life!
 
+### Step 7: The Sweets
 
 if you want to play with the solidity contracts you'll need truffle: `npm install -g truffle`
 
+and ganache: https://www.trufflesuite.com/ganache
 
 
 
