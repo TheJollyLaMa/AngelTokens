@@ -1,3 +1,31 @@
+
+install git
+install node
+node install npm
+
+git clone https://github.com/JollyLaMa/AngelTokens /AngelTokensOnYourComputer
+
+npm install
+
+node express_server.js
+
+should say "Angel Tokens appearing in Heaven on port 3000!"
+
+open a chrome browser. the Angel Token Manifestation Form can be found at http://localhost:3000/public/
+download metamask and create or import a wallet. Say Hello Crypto! welcome to the free world.
+
+connect metamask to the Ethereum mainnet with your wallet
+
+should see account displayed in upper right corner to let you know your wallet is connected
+
+make tokens, purchase tokens, be happy. everyone likes tokens.
+
+if you mint your own tokens, you can branch this repository, copy all the code, change the buttons to represent your product, and sell your angel tokens in your personal bubble to raise funds for your own venture.
+all transactions will go to the public ledger, viewable on etherscan by anyone who clones the repo - as well as other existing and future marketplaces!
+if you keep your venture small, efficient, and close to home, you'll have better luck and we'll all be better off.
+if you make some tokens and clone the site, let me know!  I want to see what everybody is creating with the Angels in their life!
+
+
 // bool isClosed = false; --> closes when all tokens are finally bought
 // bool first_rnd = true;
 // const _estShipping = 0.35;

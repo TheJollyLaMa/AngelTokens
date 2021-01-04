@@ -48,10 +48,11 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
           // load alms
           await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
             var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
+            console.log(alm.mint_data);
             var mint_date = new Date(mint_str[1].substring(0,10)).toLocaleDateString('en-US', {
               day: '2-digit',
               month: '2-digit',
-              year: 'numeric',
+              year: 'numeric'
             });// + '/' + mint_str[1].substring(0,2) + '/' + mint_str[1].substring(4,8));
             console.log(mint_date);
 
@@ -97,10 +98,19 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
         };
         return AngelTokens;
     }
+
     $scope.buy_alms = function (amt_to_buy) {
-      console.log($scope.account)
-        $scope.AngelTokenContract.methods.buyAlms($scope.cur_alm.owner,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data).send({ from: $scope.account });
+      console.log($scope.cur_alm.owner);      console.log($scope.cur_alm.mint_data);
+      console.log($scope.cur_alm.id);      console.log($scope.account);
+      console.log(amt_to_buy);
+
+      try{
+        $scope.AngelTokenContract.methods.safeTransferFrom($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data).send({ from: $scope.account });
+      }catch(error){
+        console.log(error);
+      }
     }
+
     $scope.cart = ShoppingCartFactory.cart;
     $scope.cart_length = $scope.cart.items.length;
     $scope.last_cart_item = ShoppingCartFactory.cart.items[$scope.cart_length-1];

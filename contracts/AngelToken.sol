@@ -80,13 +80,12 @@ contract AngelToken is ERC1155{
                    new_alm.id,
                     new_alm.mint_data
                      );
+  }
 
-  }
-  function buyAlms(address _owner, uint256 _id, uint256 _amount, bytes memory _data) public {
-      require(msg.sender != _owner);
-      /* setApprovalForAll(msg.sender, true); */
-      safeTransferFrom(_owner, msg.sender, _id, _amount, _data);
-  }
+  /* function buyAlms(address _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data) public {
+      safeTransferFrom(_owner, _buyer, _id, _amount, _data);
+  } */
+
   function getAlmsLength() public view returns(uint256){
     return alms.length;
   }
