@@ -13,7 +13,7 @@ https://nodejs.org/en/download/
 ### Step 5: Start the Local Express Server
 node express_server.js
 Your terminal should say "Angel Tokens appearing in Heaven on port 3000!"
-Now open a chrome browser. The Angel Token Manifestation Form can be found at `http://localhost:3000/public/`
+Now open a chrome browser. The Angel Token Manifestation Form can be found at http://localhost:3000/public/
 
 ### Step 6: Invite the Fox
 https://metamask.io
@@ -31,7 +31,7 @@ if you keep your venture small, efficient, and close to home, you'll have better
 if you make some tokens and clone the site, let me know!  I want to see what everybody is creating with the Angels in their life!
 
 
-if you want to play with the solidity contracts you'll need truffle: npm install -g truffle
+if you want to play with the solidity contracts you'll need truffle: `npm install -g truffle`
 
 
 
