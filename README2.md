@@ -1,29 +1,40 @@
+### Step 1: Install Git
+https://github.com/git-guides/install-git
 
-install git
-install node
-node install npm
+### Step 2: Install Node.js
+https://nodejs.org/en/download/
 
-git clone https://github.com/JollyLaMa/AngelTokens /AngelTokensOnYourComputer
+### Step 3: Clone the Repo
+`git clone https://github.com/JollyLaMa/AngelTokens /AngelTokensOnYourComputer`
 
-npm install
+### Step 4: Install Accompanying Packages
+`npm install`
 
+### Step 5: Start the Local Express Server
 node express_server.js
+Your terminal should say "Angel Tokens appearing in Heaven on port 3000!"
+Now open a chrome browser. The Angel Token Manifestation Form can be found at `http://localhost:3000/public/`
 
-should say "Angel Tokens appearing in Heaven on port 3000!"
-
-open a chrome browser. the Angel Token Manifestation Form can be found at http://localhost:3000/public/
+### Step 6: Invite the Fox
+https://metamask.io
 download metamask and create or import a wallet. Say Hello Crypto! welcome to the free world.
 
-connect metamask to the Ethereum mainnet with your wallet
+Connect metamask to the appropriate net (test-nets while we test for now) with your wallet
 
-should see account displayed in upper right corner to let you know your wallet is connected
+You should see your account displayed in the upper right corner to let you know your wallet is connected.
 
-make tokens, purchase tokens, be happy. everyone likes tokens.
+make tokens, purchase tokens, rejoice. everyone likes tokens.
 
 if you mint your own tokens, you can branch this repository, copy all the code, change the buttons to represent your product, and sell your angel tokens in your personal bubble to raise funds for your own venture.
-all transactions will go to the public ledger, viewable on etherscan by anyone who clones the repo - as well as other existing and future marketplaces!
+all transactions will go to the public ledger, viewable on etherscan by anyone who clones the repo and reuses the contract - as well as other existing and future marketplaces!
 if you keep your venture small, efficient, and close to home, you'll have better luck and we'll all be better off.
 if you make some tokens and clone the site, let me know!  I want to see what everybody is creating with the Angels in their life!
+
+
+if you want to play with the solidity contracts you'll need truffle: npm install -g truffle
+
+
+
 
 
 // bool isClosed = false; --> closes when all tokens are finally bought
