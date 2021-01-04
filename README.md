@@ -11,16 +11,16 @@
         The Earthlings are in need of assistance.  They all have riches they sit on, but due to the Curse of Babel,
         they have lost the way of comfort and harmony.  They are naturally connected, but have forgetten their connection.
         Communication has become noisy and incoherent. Trust is at an all time low.  They have forgotten how to enjoy even
-        the simplest things.  Like clean water and fresh air, the matter of Gravity, and Fire. They have forgetten the ways
+        the simplest things - like clean water and fresh air, the matter of Gravity, and Fire. They have forgetten the ways
         to enjoy them. They have forgotten their infinite dynamic nature! And worse still, they have forgetten why they
-        should even endeavor at all.
+        should even endeavor at all.  Fear and mistrust are rampant, even among such abundance!
     </p>    
     <p>
         We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/ATEth_Logo.png">
         that we can make the world a better place.  We know that you remember how
-        to use the Ether <img height="35px" src="./public/ethereum.jpg">!  We also know that you are sitting on a pile of riches! Yes,
+        to use the Ether <img height="35px" src="./public/ethereum.jpg"> from a past life!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no
-        one can read the road signs so no one knows where to go or how to get there.  They all just spend their days griping
+        one can read the road signs so no one knows where to go or how to get there .  They all just spend their days griping
         and crumbling about at each other incoherently in general dis-ease. Listen to me....  It's even starting to overcome The Jolly LaMa! We
         better hurry!
     <p/>
