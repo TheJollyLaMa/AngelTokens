@@ -49,17 +49,12 @@
     <p>Now, Go Be an Angel! Check out the README2.md to create a portal through Heaven into the AngelToken Manifestation Room on your own machine - that's where new tokens are minted upon request from Angels deploying on Endeavors.</p>
 
     <p>The Jolly LaMa</p>
-    <p>
-    P.S. - Shameless plug: If you're in the U.S. and fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
+   <p>P.S. - Shameless plug: If you're in the U.S. and fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
     Caffeine LaManna</a> to be a Sweet Sprite and check out <img height="55px" src="./public/css/tokenfront.png"> Caffeine LaManna's Angel Token
-    <img height="55px" src="./public/css/tokenfront.png"> - The first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally! The general plan would be to dedicate a few Full Roast weeks toward deleveraging the startup costs (roaster, webdev, insurance).  So basically a crowdfund!  It's a pretty lean way of bettering the lives of those around you as well as your own through tight knit circles of entrepreneurial people sharing the skills they've perfected and inherited. Plus, you get a sweet little token viewable from anywhere in the world on a decentralized database and held in your own encrypted wallet to memorialize your involvment!  
-    </p>
-    <p>
-    Shameful P.P.S - There isnt actually an Angel Token yet though it's very close to Earth. Therefore there isnt actually a Caffeine LaManna Token yet.  Jolly made a project too big for his bhuddi and he's looking for a few spiritually capable beings to help it develop into a healthy friend to all!  Can any of you angels out there help make the dream a reality? We could change the coffee buttons to fund any endeavor you'd like.  (Be Kind! Think Twice! And do it for Greta!)
-    </p>
-    <p>
-If you need any help setting up the development environment, just create an issue and/or email me j@caffeinelamanna.com - I guess we'll need a set of instructions to better facilitate collaboration. Also, if anybody reading this doesn't EVER put on the coder's hat, but you have a great idea of how to assist or how the project could assist you, I'd also like to hear that. I imgaine we'll need a good lawyer eventually ;) Somebody is not going to like this, I just don't know who yet ... 
-</p>
+    <img height="55px" src="./public/css/tokenfront.png"> - The first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally! The general plan would be to dedicate a few Full Roast weeks toward deleveraging the startup costs (roaster, webdev, insurance).  So basically a crowdfund!  It's a pretty lean way of bettering the lives of those around you as well as your own through tight knit circles of entrepreneurial people sharing the skills they've perfected and inherited. Plus, you get a sweet little token viewable from anywhere in the world on a decentralized database and held in your own encrypted wallet to memorialize your involvment!</p>
+<p>Shameful P.P.S - There isnt actually an Angel Token yet though it's very close to Earth. Therefore there isnt actually a Caffeine LaManna Token yet.  Jolly made a project too big for his bhuddi and he's looking for a few spiritually capable beings to help it develop into a healthy friend to all!  Can any of you angels out there help make the dream a reality? We could change the coffee buttons to fund any endeavor you'd like.  (Be Kind! Think Twice! And do it for Greta!)</p>
+
+<p>If you need any help setting up the development environment, just create an issue and/or email me j@caffeinelamanna.com - I guess we'll need a set of instructions to better facilitate collaboration. Also, if anybody reading this doesn't EVER put on the coder's hat, but you have a great idea of how to assist or how the project could assist you, I'd like to hear that just as well.</p>
 
 </div>
 <br/>
