@@ -58,10 +58,10 @@
   <div>
     <p align="center">Search: <input style="width: 50%;" type='text' class='form-control mb-1' placeholder='id of alm' ng-model="search.alm_id"/>
   </div>
-  Tokens Owned by account:
+  Tokens Owned by Your Connected Account:
   <div class="scroller">
   <div class="flip-container" ng-repeat="alm in AngelTokens">
-    <div class="flipper">
+    <div ng-if="isOwner(alm.owner)" class="flipper">
       <div class="token_front shimmer"></div>
       <div class="token_back">
           <table>

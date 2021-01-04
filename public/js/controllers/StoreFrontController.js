@@ -36,6 +36,12 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
        document.getElementById("progress").innerHTML = $scope.cur_alm.tokens_sold + ' tokens sold';
        $scope.$digest();
     }
+    $scope.isOwner = function (owner) {
+      console.log(owner);
+        if (owner == $scope.account) {
+          return true;
+        }else{ return false;}
+    }
     $scope.fetchAlms = async function () {
         var alm = {};
         var AngelTokens = [];
@@ -55,12 +61,12 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
               year: 'numeric'
             });// + '/' + mint_str[1].substring(0,2) + '/' + mint_str[1].substring(4,8));
             console.log(mint_date);
-
+            //load this alm offering
             if(mint_date >= $scope.cur_alm.mint_date){
               $scope.cur_alm = alm;
               $scope.cur_alm.img = "./css/tokenfront.png";
-              var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
-              alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
+              var cur_alm_uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
+              $scope.cur_alm.uri = cur_alm_uri_str[0] + cur_alm_uri_str[1] + cur_alm_uri_str[2];
               $scope.cur_alm.num_issued = mint_str[0];
               $scope.cur_alm.mint_data = alm.mint_data;
               $scope.cur_alm.cost = mint_str[2];
@@ -73,6 +79,8 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
             }else{$scope.cur_alm = alm;$scope.cur_alm.img = "./css/tokenfront.png";}
 
             if($scope.account == alm.owner){
+              console.log(alm.owner);
+              console.log(alm.uri)
               var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
               alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
               alm.num_issued = mint_str[0];
@@ -89,11 +97,9 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
               }else{alm.status = "no status";}
               console.log(mint_str);
               AngelTokens[i-1] = alm;
-
             }else{
               // Chest Empty - no tokens owned
             }
-
           });
         };
         return AngelTokens;
@@ -103,8 +109,8 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
       console.log($scope.cur_alm.owner);      console.log($scope.cur_alm.mint_data);
       console.log($scope.cur_alm.id);      console.log($scope.account);
       console.log(amt_to_buy);
-
       try{
+        $scope.AngelTokenContract.methods.setApprovalForAll($scope.account,"true").call();
         $scope.AngelTokenContract.methods.safeTransferFrom($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data).send({ from: $scope.account });
       }catch(error){
         console.log(error);
