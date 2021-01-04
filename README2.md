@@ -17,6 +17,7 @@ Now open a chrome browser. The Angel Token Manifestation Form can be found at ht
 
 ### Step 6: Invite the Fox
 https://metamask.io
+
 download metamask and create or import a wallet. Say Hello Crypto! welcome to the free world.
 
 Connect metamask to the appropriate net (test-nets while we test for now) with your wallet
