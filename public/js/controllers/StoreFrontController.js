@@ -81,8 +81,10 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
             if($scope.account == alm.owner){
               console.log(alm.owner);
               console.log(alm.uri)
-              var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
-              alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
+              if(!$scope.isOwner(alm.owner)){
+                var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
+                alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
+              }
               alm.num_issued = mint_str[0];
               alm.mint_date = mint_str[1];
               alm.cost = mint_str[2];

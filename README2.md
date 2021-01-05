@@ -4,18 +4,24 @@ https://github.com/git-guides/install-git
 ### Step 2: Install Node.js
 https://nodejs.org/en/download/
 
-### Step 3: Clone the Repo
+### Step 3: The Sweets
+
+if you want to play with the solidity contracts you'll need truffle: `npm install -g truffle`
+
+and ganache: https://www.trufflesuite.com/ganache
+
+### Step 4: Clone the Repo
 `git clone https://github.com/JollyLaMa/AngelTokens /AngelTokensOnYourComputer`
 
-### Step 4: Install Accompanying Packages
+### Step 5: Install Accompanying Packages
 `npm install`
 
-### Step 5: Start the Local Express Server
+### Step 6: Start the Local Express Server
 node express_server.js
 Your terminal should say "Angel Tokens appearing in Heaven on port 3000!"
 Now open a chrome browser. The Angel Token Manifestation Form can be found at http://localhost:3000/public/
 
-### Step 6: Invite the Fox
+### Step 7: Invite the Fox
 https://metamask.io
 
 download metamask and create or import a wallet. Say Hello Crypto! welcome to the free, decentralized world.
@@ -30,13 +36,6 @@ if you mint your own tokens, you can branch this repository, copy all the code, 
 all transactions will go to the public ledger, viewable on etherscan by anyone who clones the repo and reuses the contract - as well as other existing and future marketplaces!
 if you keep your venture small, efficient, and close to home, you'll have better luck and we'll all be better off.
 if you make some tokens and clone the site, let me know!  I want to see what everybody is creating with the Angels in their life!
-
-### Step 7: The Sweets
-
-if you want to play with the solidity contracts you'll need truffle: `npm install -g truffle`
-
-and ganache: https://www.trufflesuite.com/ganache
-
 
 
 
