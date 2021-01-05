@@ -129,13 +129,16 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
       console.log($scope.cur_alm.owner);console.log($scope.cur_alm.mint_data);
       console.log($scope.cur_alm.id);console.log($scope.account);
       console.log(amt_to_buy);
+      console.log($scope.cur_alm.cost);
       try{
         // await $scope.AngelTokenContract.methods.setApprovalForAll($scope.account, true)
         // .call()
         // .then(async function(x){
         //   console.log(x);
-          await $scope.AngelTokenContract.methods.safeTransferFrom($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data).send({ from: $scope.account });
-        //})
+          await $scope.AngelTokenContract.methods.buyAlms($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data,parseInt($scope.cur_alm.cost)).send({ from: $scope.account, value: web3.utils.toWei(String(parseInt($scope.cur_alm.cost)/1000 * amt_to_buy), "ether")});
+        /*}).once((receipt)=>{
+            await $scope.AngelTokenContract.methods.setApprovalForAll($scope.account, false)
+      })*/
       }catch(error){
         console.log(error);
       }
