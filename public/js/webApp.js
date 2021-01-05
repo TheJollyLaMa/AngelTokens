@@ -21,8 +21,12 @@ app.config([
        controller: "BehindTheCounterController",
        templateUrl: "BehindTheCounter/behind_the_counter.html"
     })
+    .when("/treasure_chest", {
+      controller: "TreasureChestController",
+      templateUrl: "treasure_chest/token_manifest.html"
+    })
     .when("/AngelsRoom", {
-      controller: "AngelsRoomController",
+      controller: "StoreFrontController",
       templateUrl: "AngelsRoom/angels_room.html"
     })
     .when("/AngelsRoom/last_round", {
@@ -36,10 +40,6 @@ app.config([
     .when("/AngelsRoom/next_round", {
       controller: "StoreFrontController",
       templateUrl: "AngelsRoom/next_round.html"
-    })
-    .when("/treasure_chest", {
-      controller: "AngelsRoomController",
-      templateUrl: "treasure_chest/token_manifest.html"
     })
     .when("/StoreFront", {
       controller: "StoreFrontController",

@@ -75,6 +75,13 @@
   font-size: 10px;
   align: center;
 }
+.token-mint-date {
+  font-size: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
 #toke_fro {
   margin: 0px;
   padding: 0px;

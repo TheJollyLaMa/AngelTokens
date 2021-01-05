@@ -1,6 +1,8 @@
 "use strict";
 app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routeParams", "InventoryFactory", "ShoppingCartFactory", "PromoCodeFactory", "BlockFactory", function($scope, $route, $filter, $routeParams, InventoryFactory, ShoppingCartFactory, PromoCodeFactory, BlockFactory) {
     $scope.title = 'Order Fresh Beans to your Door!';
+    $scope.last_round_test = "testing last round data binding";
+    $scope.next_round_test = "testing next round data binding";
     $scope.sales_category = [
                              {name: "OrderBeans", text: "Roast Me Some New Beans ", icon: "glyphicon glyphicon-list-alt"},
                              /*{name: "Sampler", text: "A pot per day for the workweek", icon: "glyphicon glyphicon-tag"},*/
@@ -25,95 +27,115 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
        $scope.display_account = $scope.account.toString().substring(0,4) + "   ....   " + $scope.account.toString().substring($scope.account.toString().length - 4);
        $scope.AngelTokenContract = await web3.eth.net.getId().then(function(net_id){
           if($scope.AngelTokenjson.networks[net_id]) {
-            var c = new web3.eth.Contract($scope.AngelTokenjson.abi,$scope.AngelTokenjson.networks[net_id].address);
+            $scope.AngelTokenContractAddress = $scope.AngelTokenjson.networks[net_id].address;
+            var c = new web3.eth.Contract($scope.AngelTokenjson.abi, $scope.AngelTokenContractAddress);
            return c;
          }else{return $window.alert("Smart contract not connected to selected network.")}
         });
        $scope.blockNum = await web3.eth.getBlockNumber();
        $scope.totalAlms = await $scope.AngelTokenContract.methods.getAlmsLength().call().then((len) => {return len;});
-       $scope.AngelTokens = await $scope.fetchAlms();
+       $scope.CurrentAlm = await $scope.fetchCurrentAlm();
+       $scope.AngelTokens = await $scope.fetchConnectedAccountsAlms();
        document.getElementById("progress").style.width = $scope.cur_alm.progress + '%';
        document.getElementById("progress").innerHTML = $scope.cur_alm.tokens_sold + ' tokens sold';
        $scope.$digest();
     }
-    $scope.isOwner = function (owner) {
-      console.log(owner);
-        if (owner == $scope.account) {
-          return true;
-        }else{ return false;}
+    $scope.has_some_alms = function (account, id) {
+      return $scope.AngelTokenContract.methods.balanceOf(account,id).call();
     }
-    $scope.fetchAlms = async function () {
-        var alm = {};
-        var AngelTokens = [];
-        $scope.cur_alm.mint_date = new Date("01/01/2000").toLocaleDateString('en-US', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric',
+    $scope.fetchCurrentAlm = async function () {
+      var alm = {};
+      $scope.cur_alm.mint_date = new Date("01/01/2000").toLocaleDateString('en-US', {day: '2-digit',month: '2-digit',year: 'numeric'});
+      for (var i = 1; i <= $scope.totalAlms; i++) {
+        await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
+          var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
+          console.log(alm.mint_data);
+          var mint_date = new Date(mint_str[1].substring(0,10)).toLocaleDateString('en-US', {day: '2-digit',month: '2-digit',year: 'numeric'});
+          //load this alm offering
+          if(mint_date >= $scope.cur_alm.mint_date){
+            $scope.cur_alm = alm;
+            $scope.cur_alm.img = "./css/tokenfront.png";
+            var cur_alm_uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
+            $scope.cur_alm.uri = cur_alm_uri_str[0] + cur_alm_uri_str[1] + cur_alm_uri_str[2];
+            $scope.cur_alm.num_issued = mint_str[0];
+            $scope.cur_alm.mint_data = alm.mint_data;
+            $scope.cur_alm.cost = mint_str[2];
+            $scope.cur_alm.angel_coefficient = mint_str[3];
+            $scope.cur_alm.status = mint_str[4];
+            if(alm.status == 1) {alm.status = "waiting...";
+            }else if(alm.status == 2) {alm.status = "executed...";
+            }else if(alm.status == 3) {alm.status = "shipped...";
+            }else if(alm.status == 4) {alm.status = "fulfilled...";
+            }else{alm.status = "no status";}
+            $scope.cur_alm.product = mint_str[5];
+            $scope.cur_alm.Angels_Balance = await $scope.AngelTokenContract.methods.balanceOf($scope.cur_alm.owner, $scope.cur_alm.id).call();
+            $scope.cur_alm.tokens_sold = $scope.cur_alm.num_issued - $scope.cur_alm.Angels_Balance;
+            $scope.cur_alm.progress = $scope.cur_alm.tokens_sold/$scope.cur_alm.num_issued * 100 ;
+            $scope.cur_alm.owner_display = $scope.cur_alm.owner.toString().substring(0,4) + "   ....   " + $scope.cur_alm.owner.toString().substring($scope.cur_alm.owner.toString().length - 4);
+          }else{$scope.cur_alm = alm;$scope.cur_alm.img = "./css/tokenfront.png";}
         });
+      }
+    }
+    $scope.fetchConnectedAccountsAlms = async function () {
+      var alm = {};
+      var AngelTokens = [];
+      console.log($scope.totalAlms);
         for (var i = 1; i <= $scope.totalAlms; i++) {
-          // load alms
+          // load connected alms
           await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
-            var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
-            console.log(alm.mint_data);
-            var mint_date = new Date(mint_str[1].substring(0,10)).toLocaleDateString('en-US', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric'
-            });// + '/' + mint_str[1].substring(0,2) + '/' + mint_str[1].substring(4,8));
-            console.log(mint_date);
-            //load this alm offering
-            if(mint_date >= $scope.cur_alm.mint_date){
-              $scope.cur_alm = alm;
-              $scope.cur_alm.img = "./css/tokenfront.png";
-              var cur_alm_uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
-              $scope.cur_alm.uri = cur_alm_uri_str[0] + cur_alm_uri_str[1] + cur_alm_uri_str[2];
-              $scope.cur_alm.num_issued = mint_str[0];
-              $scope.cur_alm.mint_data = alm.mint_data;
-              $scope.cur_alm.cost = mint_str[2];
-              $scope.cur_alm.angel_coefficient = mint_str[3];
-              $scope.cur_alm.status = mint_str[4];
-              $scope.cur_alm.product = mint_str[5];
-              $scope.cur_alm.Angels_Balance = await $scope.AngelTokenContract.methods.balanceOf($scope.cur_alm.owner, $scope.cur_alm.id).call();
-              $scope.cur_alm.tokens_sold = $scope.cur_alm.num_issued - $scope.cur_alm.Angels_Balance;
-              $scope.cur_alm.progress = $scope.cur_alm.tokens_sold/$scope.cur_alm.num_issued * 100 ;
-            }else{$scope.cur_alm = alm;$scope.cur_alm.img = "./css/tokenfront.png";}
+              await $scope.has_some_alms($scope.account,alm.id).then(async (bal) =>{
+              // if account has alms
+              if(bal){
+                alm.bal = bal;
+                console.log(alm.bal);
+                var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
+                console.log(alm.mint_data);
+                var mint_date = new Date(mint_str[1].substring(0,10)).toLocaleDateString('en-US', {day: '2-digit',month: '2-digit',  year: 'numeric'});
+                console.log(mint_date);
+                console.log(alm.owner);
+                console.log($scope.account);
+                console.log(alm.owner);
+                console.log(alm.uri)
 
-            if($scope.account == alm.owner){
-              console.log(alm.owner);
-              console.log(alm.uri)
-              if(!$scope.isOwner(alm.owner)){
                 var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
                 alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
-              }
-              alm.num_issued = mint_str[0];
-              alm.mint_date = mint_str[1];
-              alm.cost = mint_str[2];
-              alm.angel_coefficient = mint_str[3];
-              alm.status = mint_str[4];
-              alm.product = mint_str[5];
-              alm.bal = await $scope.AngelTokenContract.methods.balanceOf($scope.account,alm.id).call();
-              if(alm.status == 1) {alm.status = "waiting...";
-              }else if(alm.status == 2) {alm.status = "executed...";
-              }else if(alm.status == 3) {alm.status = "shipped...";
-              }else if(alm.status == 4) {alm.status = "fulfilled...";
-              }else{alm.status = "no status";}
-              console.log(mint_str);
-              AngelTokens[i-1] = alm;
-            }else{
-              // Chest Empty - no tokens owned
-            }
-          });
-        };
+
+                alm.num_issued = mint_str[0];
+                console.log(alm.num_issued);
+                alm.mint_date = mint_str[1];
+                alm.cost = mint_str[2];
+                alm.angel_coefficient = mint_str[3];
+                alm.status = mint_str[4];
+                alm.product = mint_str[5];
+                alm.owner_display = alm.owner.toString().substring(0,4) + "   ....   " + alm.owner.toString().substring(alm.owner.toString().length - 4);
+              // alm.bal = await $scope.AngelTokenContract.methods.balanceOf($scope.account,alm.id).call();
+                console.log(alm.bal);
+                if(alm.status == 1) {alm.status = "waiting...";
+                }else if(alm.status == 2) {alm.status = "executed...";
+                }else if(alm.status == 3) {alm.status = "shipped...";
+                }else if(alm.status == 4) {alm.status = "fulfilled...";
+                }else{alm.status = "no status";}
+                AngelTokens[i-1] = alm;
+
+           }
+        });
+      });
         return AngelTokens;
+      };
+
     }
 
-    $scope.buy_alms = function (amt_to_buy) {
-      console.log($scope.cur_alm.owner);      console.log($scope.cur_alm.mint_data);
-      console.log($scope.cur_alm.id);      console.log($scope.account);
+    $scope.buy_alms = async function (amt_to_buy) {
+      console.log($scope.cur_alm.owner);console.log($scope.cur_alm.mint_data);
+      console.log($scope.cur_alm.id);console.log($scope.account);
       console.log(amt_to_buy);
       try{
-        $scope.AngelTokenContract.methods.setApprovalForAll($scope.account,"true").call();
-        $scope.AngelTokenContract.methods.safeTransferFrom($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data).send({ from: $scope.account });
+        // await $scope.AngelTokenContract.methods.setApprovalForAll($scope.account, true)
+        // .call()
+        // .then(async function(x){
+        //   console.log(x);
+          await $scope.AngelTokenContract.methods.safeTransferFrom($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data).send({ from: $scope.account });
+        //})
       }catch(error){
         console.log(error);
       }

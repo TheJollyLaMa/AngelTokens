@@ -1,4 +1,4 @@
-<div class="angelsroom" ng-controller="StoreFrontController" ng-init="loadTheBlock()">
+<div class="angelsroom" ng-controller="StoreFrontController" ng-init="loadTheBlock(); fetchCurrentAlm(); fetchConnectedAccountsAlms();">
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand px-3" href="/public/#!/StoreFront" target="_blank" rel="noopener noreferrer">
       Store Front</a>
@@ -39,6 +39,7 @@
                     <h1 class="token-text">{{cur_alm.cost}}</h1>
                     <h1 class="token-text">0.000{{cur_alm.angel_coefficient}}</h1>
                     <h1 class="token-text">{{cur_alm.mint_date}}</h1>
+                    <h1 class="token-text">{{cur_alm.owner_display}}</h1>
                 </tbody>
                 <tfoot><h1 class="token-text">{{cur_alm.num_issued - cur_alm.tokens_sold}}/{{cur_alm.num_issued}}</h1></tfoot>
              </table>
@@ -61,21 +62,25 @@
   Tokens Owned by Your Connected Account:
   <div class="scroller">
   <div class="flip-container" ng-repeat="alm in AngelTokens">
-    <div ng-if="isOwner(alm.owner)" class="flipper">
-      <div class="token_front shimmer"></div>
+    <div class="flipper">
+      <div class="token_front shimmer">
+        <table>
+          <tfoot><h1 class="token-text">{{alm.mint_date}}</h1></tfoot>
+        </table>
+</div>
       <div class="token_back">
           <table>
               <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
               <tbody>
                   <h1 class="token-text">{{alm.name}}</h1>
-                  <a href="{{alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{alm.uri}}</h1></a>
+                  <h1 class="token-text"><a href="{{alm.uri}}" style="text-decoration: underline; padding: 0px; margin: 0px;" target="_blank" rel="noopener noreferrer">{{alm.uri}}</a></h1>
                   <h1 class="token-text">{{alm.id}} </h1>
                   <h1 class="token-text">{{alm.product}}</h1>
                   <h1 class="token-text">{{alm.cost}}</h1>
                   <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
-                  <h1 class="token-text">{{alm.mint_date}}</h1>
+                  <h1 class="token-text">{{alm.owner_display}}</h1>
               </tbody>
-              <tfoot><h1 class="token-text">{{alm.bal}}/{{alm.num_issued}}</h1></tfoot>
+              <tfoot><h1 class="token-text">{{alm.bal}} / {{alm.num_issued}}</h1></tfoot>
            </table>
         </div>
       </div>

@@ -71,7 +71,6 @@ contract AngelToken is ERC1155{
           map_owner_to_id[msg.sender] = _id;
           /* map_uri_to_Alm[new_uri] = new_alm; */
           _mint(msg.sender, _id, _num_to_issue, mintData);
-
           emit ManifestedAngelToken(
                new_alm.owner,
                 new_alm.uri,
@@ -82,10 +81,10 @@ contract AngelToken is ERC1155{
                      );
   }
 
-  function buyAlms(address _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data) public {
-      setApprovalForAll(_owner, true);//eventually move to whitelist to tighten the exposure
+  /* function buyAlms(address _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data) public {
+      setApprovalForAll(, true);//eventually move to whitelist to tighten the exposure
       safeTransferFrom(_owner, _buyer, _id, _amount, _data);
-  }
+  } */
 
   function getAlmsLength() public view returns(uint256){
     return alms.length;
