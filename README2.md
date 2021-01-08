@@ -30,7 +30,18 @@ Connect metamask to the appropriate net (test-nets while we test for now) with y
 
 You should see your account displayed in the upper right corner to let you know your wallet is connected.
 
-make tokens, purchase tokens, rejoice. everyone likes tokens.
+### Step 8: Mint Tokens
+   #### manifest your own AngelTokens
+    http://localhost:3000/public/#!/BehindTheCounter/Manifest_Tokens
+    tokens are minted to owner and sold in crowdsale contracts
+    each token pays backward a portion of the profits
+   #### purchase tokens to support an endeavor
+    http://localhost:3000/public/#!/AngelsRoom/
+    purchase tokens from the current crowdsale
+    this would be your own store front representing your own product
+    each AngelToken issue is explained on the personalized website with the progress of the crowdsale
+    a supporters tokens are displayed in the angels room when their wallet is connected
+   #### rejoice. everyone likes tokens.
 
 if you mint your own tokens, you can branch this repository, copy all the code, change the buttons to represent your product, and sell your angel tokens in your personal bubble to raise funds for your own venture.
 all transactions will go to the public ledger, viewable on etherscan by anyone who clones the repo and reuses the contract - as well as other existing and future marketplaces!
