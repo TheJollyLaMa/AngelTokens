@@ -40,7 +40,7 @@ contract AngelToken is ERC1155{
          uint256 _angel_coefficient,
            string memory _product
             )
-    ERC1155("http://localhost:3000/")
+    ERC1155("http://localhost:3000/public/#!/treasure_chest/")
       public {
         tokenGenesis(_ename, _esym, _num_to_issue, _mint_date, _cost, _angel_coefficient, _product);
    }

@@ -10,6 +10,7 @@ contract AngelTokenCrowdfund is AngelToken{
   address payable[] public CafLaM_angels_list;
   uint256 last_rnd_id = 0;
   uint256 this_round_id;
+  event CrowdFundComplete(uint256 _id, bool complete);
   constructor(
       string memory _ename, // endeavor name
        string memory _esym,  // endeavor symbol
@@ -19,11 +20,13 @@ contract AngelTokenCrowdfund is AngelToken{
            uint256 _angel_coefficient,
              string memory _product
              )
-  AngelToken(_ename, _esym, _num_to_issue, _mint_date, _cost, _angel_coefficient, _product) public {
-
+  AngelToken(_ename, _esym, _num_to_issue, _mint_date, _cost, _angel_coefficient, _product)
+  ERC1155("http://localhost:3000/public/#!/treasure_chest/")
+    public {
+      tokenGenesis(_ename, _esym, _num_to_issue, _mint_date, _cost, _angel_coefficient, _product);
   }
 
-  function buyAlms(address payable _owner, address payable _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable returns(bool progress){
+  function buyAlms(address payable _owner, address payable _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable {
       require(msg.value >= (cost * _amount));
       //setApprovalForAll(, true);//eventually move to whitelist to tighten the exposure
       require(_owner.send(msg.value)); // replace with deposits to escrow account
@@ -35,9 +38,10 @@ contract AngelTokenCrowdfund is AngelToken{
       /* trigger crowdfund phase 1 execution if all alms are sold */
       if(checkProgress(_owner, _id)){
         crowdfund_execution(_id);
+        emit CrowdFundComplete(_id,true);
       }
       /* pause tokens until next round executes*/
-      return progress;
+
   }
   function checkProgress(address _owner, uint256 _id) private returns(bool complete) {
     if(balanceOf(_owner,_id) == 0){
