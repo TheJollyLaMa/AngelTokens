@@ -135,7 +135,7 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
         // .call()
         // .then(async function(x){
         //   console.log(x);
-          await $scope.AngelTokenContract.methods.buyAlms($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data,parseInt($scope.cur_alm.cost)).send({ from: $scope.account, value: web3.utils.toWei(String(parseInt($scope.cur_alm.cost)/1000 * amt_to_buy), "ether")});
+        await $scope.AngelTokenContract.methods.buyAlms($scope.cur_alm.owner,$scope.account,$scope.cur_alm.id,amt_to_buy,$scope.cur_alm.mint_data,parseInt($scope.cur_alm.cost)).send({ from: $scope.account, value: web3.utils.toWei(String((parseInt($scope.cur_alm.cost)/1000 * amt_to_buy) + 0.001), "ether")}); //0.001 goes to the angel contract - rice for the deities
         /*}).once((receipt)=>{
             await $scope.AngelTokenContract.methods.setApprovalForAll($scope.account, false)
       })*/

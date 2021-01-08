@@ -9,11 +9,11 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 */
 contract AngelToken is ERC1155{
   /* State variables are stored in the blockchain */
+  address public OA = msg.sender;
   mapping(uint256 => bool) public is_on_manifest;
   mapping (address => uint256) public map_owner_to_id;
-  /* mapping (uint256 => Alm) public map_id_to_Alm; */
+  mapping (uint256 => Alm) public map_id_to_Alm;
   mapping (string => Alm) public map_uri_to_Alm;
-
   struct Alm {
     address owner;
      bytes uri;
@@ -69,7 +69,7 @@ contract AngelToken is ERC1155{
           new_alm.mint_data = mintData;
           alms.push(new_alm);
           map_owner_to_id[msg.sender] = _id;
-          /* map_uri_to_Alm[new_uri] = new_alm; */
+          map_id_to_Alm[_id] = new_alm;
           _mint(msg.sender, _id, _num_to_issue, mintData);
           emit ManifestedAngelToken(
                new_alm.owner,
@@ -79,15 +79,18 @@ contract AngelToken is ERC1155{
                    new_alm.id,
                     new_alm.mint_data
                      );
+                     /* address payable oa = OA; */
+                     /* require(oa.send(1/1000)); // rice for the deities whenever a new batch of alms is manifested */
   }
-
-  function buyAlms(address payable _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable {
-      require(msg.value >= cost * _amount);
+  function buyOriginalAlms(address payable _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable{
+      require(balanceOf(_buyer, _id) <= 1, "AngelToken: Only one Original Alm allowed per account!");
+      require(msg.value >= (cost * _amount));
       //setApprovalForAll(, true);//eventually move to whitelist to tighten the exposure
       require(_owner.send(msg.value));
-      safeTransferFrom(_owner, _buyer, _id, _amount, _data);
+      /* address payable oa = OA; */
+      /* require(oa.send(1/10000)); // rice for the deities whenever an alm is bought*/
+      ERC1155.safeTransferFrom(_owner, _buyer, _id, _amount, _data);
   }
-
   function getAlmsLength() public view returns(uint256){
     return alms.length;
   }
