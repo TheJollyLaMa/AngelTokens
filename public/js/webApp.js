@@ -9,6 +9,7 @@ app.config([
       templateUrl: "StoreFront/Store_Front.html"
     })
     /* resolve to BehindTheCounter only if Wallet Account ($scope.account) belongs to Website Owner or other Authorized Personal*/
+    // resolve: {check: function ($location, AuthFactory) {if (!AuthFactory.isUserLoggedIn()) {$location.path('/Store_Front/RoastMeister');}}},
     .when("/BehindTheCounter/Manifest_Tokens", {
       controller: "BehindTheCounterController",
       templateUrl: "BehindTheCounter/manifest_tokens.html"
@@ -43,7 +44,7 @@ app.config([
     })
     .when("/StoreFront", {
       controller: "StoreFrontController",
-      templateUrl: "StoreFront/Store_Front.html"
+      templateUrl: "StoreFront/store_front.html"
     })
     .when("/StoreFront/about_store_front", {
       controller: "StoreFrontController",
@@ -79,5 +80,37 @@ app.directive("shoppingcart",function(){
     controller:"StoreFrontController",
     replace:!0,
     restrict:"E",
-    templateUrl:"Store_Front/ShoppingCart.html"
+    templateUrl:"StoreFront/ShoppingCart.html"
   };});
+app.directive("atnavbarstorefront",function(){
+  return{
+    data:{stock:"=",action:"&"},
+    controller:"StoreFrontController",
+    replace:!0,
+    restrict:"E",
+    templateUrl:"StoreFront/ATNavbarStoreFront.html"
+  };});
+app.directive("atnavbarstorefrontangelsroom",function(){
+  return{
+    data:{stock:"=",action:"&"},
+    controller:"StoreFrontController",
+    replace:!0,
+    restrict:"E",
+    templateUrl:"AngelsRoom/ATNavbarStoreFrontAngelsRoom.html"
+  };});
+app.directive("atnavbarbehindthecounter",function(){
+  return{
+    data:{stock:"=",action:"&"},
+    controller:"BehindTheCounterController",
+    replace:!0,
+    restrict:"E",
+    templateUrl:"BehindTheCounter/ATNavbarBehindTheCounter.html"
+  };});
+app.directive("atnavbarbehindthecountermanifest",function(){
+    return{
+      data:{stock:"=",action:"&"},
+      controller:"BehindTheCounterController",
+      replace:!0,
+      restrict:"E",
+      templateUrl:"BehindTheCounter/ATNavbarBehindTheCounterManifest.html"
+};});

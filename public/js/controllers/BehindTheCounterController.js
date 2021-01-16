@@ -17,22 +17,39 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
     $scope.account = await web3.eth.getAccounts().then(function(accounts){return accounts[0];});
     $scope.display_account = $scope.account.toString().substring(0,4) + "   ....   " + $scope.account.toString().substring($scope.account.toString().length - 4);
     $scope.AngelTokenContract = await web3.eth.net.getId().then(function(net_id){
-       if($scope.AngelTokenjson.networks[net_id]) { console.log($scope.AngelTokenjson.networks[net_id].address);
+       if($scope.AngelTokenjson.networks[net_id]) { console.log("Angel Token Contract Address: " + $scope.AngelTokenjson.networks[net_id].address);
          var c = new web3.eth.Contract($scope.AngelTokenjson.abi,$scope.AngelTokenjson.networks[net_id].address);
         return c;
       }else{return $window.alert("Smart contract not connected to selected network.")}
      });
-    $scope.blockNum = await web3.eth.getBlockNumber();
+    // $scope.blockNum = await web3.eth.getBlockNumber();
     $scope.totalAlms = await $scope.AngelTokenContract.methods.getAlmsLength().call().then((len) => {return len;});
     $scope.AngelTokens = await $scope.fetchAlms();
     $scope.$digest();
-
+    $scope.OAContract();
    }
+   $scope.OAContract = async function () {
+     // const web3 = window.web3;
+     $scope.OAContractjson = await BlockFactory.FetchOAContractJSON();
+     // $scope.account = await web3.eth.getAccounts().then(function(accounts){return accounts[0];});
+     // $scope.display_account = $scope.account.toString().substring(0,4) + "   ....   " + $scope.account.toString().substring($scope.account.toString().length - 4);
+     $scope.OAContract = await web3.eth.net.getId().then(function(net_id){
+        if($scope.OAContractjson.networks[net_id]) { console.log("Angel Token Crowdsale Contract Address: " + $scope.OAContractjson.networks[net_id].address);
+          var c = new web3.eth.Contract($scope.OAContractjson.abi,$scope.OAContractjson.networks[net_id].address);
+         return c;
+       }else{return $window.alert("Smart contract not connected to selected network.")}
+      });
+     $scope.blockNum = await web3.eth.getBlockNumber();
+     // $scope.totalAlms = await $scope.OAContract.methods.getAlmsLength().call().then((len) => {return len;});
+     // $scope.AngelTokens = await $scope.fetchAlms();
+     $scope.$digest();
+
+    }
 
    $scope.fetchAlms = async function () {
      var alm = {};
      var AngelTokens = [];
-     console.log($scope.totalAlms);
+     console.log("Total Angel Tokens Created: " + $scope.totalAlms);
      for (var i = 1; i <= $scope.totalAlms; i++) {
        // load alms
        await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
@@ -49,7 +66,10 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
            alm.angel_coefficient = mint_str[3];
            alm.status = mint_str[4];
            alm.product = mint_str[5];
-           alm.bal = await $scope.AngelTokenContract.methods.balanceOf($scope.account,alm.id).call()
+           console.log(alm.id);
+           console.log($scope.account);
+           alm.bal = await $scope.AngelTokenContract.methods.balanceOf($scope.account,alm.id).call();
+           console.log(alm.bal);
            if(alm.status == 1) {alm.status = "waiting...";
            }else if(alm.status == 2) {alm.status = "executed...";
            }else if(alm.status == 3) {alm.status = "shipped...";
@@ -72,9 +92,9 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
      .once('receipt', async function(receipt) {
        var ManifestEvent = receipt.events.ManifestedAngelToken.returnValues;
        var post_uri = 'http://localhost:3000/token_manifest_event/';
-       console.log(post_uri);
+       console.log(ManifestEvent);
        $scope.new_token_uri = ManifestEvent[1];
-       console.log($scope.new_token_uri);
+       // console.log($scope.new_token_uri);
        // $scope.lastmintData = await web3.eth.abi.decodeParameters('string',MintDataEvent[0]);
        // console.log($scope.lastmintData);
        // $http.post(uri, ManifestEvent[0]);

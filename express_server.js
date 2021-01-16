@@ -7,6 +7,9 @@ app.use(router);
 app.use('/public', express.static('public'));
 
 app.use('/abis/AngelToken.json', express.static('abis/AngelToken.json'));
+app.use('/abis/AngelTokenCrowdFund.json', express.static('abis/AngelTokenCrowdFund.json'));
+app.use('/abis/CafLaMCrowdFund.json', express.static('abis/CafLaMCrowdFund.json'));
+
 app.use('/public/index.html', express.static('public/index.html'));
 app.use('/public/StoreFront/store_front.html', express.static('public/StoreFront/store_front.html'));
 app.use('/public/StoreFront/ShoppingCart.html', express.static('public/StoreFront/ShoppingCart.html'));

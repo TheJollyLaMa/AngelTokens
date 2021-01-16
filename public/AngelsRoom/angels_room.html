@@ -1,16 +1,5 @@
 <div class="angelsroom" ng-controller="StoreFrontController" ng-init="loadTheBlock(); fetchCurrentAlm(); fetchConnectedAccountsAlms();">
-  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand px-3" href="/public/#!/StoreFront" target="_blank" rel="noopener noreferrer">
-      Store Front</a>
-      <a class="last_rnd" href="/public/#!/AngelsRoom/last_round" style="text-decoration:none;"><h1><</h1></a>
-      <a class="whats_it" align="center" href="/public/#!/AngelsRoom/this_round" style="text-decoration:none;"><h1>?</h1></a>
-      <a class="next_rnd" href="/public/#!/AngelsRoom/next_round" style="text-decoration:none;"><h1>></h1></a>
-    <ul class="navbar-nav px-3">
-       <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
-         <small class="text-white"><span id="account">{{display_account}}</span></small>
-       </li>
-    </ul>
-  </nav>
+  <atnavbarstorefrontangelsroom></atnavbarstorefrontangelsroom>
   <div>
     <script>document.getElementById("toke_fro").style.backgroundImage = "url({{cur_alm.img}})";</script>
     <br/>
@@ -56,9 +45,9 @@
   </form>
   <br/>
   <hr/>
-  <div>
+  <!-- <div>
     <p align="center">Search: <input style="width: 50%;" type='text' class='form-control mb-1' placeholder='id of alm' ng-model="search.alm_id"/>
-  </div>
+  </div> -->
   Tokens Owned by Your Connected Account:
   <div class="scroller">
   <div class="flip-container" ng-repeat="alm in AngelTokens">
@@ -67,7 +56,7 @@
         <table>
           <tfoot><h1 class="token-text">{{alm.mint_date}}</h1></tfoot>
         </table>
-</div>
+      </div>
       <div class="token_back">
           <table>
               <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
