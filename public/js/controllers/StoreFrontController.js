@@ -19,7 +19,7 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
     $scope.subscription_inventory = [{sku: "SUB001", duration: "weekly", name: "Weekly Subscription", msg: "Fresh roasted by the pound to perfection and delivered weekly!" },
                                      {sku: "SUB002", duration: "monthly", name: "Monthly Subscription", msg: "Fresh roasted by the pound to perfection and delivered monthly!" }]
     $scope.cur_alm = {};
-    $scope.amt_to_buy = 0;
+    $scope.amt_to_buy = 10;
     $scope.loadTheBlock = async function () {
        const web3 = window.web3;
        $scope.AngelTokenjson = await BlockFactory.FetchTokenJSON();
@@ -47,18 +47,13 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
     }
     $scope.fetchLastAlm = async function () {
       var alm = {};
-      // console.log($scope.totalAlms);
       $scope.last_alm.mint_date = new Date("01/01/2000").toLocaleDateString('en-US', {day: '2-digit',month: '2-digit',year: 'numeric'});
       for (var i = 1; i <= $scope.totalAlms; i++) {
         await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
           var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
-          // console.log(alm.mint_data);
-          // console.log(alm);
           var mint_date = new Date(mint_str[1].substring(0,2)+"/"+mint_str[1].substring(2,4)+"/"+mint_str[1].substring(4,8)).toLocaleDateString('en-US', {day: '2-digit',month: '2-digit',year: 'numeric'});
           console.log(mint_date);
           console.log($scope.last_alm.mint_date);
-          //console.log(mint_date >= $scope.last_alm.mint_date);
-          //load this alm offering
           if(mint_date >= $scope.last_alm.mint_date){
             $scope.last_alm = alm;
             console.log($scope.last_alm);
@@ -133,13 +128,10 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
     $scope.fetchConnectedAccountsAlms = async function () {
       var alm = {};
       var AngelTokens = [];
-      // console.log($scope.totalAlms);
         for (var i = 1; i <= $scope.totalAlms; i++) {
           // load connected alms
           await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
             await $scope.has_some_alms($scope.account,alm.id).then(async (bal) =>{
-              // if account has alms
-              console.log(bal);
 
               if(bal){
                 alm.bal = bal;
@@ -148,9 +140,7 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
                 var mint_date = String(mint_str[1].substring(0,10));
                 var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
                 alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
-
                 alm.num_issued = mint_str[0];
-          //      console.log(alm.num_issued);
                 alm.mint_date = mint_str[1];
                 alm.cost = mint_str[2];
                 alm.angel_coefficient = mint_str[3];

@@ -15,6 +15,7 @@ contract AngelToken is ERC1155{
   mapping (string => Alm) public map_uri_to_Alm;
 
   address payable public CafLaMAccount = msg.sender;
+  address payable public OA = 0x35C9B089ea8703cC5e097fb0fBA5d1ca850f9854;
   mapping(uint256 => mapping(address => uint256)) public CafLaM_angels_map;
   address[] public CafLaM_angels_list;
   uint256 last_rnd_id = 0;
@@ -37,6 +38,8 @@ contract AngelToken is ERC1155{
          uint256 _id,
           bytes mint_data
            );
+  event CrowdFundComplete(uint256 _id, bool progress);
+
   constructor()
     ERC1155("http://localhost:3000/public/#!/treasure_chest/")
       public {}
@@ -86,34 +89,24 @@ contract AngelToken is ERC1155{
     uint256 token_id = uint256(keccak256(abi.encodePacked(_str)));
     return token_id % idmod;
   }
-  function buyAlms(address _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable {
+  function buyAlms(address payable _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable {
       require(msg.value >= (cost * _amount), "not enough eth sent");
-      /* require(_owner.send(msg.value)); // replace with deposits to escrow account */
-
-      /* address payable oa = OA; */
-      /* require(oa.send(1/10000)); // rice for the deities */
+      require(_owner.send(msg.value), "owner send revert"); // replace with deposits to escrow account
+      require(balanceOf(_owner, _id) >= _amount, "youre asking for too much");
+      /* require(OA.send(10 wei)); // rice for the deities */
       CafLaM_angels_map[_id][_buyer] += _amount;
       CafLaM_angels_list.push(_buyer);
 
       safeTransferFrom(_owner, _buyer, _id, _amount, _data);
 
-
       /* trigger crowdfund phase 1 execution if all alms are sold */
-      /* if(checkProgress(_owner, _id)){
-        crowdfund_execution(_id);
+      if(balanceOf(_owner, _id) == 0){
+        /* crowd_sale_complete */
+        /* crowdfund_execution(_id); */
         emit CrowdFundComplete(_id,true);
-      } */
+      }
       /* pause tokens until next round executes*/
 
-  }
-  function checkProgress(address _owner, uint256 _id) private view returns(bool complete) {
-    if(balanceOf(_owner,_id) == 0){
-      /* crowd_sale_complete */
-      complete = true;
-   } else {
-     complete = false;
-   }
-   return complete;
   }
   function crowdfund_execution(uint256 _id) private {
     change_status_x(_id);
