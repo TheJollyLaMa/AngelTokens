@@ -26,25 +26,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
     $scope.totalAlms = await $scope.AngelTokenContract.methods.getAlmsLength().call().then((len) => {return len;});
     $scope.AngelTokens = await $scope.fetchAlms();
     $scope.$digest();
-    $scope.OAContract();
    }
-   $scope.OAContract = async function () {
-     // const web3 = window.web3;
-     $scope.OAContractjson = await BlockFactory.FetchOAContractJSON();
-     // $scope.account = await web3.eth.getAccounts().then(function(accounts){return accounts[0];});
-     // $scope.display_account = $scope.account.toString().substring(0,4) + "   ....   " + $scope.account.toString().substring($scope.account.toString().length - 4);
-     $scope.OAContract = await web3.eth.net.getId().then(function(net_id){
-        if($scope.OAContractjson.networks[net_id]) { console.log("Angel Token Crowdsale Contract Address: " + $scope.OAContractjson.networks[net_id].address);
-          var c = new web3.eth.Contract($scope.OAContractjson.abi,$scope.OAContractjson.networks[net_id].address);
-         return c;
-       }else{return $window.alert("Smart contract not connected to selected network.")}
-      });
-     $scope.blockNum = await web3.eth.getBlockNumber();
-     // $scope.totalAlms = await $scope.OAContract.methods.getAlmsLength().call().then((len) => {return len;});
-     // $scope.AngelTokens = await $scope.fetchAlms();
-     $scope.$digest();
-
-    }
 
    $scope.fetchAlms = async function () {
      var alm = {};
@@ -53,6 +35,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
      for (var i = 1; i <= $scope.totalAlms; i++) {
        // load alms
        await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
+         await $scope.AngelTokenContract.methods.map_id_to_Alm(alm.id).call().then(async (alm) => {
          console.log(alm.owner);
            var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
            alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
@@ -76,6 +59,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
            }else if(alm.status == 4) {alm.status = "fulfilled...";
            }else{alm.status = "no status";}
            AngelTokens[i-1] = alm;
+         });
        });
      };
      return AngelTokens;
@@ -91,7 +75,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
      .send({ from: $scope.account })
      .once('receipt', async function(receipt) {
        var ManifestEvent = receipt.events.ManifestedAngelToken.returnValues;
-       var post_uri = 'http://localhost:3000/token_manifest_event/';
+       var post_uri = 'http://localhost:3000/public/#!/treasure_chest/token_manifest.html';
        console.log(ManifestEvent);
        $scope.new_token_uri = ManifestEvent[1];
        // console.log($scope.new_token_uri);
@@ -101,7 +85,25 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
        $scope.$digest();
      });
    }
+  $scope.StatusShipped = async function (id) {
+    await $scope.AngelTokenContract.methods.map_id_to_Alm(id).call().then(async (alm) => {
+      if($scope.account == alm.owner){
+          var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
+          alm.status = mint_str[4];
+          if(alm.status == 2){
+            await $scope.AngelTokenContract.methods.change_status_s(id,true).send({from:$scope.account});
+            $scope.StatusShippedmsg = "Token Status changed to shipped.";
+          }else{
+            $scope.StatusShippedmsg = "Cannot ship if token not yet executed.";
+          }
+      }else{
+        $scope.StatusShippedmsg = "Cannot change status of tokens not owned.";
+      }
+      console.log($scope.StatusShippedmsg);
+      $scope.$digest();
 
+    });
+  }
   $scope.getBalance = function () {
       var address, wei, balance;
       address = document.getElementById("address").value;

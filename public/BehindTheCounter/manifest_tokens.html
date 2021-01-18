@@ -53,6 +53,26 @@
   <hr/>
   <div class="eth_bal">
     <div class="container-fluid mt-5">
+      <hr/>
+      <div class="text-center">
+        <br />
+        <p>Mark an Angel Token as shipped</p>
+        <hr/>
+        <p>Enter a token ID:</p>
+        <br />
+        <input type="text" size="50" id="token_id" ng-model="token_id"/>
+        <br />
+        <br />
+        <button class="btn btn-primary" type="button" ng-click="StatusShipped(token_id)">Set Status To Shipped</button>
+        <br />
+        <br />
+        <div id="output">{{StatusShippedmsg}}</div>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="eth_bal">
+    <div class="container-fluid mt-5">
       <div><a href="https://www.google.com/search?q=eth+to+dollars&rlz=1C5CHFA_enUS926US926&oq=eth+to+dollars&aqs=chrome..69i57j0i22i30l4.3528j1j7&sourceid=chrome&ie=UTF-8" target="_blank">Google Eth To Dollar Converter</a></div>
       <hr/>
       <div class="row text-center">

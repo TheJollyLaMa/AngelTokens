@@ -6,6 +6,7 @@ module.exports = {
     development: {
       host: "127.0.0.1",
       port: 7545,
+      gas: 10000000,
       network_id: "*", // Match any network id
       from: process.env.GDA //dummy account in ganache for now but should be set to the angel deployer wallet for mainnet deployment
     }//,

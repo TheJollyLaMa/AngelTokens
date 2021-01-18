@@ -1,11 +1,15 @@
 pragma solidity >=0.4.21 <0.7.0;
-//it's been quite the year on our little blue sphere
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "./AngelEscrow.sol";
+//it's been quite the year on our little blue sphere
+// import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
 /*
+  Thanks to the Sages in the Pages - you know who you are.
   mad props to the crypto zombies tutorial!  Thanks!
   And gregory at Dapp U
   and anthony at the daily gwei
-  stand on the shoulders of giants
+  We stand on the shoulders of giants
+
 */
 contract AngelToken is ERC1155{
   /* State variables are stored in the blockchain */
@@ -15,7 +19,7 @@ contract AngelToken is ERC1155{
   mapping (string => Alm) public map_uri_to_Alm;
 
   address payable public CafLaMAccount = msg.sender;
-  address payable public OA = 0x35C9B089ea8703cC5e097fb0fBA5d1ca850f9854;
+  address payable public OA = 0x6C22C362DfcA710AA757e26C4B4961Bb1dB00A0e;
   mapping(uint256 => mapping(address => uint256)) public CafLaM_angels_map;
   address[] public CafLaM_angels_list;
   uint256 last_rnd_id = 0;
@@ -39,9 +43,9 @@ contract AngelToken is ERC1155{
           bytes mint_data
            );
   event CrowdFundComplete(uint256 _id, bool progress);
-
+  event update(bytes data_update);
   constructor()
-    ERC1155("http://localhost:3000/public/#!/treasure_chest/")
+    ERC1155("http://localhost:3000/public/#!/treasure_chest/{id}.json")
       public {}
 
    function tokenGenesis (
@@ -70,6 +74,7 @@ contract AngelToken is ERC1155{
           map_owner_to_id[msg.sender] = _id;
           map_id_to_Alm[_id] = new_alm;
           _mint(msg.sender, _id, _num_to_issue, mintData);
+
           emit ManifestedAngelToken(
                new_alm.owner,
                 new_alm.uri,
@@ -92,32 +97,31 @@ contract AngelToken is ERC1155{
   function buyAlms(address payable _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable {
       require(msg.value >= (cost * _amount), "not enough eth sent");
       require(_owner.send(msg.value), "owner send revert"); // replace with deposits to escrow account
+      /* require(deposit(msg.value), "escrow deposit revert"); */
       require(balanceOf(_owner, _id) >= _amount, "youre asking for too much");
       /* require(OA.send(10 wei)); // rice for the deities */
       CafLaM_angels_map[_id][_buyer] += _amount;
       CafLaM_angels_list.push(_buyer);
-
       safeTransferFrom(_owner, _buyer, _id, _amount, _data);
-
       /* trigger crowdfund phase 1 execution if all alms are sold */
       if(balanceOf(_owner, _id) == 0){
         /* crowd_sale_complete */
-        /* crowdfund_execution(_id); */
-        emit CrowdFundComplete(_id,true);
+        crowdfund_execution(_id);
+        emit CrowdFundComplete(_id, true);
       }
-      /* pause tokens until next round executes*/
-
+      /* pause tokens until next round executes */
   }
   function crowdfund_execution(uint256 _id) private {
     change_status_x(_id);
     if(false){
       payout_last(last_rnd_id);
     }else{
-      seed_round();//no angel share - first round goes directly to startup funding
+      seed_round();//no angel share - first round goes directly to relieve startup funding
     }
     this_now_last(_id);
   /*   send email to minter to prompt a week long roast session */
   }
+
   function this_now_last(uint256 _id) private {
     last_rnd_id = _id;
   }
@@ -132,7 +136,7 @@ contract AngelToken is ERC1155{
   function payout_last(uint256 _last_rnd_id) public payable {
       /* fetch the current alm */
       /* _id = id to last alm; */
-      AngelToken.Alm memory last_alm = map_id_to_Alm[_last_rnd_id];
+      Alm memory last_alm = map_id_to_Alm[_last_rnd_id];
         uint256 _num_to_issue;
          string memory _mint_date;
           uint256 _cost;
@@ -147,7 +151,7 @@ contract AngelToken is ERC1155{
 
       for(uint256 i=1; i<=CafLaM_angels_list.length; i++) {
         address angel = CafLaM_angels_list[i];
-        uint256 angels_bal = ERC1155.balanceOf(angel, _last_rnd_id);
+        uint256 angels_bal = balanceOf(angel, _last_rnd_id);
         uint256 payout_amt = _total_angels_share / (angels_bal * _angel_coefficient);
         /* angel.transfer(payout_amt); */
       }
@@ -156,39 +160,44 @@ contract AngelToken is ERC1155{
       _status = 4;
       /* reencode */
       last_alm.mint_data = abi.encode(_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product);
-
+      emit update(last_alm.mint_data);
+      map_id_to_Alm[_last_rnd_id] = last_alm;
   }
-
-  function change_status_x(uint256 _id) public view {
-  /* fetch the current alm */
-  AngelToken.Alm memory cur_alm =  AngelToken.map_id_to_Alm[_id];
+  function change_status_x(uint256 _id) private {
+    /* fetch the current alm */
+    Alm memory cur_alm = map_id_to_Alm[_id];
     uint256 _num_to_issue;
-     string memory _mint_date;
-      uint256 _cost;
-       uint256 _angel_coefficient;
-        uint256 _status;
-         string memory _product;
-  (_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product) = abi.decode(cur_alm.mint_data,(uint256, string, uint256, uint256, uint256, string));
-  /* change status on tokens to 'executed' */
-  _status = 2;
-  /* reencode */
-  cur_alm.mint_data = abi.encode(_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product);
+    string memory _mint_date;
+    uint256 _cost;
+    uint256 _angel_coefficient;
+    uint256 _status;
+    string memory _product;
+    (_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product) = abi.decode(cur_alm.mint_data,(uint256, string, uint256, uint256, uint256, string));
+    /* change status on tokens to 'executed' */
+    _status = 2;
+    /* reencode */
+    cur_alm.mint_data = abi.encode(_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product);
+    emit update(cur_alm.mint_data);
+    map_id_to_Alm[_id] = cur_alm;
+
   }
-  function change_status_s(uint256 _id, bool is_shipping) public view{
-    if(is_shipping){
+  function change_status_s(uint256 _id, bool is_shipping) public payable{
       /* fetch the current alm */
-      AngelToken.Alm memory cur_alm =  AngelToken.map_id_to_Alm[_id];
+      Alm memory alm =  map_id_to_Alm[_id];
+      require(msg.sender == alm.owner, "Err: Must own token to change status");
         uint256 _num_to_issue;
          string memory _mint_date;
           uint256 _cost;
            uint256 _angel_coefficient;
             uint256 _status;
              string memory _product;
-      (_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product) = abi.decode(cur_alm.mint_data,(uint256, string, uint256, uint256, uint256, string));
+      (_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product) = abi.decode(alm.mint_data,(uint256, string, uint256, uint256, uint256, string));
       /* change status on tokens to 'executed' */
       _status = 3;
       /* reencode */
-      cur_alm.mint_data = abi.encode(_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product);
-    }
+      alm.mint_data = abi.encode(_num_to_issue, _mint_date, _cost, _angel_coefficient, _status, _product);
+      emit update(alm.mint_data);
+      map_id_to_Alm[_id] = alm;
+
   }
 }
