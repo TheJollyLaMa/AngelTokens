@@ -13,6 +13,7 @@
     </div>
     <br/>
     <br/>
+    
     <p>This Round : </p>
     <div class="flip-container">
       <div class="flipper">
@@ -43,12 +44,34 @@
       <input id="newtokesbutton" type='submit' class='btn btn-block btn-primary' value='Buy'/>
     </div>
   </form>
+  <div class="row" ng-if="result != null">
+         <div class="col-xs-12">
+            <table class="table">
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Age</th>
+                     <th>Profession</th>
+                     <th>Years of Experience</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>{{result.name}}</td>
+                     <td>{{result.age}}</td>
+                     <td>{{result.profession}}</td>
+                     <td>{{result.yearsOfExp}}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
   <br/>
   <hr/>
   <!-- <div>
     <p align="center">Search: <input style="width: 50%;" type='text' class='form-control mb-1' placeholder='id of alm' ng-model="search.alm_id"/>
   </div> -->
-  Tokens Owned by Your Connected Account:
+  Token Library:
   <div class="scroller">
   <div class="flip-container" ng-repeat="alm in AngelTokens">
     <div class="flipper">
@@ -110,4 +133,6 @@
       </div>
     </div>
   </div>
+
+
 </div>

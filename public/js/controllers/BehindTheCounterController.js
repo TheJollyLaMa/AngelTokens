@@ -13,17 +13,17 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
 
   $scope.loadTheBlock = async function () {
     const web3 = window.web3;
-    $scope.AngelTokenjson = await BlockFactory.FetchTokenJSON();
+    $scope.AT_Xjson = await BlockFactory.FetchTokenJSON();
     $scope.account = await web3.eth.getAccounts().then(function(accounts){return accounts[0];});
     $scope.display_account = $scope.account.toString().substring(0,4) + "   ....   " + $scope.account.toString().substring($scope.account.toString().length - 4);
-    $scope.AngelTokenContract = await web3.eth.net.getId().then(function(net_id){
-       if($scope.AngelTokenjson.networks[net_id]) { console.log("Angel Token Contract Address: " + $scope.AngelTokenjson.networks[net_id].address);
-         var c = new web3.eth.Contract($scope.AngelTokenjson.abi,$scope.AngelTokenjson.networks[net_id].address);
+    $scope.AT_XContract = await web3.eth.net.getId().then(function(net_id){
+       if($scope.AT_Xjson.networks[net_id]) { console.log("Angel Token Contract Address: " + $scope.AT_Xjson.networks[net_id].address);
+         var c = new web3.eth.Contract($scope.AT_Xjson.abi,$scope.AT_Xjson.networks[net_id].address);
         return c;
       }else{return $window.alert("Smart contract not connected to selected network.")}
      });
-    // $scope.blockNum = await web3.eth.getBlockNumber();
-    $scope.totalAlms = await $scope.AngelTokenContract.methods.getAlmsLength().call().then((len) => {return len;});
+    $scope.blockNum = await web3.eth.getBlockNumber();
+    $scope.totalAlms = await $scope.AT_XContract.methods.getAlmsLength().call().then((len) => {return len;});
     $scope.AngelTokens = await $scope.fetchAlms();
     $scope.$digest();
    }
@@ -34,8 +34,8 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
      console.log("Total Angel Tokens Created: " + $scope.totalAlms);
      for (var i = 1; i <= $scope.totalAlms; i++) {
        // load alms
-       await $scope.AngelTokenContract.methods.alms(i-1).call().then(async (alm) => {
-         await $scope.AngelTokenContract.methods.map_id_to_Alm(alm.id).call().then(async (alm) => {
+       await $scope.AT_XContract.methods.alms(i-1).call().then(async (alm) => {
+         await $scope.AT_XContract.methods.map_id_to_Alm(alm.id).call().then(async (alm) => {
          console.log(alm.owner);
            var uri_str = await web3.eth.abi.decodeParameters(['string', 'uint256', 'string'], alm.uri);
            alm.uri = uri_str[0] + uri_str[1] + uri_str[2];
@@ -51,7 +51,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
            alm.product = mint_str[5];
            console.log(alm.id);
            console.log($scope.account);
-           alm.bal = await $scope.AngelTokenContract.methods.balanceOf($scope.account,alm.id).call();
+           alm.bal = await $scope.AT_XContract.methods.balanceOf($scope.account,alm.id).call();
            console.log(alm.bal);
            if(alm.status == 1) {alm.status = "waiting...";
            }else if(alm.status == 2) {alm.status = "executed...";
@@ -64,13 +64,12 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
      };
      return AngelTokens;
    }
-  // $scope.AngelTokensManifested = async function () {$scope.token = await $scope.AngelTokenContract.methods.ManifestedAngelTokens().call();console.log($scope.token);};
   $scope.manifest_angel_token = function (new_alm) {
      var today = new Date();
      today = String(today.getDate()).padStart(2, '0') + String(today.getMonth() + 1).padStart(2, '0') + today.getFullYear();
      //need an error catch for instance when contract rejects a previously minted ID
      // as in : ID is not Unique! Use a slightly different name! (add a number to it if your endeavor mints frequently)
-     $scope.AngelTokenContract.methods
+     $scope.AT_XContract.methods
      .tokenGenesis(new_alm.ename, new_alm.esym, new_alm.issue_num, today, new_alm.cost, new_alm.angel_coefficient, new_alm.product)
      .send({ from: $scope.account })
      .once('receipt', async function(receipt) {
@@ -78,6 +77,8 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
        var post_uri = 'http://localhost:3000/public/#!/treasure_chest/token_manifest.html';
        console.log(ManifestEvent);
        $scope.new_token_uri = ManifestEvent[1];
+       var escan_url = "https://etherscan.io/tx/" . receipt.transactionHash;
+       alert("You're transaction is being mined.  You can view it here: " + escan_url)
        // console.log($scope.new_token_uri);
        // $scope.lastmintData = await web3.eth.abi.decodeParameters('string',MintDataEvent[0]);
        // console.log($scope.lastmintData);
@@ -86,12 +87,12 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
      });
    }
   $scope.StatusShipped = async function (id) {
-    await $scope.AngelTokenContract.methods.map_id_to_Alm(id).call().then(async (alm) => {
+    await $scope.AT_XContract.methods.map_id_to_Alm(id).call().then(async (alm) => {
       if($scope.account == alm.owner){
           var mint_str = await web3.eth.abi.decodeParameters(['uint256', 'string', 'uint256', 'uint256', 'uint256', 'string'], alm.mint_data);
           alm.status = mint_str[4];
           if(alm.status == 2){
-            await $scope.AngelTokenContract.methods.change_status_s(id,true).send({from:$scope.account});
+            await $scope.AT_XContract.methods.change_status_s(id).send({from:$scope.account});
             $scope.StatusShippedmsg = "Token Status changed to shipped.";
           }else{
             $scope.StatusShippedmsg = "Cannot ship if token not yet executed.";

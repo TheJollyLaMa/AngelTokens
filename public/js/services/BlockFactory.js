@@ -1,8 +1,7 @@
 app.factory('BlockFactory', ["$http", function ($http) {
     return {
           FetchTokenJSON: FetchTokenJSON,
-          FetchOAContractJSON: FetchOAContractJSON,
-          FetchCafLaMContractJSON: FetchCafLaMContractJSON
+          FetchAT_X_JSON: FetchAT_X_JSON
       }
       function FetchTokenJSON () {
           return $http.get('../../../abis/AngelToken.json')
@@ -10,16 +9,11 @@ app.factory('BlockFactory', ["$http", function ($http) {
                         return atjson.data;
                       });
       }
-      function FetchOAContractJSON () {
-          return $http.get('../../../abis/AngelTokenCrowdFund.json')
+      function FetchAT_X_JSON () {
+          return $http.get('../../../abis/AT_X.json')
                       .then(function(atcfjson) {
                         return atcfjson.data;
                       });
       }
-      function FetchCafLaMContractJSON () {
-          return $http.get('../../../abis/CafLaMCrowdFund.json')
-                      .then(function(atclcfjson) {
-                        return atclcfjson.data;
-                      });
-      }
+
 }]);

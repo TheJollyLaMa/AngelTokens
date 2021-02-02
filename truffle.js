@@ -6,7 +6,7 @@ module.exports = {
     development: {
       host: "127.0.0.1",
       port: 7545,
-      gas: 10000000,
+      gas: 6721975,
       network_id: "*", // Match any network id
       from: process.env.GDA //dummy account in ganache for now but should be set to the angel deployer wallet for mainnet deployment
     }//,
@@ -17,6 +17,7 @@ module.exports = {
     //   gasPrice: 75000000000
     // }
   },
+  plugins: ["truffle-contract-size"],
   contracts_directory: './contracts/',
   contracts_build_directory: './abis/',
   compilers: {
