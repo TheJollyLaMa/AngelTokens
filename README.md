@@ -1,5 +1,5 @@
 <div>
-    <p align="center"><img src="./public/angelL.png"><img src="./public/AT_ETH_ENS_Logo.png"><img src="./public/angelR.png"></p>
+    <p align="center"><img src="./public/angelL.png"><img src="./public/AT_ETH_ENS_Logo.gif"><img src="./public/angelR.png"></p>
     <p align="center">✨✨✨Connecting Angels to their respective Spectacular Entrepreneurial Spirits✨✨✨</p>
     <p align="center">✨✨✨since <em>2020!</em>✨✨✨</p>
 </div>  
@@ -16,7 +16,7 @@
         should even endeavor at all.  Fear and mistrust are rampant, even among such abundance!
     </p>    
     <p>
-        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/ATEth_Logo.png">
+        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.gif">
         that we can make the world a better place.  We know that you remember how
         to use the Ether <img height="35px" src="./public/ethereum.jpg"> from a past life!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no
