@@ -5,6 +5,9 @@ input {
   align: center;
   display: inline-block;
   width: 70%;
+  position: absolute;
+  top: 2%;
+  left: 15%;
 
 }
 .buy_counter {
@@ -29,8 +32,21 @@ input {
   padding: 2px;
 }
 .eth_bal {
-  margin: 100px;
-  padding: 100px;
+  margin: 10px;
+  padding: 10px;
+  top: 1300px;
+  bottom: auto;
+  position: absolute;
+}
+.ship {
+  margin: 10px;
+  padding: 10px;
+  top: 1600px;
+  position: absolute;
+}
+.fox_gate {
+  display: inline;
+
 }
 .foxie {
   height: 35px;
@@ -47,7 +63,7 @@ input {
   text-align: center;
   color: white;
   font-family: roboto;
-  height:140px;
+  height: 140px;
   overflow: visible;
 }
 .angelsroom {
@@ -72,13 +88,7 @@ input {
   margin-right: 20px;
   margin-left: 20px;
 }
-#headerlogo {
-  width: 100%;
-  margin: 2px;
-  padding: 50px;
-  background-color: white;
-  border-radius: 10px;
-}
+
 .form_table {
   margin: 5px;
   padding: 5px;
@@ -91,7 +101,7 @@ input {
   width: 300px;
   margin: 0px;
   padding: 0;
-  background: url("../ATEth_Logo.png");
+  background: url("../AT_Eth_Logo.gif");
   background-position: center;
   background-size: 75% 130px;
   background-color: #ffffff;

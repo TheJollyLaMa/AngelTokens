@@ -13,7 +13,7 @@ $scrollBarHeight: 1px;
 }
 
 html, body {
-  background-color: #1BB3B6;
+  background: linear-gradient(to left, #b3fcf0, #1BB3B6);/*#1BB3B6;*/
   color: #FAFAC8;
   width: 100%;
   text-align: center;
@@ -60,8 +60,62 @@ h1 {
 .cart tr:nth-child(odd) {
   color: rgb(0,120,120);
 }
+.newtokenform {
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  top: 650px;
+  bottom: auto;
+}
+.fox_div {
+  position: relative;
+  top: 50px;
+  display: inline-block;
+}
+.spacer{
+  height: 200px;
+}
+.rare_links {
+    z-index: 1;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
+
+}
+.alchemist {
+  box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
+}
+.alchemist img {
+  height: 100px;
+  width: 100%;
+}
+.rare_links img {
+  height: 100px;
+
+}
+.rare_links:hover {
+  transform: scale(1.5);
+}
+.space {
+  background-image: url("T4T_Landing.gif");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top;
+  box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  opacity: 0.99;
+  padding: 20px;
+  z-index: 0;
+
+}
 .mainViewWindow {
-  background-color: #1BB3B6;
+  background-color: linear-gradient(to left, #b3fcf0, #1BB3B6);
   color: #FAFAC8;
   width: 95%;
   height: 100%;
@@ -85,35 +139,6 @@ h1 {
   margin: 5px;
   padding-top: 5px;
 }
-/* .scroller {
-  height: 400px;
-  margin:10px;
-  padding:5px;
-  border-width: : 5px;
-  border-style: double;
-  border-color: #FAFAC8;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  /* white-space: nowrap; */
-  /* overflow-y: hidden; */
-  /* overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  width: calc(#{$finalHeight} + #{$scrollBarHeight});
-  max-height: $finalWidth;
-  margin: 5px;
-  padding-top: $scrollBarHeight;
-  transform: rotate(-90deg) translateY(-$finalHeight);
-  transform-origin: right top;
-  & > div {
-    display: block;
-    padding: 0px;
-    background: #cab;
-    transform: rotate(90deg);
-    transform-origin: right top;
-  }
-} */
 .scroller a {
   height: 10%;
   display: inline-block;
@@ -175,6 +200,7 @@ h1 {
   padding:20px;
   color: rgb(250,250,200);
 }
+
 /* rgb(0,120,120) = #007878 */
 /* rgb(200, 91, 0) = #C85B00*/
 /* rgb(102,213,213) = #66D5D5*/

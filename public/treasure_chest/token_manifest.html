@@ -1,0 +1,21 @@
+<div class="angelsroom" ng-controller="BehindTheCounterController" ng-init="loadTheBlock()">
+<div ng-repeat="alm in AngelTokens">
+  <a href="{{alm.url}}" style="text-decoration:none;">
+    <div class="token_front"></div>
+    <div class="token_back">
+        <table>
+            <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
+            <tbody>
+                <h1 class="token-text">{{alm.id}}</h1>
+                <h1 class="token-text">{{alm.uri}}</h1>
+                <h1 class="token-text">{{alm.product}}</h1>
+                <h1 class="token-text">{{alm.cost}}</h1>
+                <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
+                <h1 class="token-text">{{alm.mint_date}}</h1>
+            </tbody>
+            <tfoot><h1 class="token-text">{{alm.issue_num}}/{{totalSupply}}</h1></tfoot>
+         </table>
+      </div>
+    </a>
+</div>
+</div>

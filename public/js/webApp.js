@@ -114,3 +114,11 @@ app.directive("atnavbarbehindthecountermanifest",function(){
       restrict:"E",
       templateUrl:"BehindTheCounter/ATNavbarBehindTheCounterManifest.html"
 };});
+app.directive("followme",function(){
+    return{
+      data:{stock:"=",action:"&"},
+      controller:"BehindTheCounterController",
+      replace:!0,
+      restrict:"E",
+      templateUrl:"BehindTheCounter/followme.html"
+};});

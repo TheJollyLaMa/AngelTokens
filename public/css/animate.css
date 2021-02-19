@@ -1,3 +1,7 @@
+.logo {
+  opacity: 0.3;
+  margin: 20px;
+}
 .door_sign:hover {
   transform: rotate(360deg);
 }
@@ -109,7 +113,9 @@
 }
 
 
-
+.animation-area{
+  background: linear-gradient(to left, #FFFFFF, #1BB3B6);
+}
 
 @keyframes paypal_rotate {
   from {transform: rotateY(0deg);}

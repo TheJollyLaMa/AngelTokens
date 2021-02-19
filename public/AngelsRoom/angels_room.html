@@ -1,6 +1,9 @@
 <div class="angelsroom" ng-controller="StoreFrontController" ng-init="loadTheBlock(); fetchCurrentAlm(); fetchConnectedAccountsAlms();">
   <atnavbarstorefrontangelsroom></atnavbarstorefrontangelsroom>
   <div>
+    <div class="openseagems">
+
+    </div>
     <script>document.getElementById("toke_fro").style.backgroundImage = "url({{cur_alm.img}})";</script>
     <br/>
     <div class="progress-wrapper">
@@ -13,7 +16,7 @@
     </div>
     <br/>
     <br/>
-    
+
     <p>This Round : </p>
     <div class="flip-container">
       <div class="flipper">
@@ -23,7 +26,7 @@
                 <thead class="tokenhead">{{cur_alm.status}}<hr class="tokebreak"/></thead>
                 <tbody>
                     <h1 class="token-text">{{cur_alm.name}}</h1>
-                    <a href="{{cur_alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{cur_alm.uri}}</h1></a>
+                    <a href="/public/#!/treasure_chest/{{cur_alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{cur_alm.uri}}</h1></a>
                     <h1 class="token-text">{{cur_alm.id}} </h1>
                     <h1 class="token-text">{{cur_alm.product}}</h1>
                     <h1 class="token-text">{{cur_alm.cost}}</h1>
