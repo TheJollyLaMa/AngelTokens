@@ -5,7 +5,7 @@ app.controller('BehindTheCounterController', ['$scope', '$filter', '$window', 'I
   $scope.title = 'Behind The Counter';
   $scope.backend_category =[{name: "Receiving", text: "Log new Bean Shipment"}, {name: "Packaging", text: "Log Package Dates on Fresh Roasted Beans"}, {name: "Discounted", text: "Inventory not sold after two weeks is moved at a discount!"}, {name: "Merchandise", text: "Other Merchandise"}, {name: "PurchaseOrders", text: "View Purchase Orders"}];
   $scope.useful_links = [{name: "ShipStation", url: "https://ss.shipstation.com"},{name: "Paypal", url: "https://www.paypal.com/us/signin"},{name: "SonoFresco", url: "https://sonofresco.com/my-account/"},{name: "ClearBags", url: "https://www.clearbags.com/customer/account/login/"},{name: "USPS", url: "https://store.usps.com/store/product/shipping-supplies/priority-mail-medium-flat-rate-box-1-P_O_FRB1"}]
-  $scope.dev_links = [{name: "Manifest_Tokens", url: "http://localhost:3000/public/#!/BehindTheCounter/Manifest_Tokens"},{name: "Sandbox", url: "https://www.caffeinelamanna.com/#!/Sandbox"},{name: "Braintree", url: "https://www.caffeinelamanna.com/#!/Braintree"},{name: "SolarSystem", text:"Test Code"}];
+  $scope.dev_links = [{name: "Manifest_Tokens", url: "#!/BehindTheCounter/Manifest_Tokens"},{name: "Sandbox", url: "https://www.caffeinelamanna.com/#!/Sandbox"},{name: "Braintree", url: "https://www.caffeinelamanna.com/#!/Braintree"},{name: "SolarSystem", text:"Test Code"}];
   $scope.origin = "";
   $scope.roast_type_cats = ['1st crack', '2nd crack', 'Dark'];
   $scope.roast_type = "";

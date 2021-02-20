@@ -60,11 +60,24 @@ h1 {
 .cart tr:nth-child(odd) {
   color: rgb(0,120,120);
 }
+.github_logo {
+  background-image: url("Github_Logo.png");
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  padding: 0px;
+  margin: 0px;
+  text-align:center;
+}
 .newtokenform {
   margin: 10px;
   padding: 10px;
   position: relative;
-  top: 650px;
+  top: 780px;
   bottom: auto;
 }
 .fox_div {
@@ -73,7 +86,14 @@ h1 {
   display: inline-block;
 }
 .spacer{
-  height: 200px;
+  height: 100px;
+}
+.at_logo {
+  top: 50px;
+  width: auto;
+  height: auto;
+  position: relative;
+  display: block;
 }
 .rare_links {
     z-index: 1;
@@ -83,26 +103,123 @@ h1 {
     box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
 
 }
-.alchemist {
-  box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
+.opensourcegems:hover {
+  transform: scale(5);
 }
-.alchemist img {
+.opensourcegems {
+  background-image: url("OpenSourceGems.gif");
+  height: 50px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  box-shadow: 5px 5px 5px 0 white inset, -5px -5px 5px 0 white inset;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+}
+.cl_token {
+  background-image: url("tokenfront.png");
   height: 100px;
-  width: 100%;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 0px;
+  margin: 0px;
+  text-align:center;
 }
+.mm_logo {
+  background-image: url("metamask_logo.png");
+  height: 50px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+}
+.IPFS_logo {
+  background-image: url("IPFS_Logo.png");
+  height: 50px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+}
+.Rari_logo {
+  background-image: url("Rari_logo.png");
+  height: 50px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+}
+.rev11:hover {
+  transform: scale(5);
+}
+.rev11 {
+  background-image: url("revolution11.gif");
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 10px 10px 10px 0 white inset, -10px -10px 10px 0 white inset;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+}
+.alchemist{
+  background-image: url("Alchemist_CapeTown.gif");
+  height: 100px;
+  width: 180px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 10px 10px 10px 0 #03fcc2 inset, -10px -10px 10px 0 #03fcc2 inset;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px;
+}
+.alchemist:hover {
+  transform: scale(4);
+
+}
+
 .rare_links img {
-  height: 100px;
+  height: 150px;
+  box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
+  border-radius: 50%;
 
 }
 .rare_links:hover {
   transform: scale(1.5);
+
 }
 .space {
   background-image: url("T4T_Landing.gif");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 100% auto;
   background-position: top;
-  box-shadow: 15px 15px 25px 0 white inset, -15px -15px 25px 0 white inset;
   height: 100%;
   width: 100%;
   position: absolute;

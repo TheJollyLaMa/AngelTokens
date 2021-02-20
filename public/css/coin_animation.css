@@ -59,10 +59,10 @@
   padding: 0px;
   border-radius: 50%;
   display: inline-block;
-  background-size: 230px;
-  background-image: url("../ATEth_Logo.png");
-  background-position: bottom;
+  background-image: url("AT_Eth_ENS_Logo.gif");
   background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: center center;
   background-color: #FFFFFF;
   transform: rotateY(0deg);
   backface-visibility: hidden;
