@@ -19,7 +19,7 @@
 <<<<<<< Updated upstream
         We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.gif">
 =======
-        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.png">
+        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.gif">
 >>>>>>> Stashed changes
         that we can make the world a better place.  We know that you remember how
         to use the Ether <img height="35px" src="./public/ethereum.jpg"> from a past life!  We also know that you are sitting on a pile of riches! Yes,
@@ -50,9 +50,12 @@
             better get to it! Remember - be friendly and sustainable.  No sense in manifesting anything that would kill the planet
             you've gotten it from! Find something cheap, easy and useful to produce, factor the costs, and find 1000 neighbors who think they would enjoy that deal!
     </p>
-    <p>Now, Go Be an Angel! Check out the README2.md to create a portal through Heaven into the AngelToken Manifestation Room on your own machine - that's where new tokens are minted upon request from Angels deploying on Endeavors.</p>
+    <p>
+    Now, Go Be an Angel! Check out the README2.md to create a portal through Heaven into the AngelToken Manifestation Room on your own machine - that's         where new tokens are minted upon request from Angels deploying on Endeavors.
+    </p>
 
     <p>The Jolly LaMa</p>
+    
    <p>P.S. - Shameless plug: If you're in the U.S. and fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
     Caffeine LaManna</a> to be a Sweet Sprite and check out <img height="55px" src="./public/css/tokenfront.png"> Caffeine LaManna's Angel Token
     <img height="55px" src="./public/css/tokenfront.png"> - The first one EVER to be manifested on Earth! It wasn't easy to summon up- but once you get the right mix and the right Sprites around, it comes naturally! The general plan would be to dedicate a few Full Roast weeks toward deleveraging the startup costs (roaster, webdev, insurance).  So basically a crowdfund!  It's a pretty lean way of bettering the lives of those around you as well as your own through tight knit circles of entrepreneurial people sharing the skills they've perfected and inherited. Plus, you get a sweet little token viewable from anywhere in the world on a decentralized database and held in your own encrypted wallet to memorialize your involvment!</p>
