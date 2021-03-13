@@ -16,12 +16,9 @@
         should even endeavor at all.  Fear and mistrust are rampant, even among such abundance!
     </p>    
     <p>
-<<<<<<< Updated upstream
+        
         We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.gif">
-=======
-        We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.gif">
->>>>>>> Stashed changes
-        that we can make the world a better place.  We know that you remember how
+        we can make the world a better place.  We know that you remember how
         to use the Ether <img height="35px" src="./public/ethereum.jpg"> from a past life!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no
         one can read the road signs so no one knows where to go or how to get there .  They all just spend their days griping
