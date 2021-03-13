@@ -16,7 +16,6 @@
         should even endeavor at all.  Fear and mistrust are rampant, even among such abundance!
     </p>    
     <p>
-        
         We believe, with your help, <em>Angels</em>, and the help of <img height="55px" src="./public/AT_ETH_ENS_Logo.gif">
         we can make the world a better place.  We know that you remember how
         to use the Ether <img height="35px" src="./public/ethereum.jpg"> from a past life!  We also know that you are sitting on a pile of riches! Yes,
