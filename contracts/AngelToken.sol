@@ -1,19 +1,17 @@
 pragma solidity >=0.4.21 <0.7.0;
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import '@openzeppelin/contracts/access/Ownable.sol';
-import '@openzeppelin/contracts/payment/PullPayment.sol';
 import "./Alm.sol";
 
-contract AngelToken is ERC1155, Ownable, PullPayment{
+contract AngelToken is ERC1155, Ownable{
   /* State variables are stored in the blockchain */
   mapping(uint256 => bool) public is_on_manifest;
   mapping (address => uint256) public map_owner_to_id;
   mapping (uint256 => Alms.Alm) public map_id_to_Alm;
 
-  address payable public OA = msg.sender;
-  mapping(uint256 => mapping(address => uint256)) public CafLaM_angels_map;
-  address payable [] public CafLaM_angels_list;
-  uint256 last_rnd_id = 0;
+  address public OA = msg.sender;
+  mapping(uint256 => mapping(address => uint256)) public Angel_Map;
+  address [] public Angel_List;
 
   Alms.Alm[] public alms;
   event ManifestedAngelToken(
@@ -27,7 +25,6 @@ contract AngelToken is ERC1155, Ownable, PullPayment{
   constructor()
     ERC1155("http://localhost:3000/public/#!/treasure_chest/{id}.json")
       Ownable()
-        PullPayment()
           public {
           }
 
@@ -57,13 +54,12 @@ contract AngelToken is ERC1155, Ownable, PullPayment{
   function getAlmsLength() public view returns(uint256){
     return alms.length;
   }
-  function buyAlms(address payable _owner, address payable _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public payable {
-      require(msg.value >= (cost * _amount), "not enough eth sent");
-      require(balanceOf(_owner, _id) >= _amount, "youre asking for too much");
-      _asyncTransfer(_owner, _amount);
+  function buyAlms(address _owner, address _buyer, uint256 _id, uint256 _amount, bytes memory _data, uint256 cost) public {
+      /* require(msg.value >= (cost * _amount), "Err: not enough eth sent, No Soup For You!"); */
+      require(balanceOf(_owner, _id) >= _amount, "Err: not enough tokens to fill your order!");
       safeTransferFrom(_owner, _buyer, _id, _amount, _data);
-      CafLaM_angels_map[_id][_buyer] += _amount;
-      CafLaM_angels_list.push(_buyer);
+      Angel_Map[_id][_buyer] += _amount;
+      Angel_List.push(_buyer);
   }
 
 }

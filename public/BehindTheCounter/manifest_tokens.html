@@ -1,4 +1,16 @@
-<div class="angelsroom" ng-controller="BehindTheCounterController" ng-init="loadTheBlock()">
+<div class="manifesttokens" ng-controller="BehindTheCounterController" ng-init="loadTheBlock()">
+  <script type="text/javascript">
+     window.addEventListener('load', function () {
+          if (typeof web3 !== 'undefined') {
+              console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+              window.web3 = new Web3(web3.currentProvider);
+          } else {
+              console.log('No Web3 Detected... using HTTP Provider')
+              window.web3 = new Web3(new Web3.providers.HttpProvider("https:localhost:7545"));
+              // window.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/<APIKEY>"));
+          }
+    })
+  </script>
   <atnavbarbehindthecountermanifest></atnavbarbehindthecountermanifest>
   <div class="fox_div">
     <div class="foxie" align="left">
@@ -13,30 +25,47 @@
   </div>
   <div class="content mr-auto ml-auto">
 
-    <div class="space" align="center"><div class="at_logo"><img height="200px" src="./angelL.png"><img height="180px" src="./AT_ETH_ENS_Logo.gif"><img height="200px" src="./angelR.png"></div>
+    <div class="space" align="center">
+
+    <div class="row">
+      <!-- <div class="col-sm-4 "><a href="https://uniswap.org/" target="_blank" title="Uniswap.org"> <div class="uni_logo"> </div></a> </div> -->
+      <div class="col-sm-4 ">
+        <!-- <div class="at_logo"><img height="200px" src="./angelL.png"><img height="180px" src="./AT_ETH_ENS_Logo.gif"><img height="200px" src="./angelR.png"></div> -->
+      </div>
+      <!-- <div class="col-sm-4 "><a href="https://ipfs.io/" target="_blank" title="IPFS.io"><div class="IPFS_logo rotate3"></div></a></div> -->
+    </div>
 
       <div class="row">
-        <div class="col-sm-4 "><a href="https://ipfs.io/" target="_blank" title="IPFS.io"><div class="IPFS_logo rotate3"></div></a></div>
+        <div class="col-sm-4 ">
+          <!-- <a href="https://ipfs.io/" target="_blank" title="IPFS.io"><div class="IPFS_logo rotate3"></div></a> -->
+        </div>
         <div class="col-sm-4 "></div>
         <div class="col-sm-4 "><a href="https://caffeinelamanna.com/#!/" target="_blank" title="CaffeineLaManna.Com"><div class="cl_token rotate3"></div></a></div>
       </div>
 
       <div class="row">
         <div class="col-sm-4 spacer"></div>
-        <div class="col-sm-3"><a href="https://github.com/TheJollyLaMa" target="_blank" title="Jolly's Git"><div class="github_logo rotate3"></div></a></div>
+        <!-- <div class="col-sm-3"><a href="https://github.com/TheJollyLaMa" target="_blank" title="Jolly's Git"><div class="github_logo rotate3"></div></a></div> -->
         <div class="col-sm-3 "></div>
       </div>
 
       <div class="row">
-        <div class="col-xs-4 "><a href="https://app.rarible.com" target="_blank" title="Rarible App"><div class="Rari_logo rotate3"></div></a></div>
+        <div class="col-xs-4 "><a href="https://app.rarible.com" target="_blank" title="Rarible App"><div class="Rari_logo"></div></a></div>
         <div class="col-xs-4 "></div>
         <div class="col-xs-4 "><div class="opensourcegems"></div></div>
       </div>
 
       <div class="row">
-        <div class="col-sm-4 spacer"><a title="Jolly's 1st Rarible" href="https://app.rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:129824:0xcaeed8422fb5682c298b7f0971906d446ffd4e7a"><div class="rev11"></div></a></div>
-        <div class="col-sm-4"><div class="alchemist rare_links"></div></div>
-        <div class="col-sm-4 "><a href="https://metamask.io/" target="_blank" title="metamask.io"><div class="mm_logo rotate3"></div></a></div>
+        <div class="col-sm spacer"><a title="Jolly's 1st Rarible" href="https://app.rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:129824:0xcaeed8422fb5682c298b7f0971906d446ffd4e7a"><div class="rev11"></div></a></div>
+        <!-- <div class="col-sm"><div class="alchemist"></div></div> -->
+        <!-- <div class="col-sm"><a href="/eden" target="_blank" title="Garden of Eden"><div class="oasis"></div></a><div id="motion-demo" class="arduino"></div><div id="motion-demo" class="morningstar"></div></div> -->
+        <div class="col-sm"><a href="https://metamask.io/" target="_blank" title="metamask.io"><div class="mm_logo rotate3"></div></a></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 spacer"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 "></div>
       </div>
 
     </div>
@@ -66,28 +95,28 @@
     </div>
   </div>
   <div class="scroller">
-  <div class="flip-container" ng-repeat="alm in AngelTokens">
-    <div class="flipper">
-      <div class="token_front"></div>
-      <div class="token_back shimmer">
-          <table>
-              <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
-              <tbody>
-                  <h1 class="token-text">{{alm.name}}</h1>
-                  <a href="{{alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{alm.uri}}</h1></a>
-                  <h1 class="token-text">{{alm.id}} </h1>
-                  <h1 class="token-text">{{alm.product}}</h1>
-                  <h1 class="token-text">{{alm.cost}}</h1>
-                  <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
-                  <h1 class="token-text">{{alm.mint_date}}</h1>
-              </tbody>
-              <tfoot><h1 class="token-text">{{alm.bal}}/{{alm.num_issued}}</h1></tfoot>
-           </table>
+    <div class="flip-container" ng-repeat="alm in AngelTokens">
+      <div class="flipper">
+        <div class="token_front"></div>
+        <div class="token_back shimmer">
+            <table>
+                <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
+                <tbody>
+                    <h1 class="token-text">{{alm.name}}</h1>
+                    <a href="{{alm.uri}}" style="text-decoration:none;" target="_blank" rel="noopener noreferrer"><h1 class="token-text">{{alm.uri}}</h1></a>
+                    <h1 class="token-text">{{alm.id}} </h1>
+                    <h1 class="token-text">{{alm.product}}</h1>
+                    <h1 class="token-text">{{alm.cost}}</h1>
+                    <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
+                    <h1 class="token-text">{{alm.mint_date}}</h1>
+                </tbody>
+                <tfoot><h1 class="token-text">{{alm.bal}}/{{alm.num_issued}}</h1></tfoot>
+             </table>
+          </div>
         </div>
-      </div>
-  </div></div>
+    </div>
+  </div>
   <br/>
-  <div>
   <div class="ship" align="center">
     <div class="container-fluid mt-5">
       <div class="text-center" align="center">

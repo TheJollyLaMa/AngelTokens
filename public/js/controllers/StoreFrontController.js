@@ -1,5 +1,6 @@
 "use strict";
 app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routeParams", "InventoryFactory", "ShoppingCartFactory", "PromoCodeFactory", "BlockFactory", function($scope, $route, $filter, $routeParams, InventoryFactory, ShoppingCartFactory, PromoCodeFactory, BlockFactory) {
+  var init = function() {
     $scope.title = 'Order Fresh Beans to your Door!';
     $scope.last_round_test = "testing last round data binding";
     $scope.next_round_test = "testing next round data binding";
@@ -194,9 +195,6 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
     $scope.balance = function (account, id) {
       return $scope.AT_Contract.methods.balanceOf(account,id).call().then((bal) => {return bal;});
     }
-    $scope.x = function (owner, id, md) {
-      return $scope.AT_X_Contract.methods.crowdfund_execution(owner,id,md).call().then((r) => {console.log(r);return r;});
-    }
 
     $scope.buy_alms = async function (amt_to_buy) {
       // console.log("Current Alm Owner: " + $scope.cur_alm.owner);console.log("Current Alm mint_data: " + $scope.cur_alm.mint_data);console.log($scope.cur_alm.id);console.log($scope.account);console.log(Number(amt_to_buy));console.log($scope.cur_alm.cost);
@@ -205,43 +203,98 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
             await $scope.balance($scope.cur_alm.owner,$scope.cur_alm.id).then((bal) =>{
               console.log("Owner's Balance: " + bal);});
             await $scope.balance($scope.account,$scope.cur_alm.id).then((bal) =>{
-                console.log("Buyer's Balance: " + bal);});
-            await $scope.AT_Contract.methods.buyAlms(
-              $scope.cur_alm.owner,
-              $scope.account,
-              $scope.cur_alm.id,
-              amt_to_buy,
-              $scope.cur_alm.mint_data,
-              parseInt($scope.cur_alm.cost)
-            )
-            .send(
-              { from: $scope.account,
-                value: web3.utils.toWei(String((parseInt($scope.cur_alm.cost)/1000 * amt_to_buy) + 0.001), "ether")
+                console.log("Buyer's Balance: " + bal);
+                console.log("Owner: " + $scope.account);
+            });
+            await $scope.AT_Contract.methods.OA().call().then((addr) => {
+               console.log("OA: " + addr);
+               $scope.OA=addr;
+            });
+            // send funds to OA
+            await web3.eth.sendTransaction(
+              {
+                from: $scope.account,
+                to: $scope.OA,
+                value: web3.utils.toWei(String((parseInt($scope.cur_alm.cost)/parseInt($scope.cur_alm.num_issued) * amt_to_buy) + 0.001), "ether")//0.001 goes to the OA - rice for the deities
               }
-            ) //0.001 goes to the angel contract - rice for the deities
-            .then(async function (receipt){
+            )
+            .then((receipt) =>{
               var hash = String(receipt.transactionHash);
               var escan_url = "https://etherscan.io/tx/" + hash;
               console.log(escan_url);
               alert("You're transaction was sent to the network.  You can view it here: " + escan_url)
             })
-            .then(async function(){
-              console.log($scope.cur_alm.owner);
-              await $scope.balance($scope.cur_alm.owner, $scope.cur_alm.id).then((bal) =>{
-                console.log(bal);
-                if(Number(bal) === 0){
-                  console.log("executing ...");
-                  var exe = $scope.x($scope.cur_alm.owner, $scope.cur_alm.id, $scope.cur_alm.mint_data);
-                  console.log(exe.result);
-                }
-              });
-            });
-          }catch(error){
-            console.log(error);
-          }
-          $scope.$digest();
+            .then( async () =>{
+              // call the Angel Token contract to transfer buyer's order of an 1155 series from the owner of the Alm to the buyer of the series
+              await $scope.AT_Contract.methods.buyAlms(
+                $scope.cur_alm.owner,
+                $scope.account,
+                $scope.cur_alm.id,
+                amt_to_buy,
+                $scope.cur_alm.mint_data,
+                parseInt($scope.cur_alm.cost)
+              ).call()
+              .then(() =>{
+                console.log($scope.cur_alm.owner);
+                $scope.balance($scope.cur_alm.owner, $scope.cur_alm.id).then(async (bal)=>{
+                    console.log("Owner's New Balance" + bal);
+                    await $scope.AT_Contract.methods.OA().call().then((addr) => {console.log("OA: " + addr);$scope.OA=addr;});
+                    if(Number(bal) === 0){
+                      console.log("Funding round complete! Executing crowdfund...");
+                      console.log("OA: " + $scope.OA);
 
+                      $scope.AT_X_Contract.methods.crowdfund_execution($scope.cur_alm.owner,$scope.cur_alm.id).call()
+                      .then(async (res)=> {
+                          if (res === true) {
+                             // call angel list associated with the token id
+                             console.log("contract called successfully...");
+                             //run a for loop to payout rewards to each account
+                             console.log("executing payouts to angel list");
+                             // map_angel_to_payout[_id][angel] = payout_amt;
+                          }else {
+                             console.log("crowdfund execution error");
+                          }
+                       // {
+                       // from: $scope.OA,
+                       //   value: web3.utils.toWei(String((parseInt($scope.last_alm.num_issued ))), "ether")
+                       // }
+                      });
+                    }
+                });
+             });
+           });
+         }catch(error){
+            console.log(error);
+         }
+         $scope.$digest();
     }
+    // const transactions = [
+    //   {
+    //     to: "<your-eth-address>",
+    //     token: "DAI",
+    //     amount: "23000000000000000000",
+    //     description: "For apples",
+    //   },
+    //   {
+    //     to: "<your-eth-address>",
+    //     token: "DAI",
+    //     amount: "55500000000000000000",
+    //     description: "For bananas",
+    //   },
+    // ];
+    // $scope.checkoutUser =  async function (transactions, feeToken, address) {
+    //   const checkoutManager = new ZkSyncCheckout.CheckoutManager("mainnet");
+    //   if (address) {
+    //     const hasEnoughBalance = await checkoutManager.checkEnoughBalance(transactions, feeToken, address, ethProvider);
+    //
+    //     if (!hasEnoughBalance) {
+    //       throw new Error("Not enough balance!");
+    //     }
+    //   }
+    //
+    //   const txHashes = await checkoutManager.zkSyncBatchCheckout(transactions, feeToken);
+    //   const receipts = await checkoutManager.wait(txHashes);
+    // }
 
     $scope.cart = ShoppingCartFactory.cart;
     $scope.cart_length = $scope.cart.items.length;
@@ -430,4 +483,6 @@ app.controller("StoreFrontController", ["$scope", "$route", "$filter", "$routePa
       $scope.Total = ShoppingCartFactory.cart.getTotalPrice();
       $route.reload();
     };
+  }
+  init();
 }]);

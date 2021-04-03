@@ -1,7 +1,11 @@
-var express = require('express'),
-    app = express(),
-    port = 3000,
-    router = express.Router();
+const express = require('express'),
+      app = express(),
+      port = 3000,
+      router = express.Router(),
+      ipfsClient = require('ipfs-http-client'),
+      bodyParser = require('body-parser'),
+      fileUpload = require('express-fileupload'),
+      ipfs = new ipfsClient({host: 'localhost', port:'5001', protocol: 'http'});
 
 app.use(router);
 app.use('/public', express.static('public'));
@@ -28,11 +32,34 @@ router.all('/', function (req, res, next) {
     });
 });
 
+app.post('/token_manifest_event', async function (req, res) {
 
-app.post('/token_manifest_event', function (req, res) {
-  console.log(req);
-  res.send('Got a POST request')
-})
+  const file = req.files.file;
+  const fileName = req.body.fileName;
+  const filePath = 'files/' + fileName;
+  file.mv(filePath, async (err) => {
+      if (err) {
+        console.log("Error: failed to save token json!");
+        return res.status(500).send(err);
+      }
+      const fileHash = await addFile(fileName, filePath);
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+
+      res.render('upload', { fileName, fileHash });
+  });
+});
+
+const addFile = async (fileName, filePath)=> {
+  const file = fs.readFileSync(filePath);
+  const fileAdded = await ipfs.add({path: fileName, content: file});
+  const fileHash = fileAdded[0].hash;
+
+  return fileHash;
+};
 
 app.listen(port, () => {
   console.log(`Angel Tokens appearing in Heaven on port ${port}!`)

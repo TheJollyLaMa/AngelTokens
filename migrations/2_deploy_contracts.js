@@ -2,7 +2,7 @@ const AngelToken = artifacts.require("AngelToken");
 const AT_X = artifacts.require("AT_X");
 
 module.exports = function(deployer, network, accounts) {
-  console.log(accounts);
+  // console.log(accounts);
   var date = new Date("01/01/2021").toLocaleDateString('en-US', {
     day: '2-digit',
     month: '2-digit',
@@ -13,7 +13,7 @@ module.exports = function(deployer, network, accounts) {
     endeavor_symbol : "OA",
     issue_num : 1000,
     mint_date : date,
-    cost : 1,
+    cost : 100,
     angel_coefficient : 0001,
     product : "1/2lb Shit from Healthy Bull"
   }
@@ -22,7 +22,7 @@ module.exports = function(deployer, network, accounts) {
     endeavor_symbol : "CafLaM",
     issue_num : 1000,
     mint_date : date,
-    cost : 0,
+    cost : 10,
     angel_coefficient : 0005,
     product : "1/2lb whole bean roasted coffee"
   }
@@ -31,7 +31,7 @@ module.exports = function(deployer, network, accounts) {
     endeavor_symbol : "CafLaM",
     issue_num : 1000,
     mint_date : date,
-    cost : 1,
+    cost : 10,
     angel_coefficient : 0005,
     product : "1/2lb whole bean roasted coffee"
   }
@@ -40,7 +40,7 @@ module.exports = function(deployer, network, accounts) {
     endeavor_symbol : "CafLaM",
     issue_num : 1000,
     mint_date : date,
-    cost : 2,
+    cost : 20,
     angel_coefficient : 0005,
     product : "1/2lb whole bean roasted coffee"
   }

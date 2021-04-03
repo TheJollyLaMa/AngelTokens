@@ -8,7 +8,7 @@ module.exports = {
       port: 7545,
       gas: 6721975,
       network_id: "*", // Match any network id
-      from: process.env.GDA //dummy account in ganache for now but should be set to the angel deployer wallet for mainnet deployment
+      from: process.env.OA //dummy account in ganache but should be set to the angel deployer wallet for mainnet deployment
     }//,
     // rinkeby: {
     //   provider: function() { return new HDWalletProvider(process.env.MNEMONIC, "https://rinkeby.infura.io/v3/" + process.env.INFURA_API_KEY)},

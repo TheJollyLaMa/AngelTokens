@@ -42,6 +42,7 @@
   </div>
   <br/>
   <form ng-submit="buy_alms(amt_to_buy)">
+    <!-- checkoutUser(transactions, "DAI"); -->
     <input type='number' class="buy_counter form_table" placeholder="10" ng-model="amt_to_buy"/>
     <div id="newtokesbtndiv" align="center" class="form_table">
       <input id="newtokesbutton" type='submit' class='btn btn-block btn-primary' value='Buy'/>
@@ -76,66 +77,77 @@
   </div> -->
   Token Library:
   <div class="scroller">
-  <div class="flip-container" ng-repeat="alm in AngelTokens">
-    <div class="flipper">
-      <div class="token_front">
-        <table>
-          <tfoot><h1 class="token-text">{{alm.mint_date}}</h1></tfoot>
-        </table>
-      </div>
-      <div class="token_back shimmer">
+    <div class="flip-container" ng-repeat="alm in AngelTokens">
+      <div class="flipper">
+        <div class="token_front">
           <table>
-              <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
-              <tbody>
-                  <h1 class="token-text">{{alm.name}}</h1>
-                  <h1 class="token-text"><a href="/public/#!/treasure_chest/{{alm.uri}}" style="text-decoration: underline; padding: 0px; margin: 0px;" target="_blank" rel="noopener noreferrer">{{alm.uri}}</a></h1>
-                  <h1 class="token-text">{{alm.id}} </h1>
-                  <h1 class="token-text">{{alm.product}}</h1>
-                  <h1 class="token-text">{{alm.cost}}</h1>
-                  <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
-                  <h1 class="token-text">{{alm.owner_display}}</h1>
-              </tbody>
-              <tfoot><h1 class="token-text">{{alm.bal}} / {{alm.num_issued}}</h1></tfoot>
-           </table>
+            <tfoot><h1 class="token-text">{{alm.mint_date}}</h1></tfoot>
+          </table>
+        </div>
+        <div class="token_back shimmer">
+            <table>
+                <thead class="tokenhead">{{alm.status}}<hr class="tokebreak"/></thead>
+                <tbody>
+                    <h1 class="token-text">{{alm.name}}</h1>
+                    <h1 class="token-text"><a href="/public/#!/treasure_chest/{{alm.uri}}" style="text-decoration: underline; padding: 0px; margin: 0px;" target="_blank" rel="noopener noreferrer">{{alm.uri}}</a></h1>
+                    <h1 class="token-text">{{alm.id}} </h1>
+                    <h1 class="token-text">{{alm.product}}</h1>
+                    <h1 class="token-text">{{alm.cost}}</h1>
+                    <h1 class="token-text">0.000{{alm.angel_coefficient}}</h1>
+                    <h1 class="token-text">{{alm.owner_display}}</h1>
+                </tbody>
+                <tfoot><h1 class="token-text">{{alm.bal}} / {{alm.num_issued}}</h1></tfoot>
+             </table>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div>
+  <div class="eth_bal" align="center">
+    <div class="container-fluid mt-5">
+      <div class="row text-center">
+          <div class="col text-center">
+              <br/>
+              <br/>
+              <div>
+                  <p><h1>Decode Bytes Array</h1></p>
+                  <hr/>
+              </div>
+              <div>
+                  <p>Enter a byte array:</p>
+                  <input type="text" size="50" ng-model="array" />
+                  <br/>
+                  <div><button class="btn btn-primary" type="button" ng-click="decode_bytes(array)">Decode</button></div>
+                  <br/>
+                  <div id="output"><h1 ng-repeat="each in bytes_decode_result" >{{each}}</h1></div>
+              </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <div class="ship" align="center">
+    <div class="container-fluid mt-5">
+      <div class="row text-center">
+        <div class="col text-center">
+            <br/>
+            <br/>
+            <div>
+              <p><h1>ETH Balance Fetcher</h1></p>
+              <hr/>
+            </div>
+            <div>
+                <p>Enter an Ethereum Address:</p>
+                <input type="text" size="50" id="address" />
+                <br/>
+                <button class="btn btn-primary" type="button" ng-click="getBalance()">Get Balance</button>
+                <br/>
+                <div id="output"></div>
+            </div>
         </div>
       </div>
-  </div></div>
-  <hr/>
-  <div class="eth_bal">
-    <div class="container-fluid mt-5">
-      <div><a href="https://www.google.com/search?q=eth+to+dollars&rlz=1C5CHFA_enUS926US926&oq=eth+to+dollars&aqs=chrome..69i57j0i22i30l4.3528j1j7&sourceid=chrome&ie=UTF-8" target="_blank">Google Eth To Dollar Converter</a></div>
-      <hr/>
-      <div class="row text-center">
-        <br />
-        <br />
-        <h1>ETH Balance Fetcher</h1>
-        <p>Enter an Ethereum Address:</p>
-        <input type="text" size="50" id="address" />
-        <br />
-        <button class="btn btn-primary" type="button" ng-click="getBalance()">Get Balance</button>
-        <br />
-        <div id="output"></div>
-      </div>
     </div>
   </div>
-  <hr/>
-  <div class="eth_bal">
-    <div class="container-fluid mt-5">
-      <div><a href="https://www.google.com/search?q=eth+to+dollars&rlz=1C5CHFA_enUS926US926&oq=eth+to+dollars&aqs=chrome..69i57j0i22i30l4.3528j1j7&sourceid=chrome&ie=UTF-8" target="_blank">Google Eth To Dollar Converter</a></div>
-      <hr/>
-      <div class="row text-center">
-        <br />
-        <br />
-        <h1>Decode bytes array</h1>
-        <p>Enter a byte array:</p>
-        <input type="text" size="50" ng-model="array" />
-        <br />
-        <button class="btn btn-primary" type="button" ng-click="decode_bytes(array)">Decode</button>
-        <br />
-        <div id="output"><h1 ng-repeat="each in bytes_decode_result" >{{each}}</h1></div>
-      </div>
-    </div>
-  </div>
-
-
+</div>
 </div>

@@ -117,6 +117,15 @@
   background: linear-gradient(to left, #FFFFFF, #1BB3B6);
 }
 
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
 @keyframes paypal_rotate {
   from {transform: rotateY(0deg);}
     to {transform: rotateY(360deg);}

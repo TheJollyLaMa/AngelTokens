@@ -52,13 +52,78 @@ h1 {
   border-radius: 10px;
 }
 .cart th {
-  text-align: center;;
+  text-align: center;
 }
 .cart tr {
   text-align: center;
 }
 .cart tr:nth-child(odd) {
   color: rgb(0,120,120);
+}
+.uni_logo {
+  background-image: url("Uni_Logo.gif");
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 0px;
+  margin: 0px;
+  text-align:center;
+  opacity: 0.5;
+}
+.arduino {
+  background-image: url("arduino.png");
+  height: 50px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: 60px;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+  offset-path: path('M-70,-40 C-70,70 70,70 70,-40');
+  animation: move 3000ms infinite alternate ease-in-out;
+  opacity: 0.7;
+
+}
+.oasis:hover {
+  transform: scale(5);
+}
+.oasis {
+  background-image: url("oasis.png");
+  height: 80px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: 60px;
+  background-position: center center;
+  border-radius: 50%;
+  margin-bottom: 40px;
+  margin-right: 50px;
+  text-align:center;
+  border-color: #03fcc2;
+  opacity: 0.9;
+
+}
+.morningstar {
+  background-image: url("morningstar.png");
+  height: 50px;
+  width: 80px;
+  background-repeat: no-repeat;
+  background-size: 60px;
+  background-position: center center;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  text-align:center;
+  border-color: #03fcc2;
+  offset-path: path('M-70,-40 C-70,70 70,70 70,-40');
+  animation: move 3000ms infinite alternate ease-in-out;
+  opacity: 0.7;
+
 }
 .github_logo {
   background-image: url("Github_Logo.png");
@@ -94,6 +159,8 @@ h1 {
   height: auto;
   position: relative;
   display: block;
+  opacity: 0.8;
+
 }
 .rare_links {
     z-index: 1;
@@ -147,16 +214,18 @@ h1 {
 }
 .IPFS_logo {
   background-image: url("IPFS_Logo.png");
-  height: 50px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
   border-radius: 50%;
   padding: 20px;
-  margin: 10px;
+  margin-top: 45px;
   text-align:center;
   border-color: #03fcc2;
+  opacity: 0.5;
+
 }
 .Rari_logo {
   background-image: url("Rari_logo.png");
@@ -200,10 +269,6 @@ h1 {
   padding: 10px;
   margin: 10px;
 }
-.alchemist:hover {
-  transform: scale(4);
-
-}
 
 .rare_links img {
   height: 150px;
@@ -216,7 +281,7 @@ h1 {
 
 }
 .space {
-  background-image: url("T4T_Landing.gif");
+  background-image: url("T4T_LandingV2.gif");
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top;
@@ -310,7 +375,6 @@ h1 {
      width: $finalHeight;
      height: $finalHeight;
      margin: 0px 0;
-
 }
 .backend_category_buttons p {
   margin:20px;
