@@ -158,7 +158,7 @@
 
  do it all again for each endeavor until Earth is healed and situated properly in the cosmos again!
     - every startup endeavor has its Angels and its Sprites
-    - an Angel is someone who mints tokens to endeavor to make life better for hunanity
+    - an Angel is someone who mints tokens to endeavor to make life better for humanity
     - a sprite is someone who supports an Angel's endeavor
     - All Angels are Sprites. Not every Sprite is an Angel - but Hey! At least they give!
     - An Angel Cup shows the Angel Tokens an Angel has minted when searchign for sprites to fuel an endeaver
