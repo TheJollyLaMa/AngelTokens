@@ -18,7 +18,7 @@
     <p>
         We believe, with your help, <em>Angels</em>, and the help of <a href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:225304?tab=owners" ><img height="55px" src="./public/AT_ETH_ENS_Logo.gif"></a>
         we can make the world a better place.  We know that you remember how
-        to use the Ether <img height="35px" src="./public/ethereum.jpg"> from a past life!  We also know that you are sitting on a pile of riches! Yes,
+        to use the Ether <a href="https://ethereum.org"><img height="35px" src="./public/ethereum.jpg"></a> from a past life!  We also know that you are sitting on a pile of riches! Yes,
         You! We all do something.  And we're all doing it with someone and for someone.  But because of the Curse of Babel, no
         one can read the road signs so no one knows where to go or how to get there .  They all just spend their days griping
         and crumbling about at each other incoherently in general dis-ease. Listen to me....  It's even starting to overcome The Jolly LaMa! We
