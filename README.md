@@ -50,9 +50,7 @@
     Now, Go Be an Angel! Check out the README2.md to create a portal through Heaven into the AngelToken Manifestation Room on your own machine - that's         where new tokens are minted upon request from Angels deploying on Endeavors.
     </p>
 
-    <p>
     The Jolly LaMa
-    </p>
     
    <p>P.S. - Shameless plug: If you're in the U.S. and fresh roasted coffee is your thing, head on over to <a href="https://www.caffeinelamanna.com/#!/AngelsRoom">
     Caffeine LaManna</a> to be a Sweet Sprite and check out <img height="55px" src="./public/css/tokenfront.png"> Caffeine LaManna's Angel Token
